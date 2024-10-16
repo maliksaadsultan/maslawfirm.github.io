@@ -9309,8 +9309,8 @@ a.text-dark:hover {
  */
 @font-face {
 	font-family: 'FontAwesome';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.eot?v=4.7.0);
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format('embedded-opentype'), url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'), url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'), url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'), url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.eot?v=4.7.0);
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0) format('embedded-opentype'), url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'), url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'), url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'), url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');
 	font-weight: normal;
 	font-style: normal
 }
@@ -12351,11 +12351,11 @@ a.text-dark:hover {
 
 @font-face {
 	font-family: 'themify';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/themify.eot?-fvbane);
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/themify.eot?#iefix-fvbane) format('embedded-opentype'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/themify.woff?-fvbane) format('woff'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/themify.ttf?-fvbane) format('truetype'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/themify.svg?-fvbane#themify) format('svg');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/themify.eot?-fvbane);
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/themify.eot?#iefix-fvbane) format('embedded-opentype'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/themify.woff?-fvbane) format('woff'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/themify.ttf?-fvbane) format('truetype'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/themify.svg?-fvbane#themify) format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -13793,11 +13793,11 @@ a.text-dark:hover {
 
 @font-face {
 	font-family: 'icofont';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/icofont.eot?v=1.0.0-beta);
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/icofont.eot?v=1.0.0-beta#iefix) format('embedded-opentype'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/icofont.ttf?v=1.0.0-beta) format('truetype'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/icofont.woff?v=1.0.0-beta) format('woff'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/icofont.svg?v=1.0.0-beta#icofont) format('svg');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/icofont.eot?v=1.0.0-beta);
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/icofont.eot?v=1.0.0-beta#iefix) format('embedded-opentype'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/icofont.ttf?v=1.0.0-beta) format('truetype'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/icofont.woff?v=1.0.0-beta) format('woff'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/icofont.svg?v=1.0.0-beta#icofont) format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -22850,7 +22850,7 @@ html.lb-disable-scrolling {
 	width: 32px;
 	height: 32px;
 	margin: 0 auto;
-	background: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/loading.gif) no-repeat;
+	background: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/loading.gif) no-repeat;
 }
 
 .lb-nav {
@@ -22882,7 +22882,7 @@ html.lb-disable-scrolling {
 	width: 34%;
 	left: 0;
 	float: left;
-	background: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/prev.png) left 48% no-repeat;
+	background: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/prev.png) left 48% no-repeat;
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
@@ -22900,7 +22900,7 @@ html.lb-disable-scrolling {
 	width: 64%;
 	right: 0;
 	float: right;
-	background: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/next.png) right 48% no-repeat;
+	background: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/next.png) right 48% no-repeat;
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
@@ -22964,7 +22964,7 @@ html.lb-disable-scrolling {
 	float: right;
 	width: 30px;
 	height: 30px;
-	background: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/close.png) top right no-repeat;
+	background: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/close.png) top right no-repeat;
 	text-align: right;
 	outline: none;
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
@@ -27197,7 +27197,7 @@ Mask
 	top: 50%;
 	margin-left: -40px;
 	margin-top: -40px;
-	background: url(//www.taxcare.pk/wp-content/themes/paglagarod/css/owl.video.play.png) no-repeat;
+	background: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/css/owl.video.play.png) no-repeat;
 	cursor: pointer;
 	z-index: 1;
 	-webkit-backface-visibility: hidden;
@@ -27378,8 +27378,8 @@ a.mean-expand:hover {
 
 @font-face {
 	font-family: 'droid_serifbold';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-bold-webfont.woff2) format('woff2'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-bold-webfont.woff) format('woff');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-bold-webfont.woff2) format('woff2'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-bold-webfont.woff) format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -27387,8 +27387,8 @@ a.mean-expand:hover {
 
 @font-face {
 	font-family: 'droid_serifbold_italic';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-bolditalic-webfont.woff2) format('woff2'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-bolditalic-webfont.woff) format('woff');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-bolditalic-webfont.woff2) format('woff2'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-bolditalic-webfont.woff) format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -27396,8 +27396,8 @@ a.mean-expand:hover {
 
 @font-face {
 	font-family: 'droid_serifitalic';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-italic-webfont.woff2) format('woff2'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-italic-webfont.woff) format('woff');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-italic-webfont.woff2) format('woff2'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-italic-webfont.woff) format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -27405,8 +27405,8 @@ a.mean-expand:hover {
 
 @font-face {
 	font-family: 'droid_serifregular';
-	src: url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-regular-webfont.woff2) format('woff2'),
-		url(//www.taxcare.pk/wp-content/themes/paglagarod/fonts/droidserif-regular-webfont.woff) format('woff');
+	src: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-regular-webfont.woff2) format('woff2'),
+		url(//www.maslawfirm.pk/wp-content/themes/paglagarod/fonts/droidserif-regular-webfont.woff) format('woff');
 	font-weight: normal;
 	font-style: normal;
 
@@ -28443,7 +28443,7 @@ blockquote {
 }
 
 blockquote::before {
-	background-image: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/quote-2.png);
+	background-image: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/quote-2.png);
 	background-position: center center;
 	background-size: cover;
 	color: #eeeeee;
@@ -31569,7 +31569,7 @@ footer.fixed-footer-enable {
 }
 
 .subscribe__btn input.bst__btn {
-	background-image: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/send.png);
+	background-image: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/send.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: auto auto;
@@ -31581,7 +31581,7 @@ footer.fixed-footer-enable {
 }
 
 .subscribe--2 .subscribe__btn input.bst__btn {
-	background-image: url(//www.taxcare.pk/wp-content/themes/paglagarod/images/send.png);
+	background-image: url(//www.maslawfirm.pk/wp-content/themes/paglagarod/images/send.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 87% auto;
