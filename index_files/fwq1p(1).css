@@ -30020,7 +30020,7 @@ header.is-sticky .default-menu nav>ul>li {}
 }
 
 .default-menu nav>ul>li:hover>a {
-	color: #FF0000;
+	color: #303f9f;
 }
 
 .primary-nav-wrap ul>li ul.sub-menu {
@@ -30749,8 +30749,9 @@ footer.fixed-footer-enable {
   Button style
 --------------------------------*/
 .htc__btn {
-	background: #303f9f none repeat scroll 0 0;
+	background: #FF0000 none repeat scroll 0 0;
 	border-radius: 5px;
+	font-weight: bold;
 	color: #ffffff;
 	display: inline-block;
 	font-family: "Source Sans Pro", sans-serif;
@@ -30774,7 +30775,7 @@ footer.fixed-footer-enable {
 }
 
 .htc__btn::after {
-	background: #212121 none repeat scroll 0 0;
+	background: #ffffff none repeat scroll 0 0;
 	height: 0;
 	left: 0;
 	top: 0;
@@ -30789,7 +30790,8 @@ footer.fixed-footer-enable {
 
 .htc__btn:hover,
 .htc__btn:active {
-	color: #fff;
+	color: #000000;
+	font-weight: bold;
 }
 
 .slider__inner h1 {
