@@ -29948,11 +29948,20 @@ header.is-sticky {
 	left: 0;
 	top: 0 !important;
 	right: 0;
-	background-color: rgba(255, 255, 255, 1) !important;
+	background-color: rgba(3, 59, 86, 255) !important;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 	z-index: 99999;
 	-webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
 	animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
+}
+
+.main-header {
+	background-color: rgba(3, 59, 86, 255);
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 }
 
 body.logged-in.admin-bar .is-sticky {
@@ -30007,11 +30016,11 @@ header.is-sticky .default-menu nav>ul>li {}
 	transition: all 0.3s ease 0s;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: #303030;
+	color: #FFFFFF;
 }
 
 .default-menu nav>ul>li:hover>a {
-	color: #303f9f;
+	color: #FF0000;
 }
 
 .primary-nav-wrap ul>li ul.sub-menu {
@@ -30740,8 +30749,9 @@ footer.fixed-footer-enable {
   Button style
 --------------------------------*/
 .htc__btn {
-	background: #303f9f none repeat scroll 0 0;
+	background: #FF0000 none repeat scroll 0 0;
 	border-radius: 5px;
+	font-weight: bold;
 	color: #ffffff;
 	display: inline-block;
 	font-family: "Source Sans Pro", sans-serif;
@@ -30765,7 +30775,7 @@ footer.fixed-footer-enable {
 }
 
 .htc__btn::after {
-	background: #212121 none repeat scroll 0 0;
+	background: #ffffff none repeat scroll 0 0;
 	height: 0;
 	left: 0;
 	top: 0;
@@ -30780,7 +30790,8 @@ footer.fixed-footer-enable {
 
 .htc__btn:hover,
 .htc__btn:active {
-	color: #fff;
+	color: #000000;
+	font-weight: bold;
 }
 
 .slider__inner h1 {
