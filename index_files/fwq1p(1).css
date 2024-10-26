@@ -30020,7 +30020,7 @@ header.is-sticky .default-menu nav>ul>li {}
 }
 
 .default-menu nav>ul>li:hover>a {
-	color: #303f9f;
+	color: #FF0000;
 }
 
 .primary-nav-wrap ul>li ul.sub-menu {
