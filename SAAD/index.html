@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dr. Malik Saad Sultan | AI & Computer Vision Expert | ASTRI</title>
+	<meta name="description"
+		content="Professional profile of Dr. Malik Saad Sultan, Associate Principal Engineer specializing in AI and Computer Vision at ASTRI, Hong Kong's premier R&D center.">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+	<style>
+		:root {
+			--primary: #2a5bd7;
+			--secondary: #1a3d8f;
+			--dark: #1a1a2e;
+			--light: #f8f9fa;
+			--gray: #6c757d;
+			--accent: #ff6b6b;
+			--light-blue: #e6f0ff;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			background-color: #f5f7ff;
+			color: var(--dark);
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Header Styles */
+		header {
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			color: white;
+			padding: 2.5rem 0;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(42, 91, 215, 0.3);
+		}
+
+		.header-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to bottom,
+					rgba(0, 0, 0, 0.1),
+					rgba(0, 0, 0, 0.3));
+			z-index: 1;
+			pointer-events: none;
+		}
+
+		.header-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			position: relative;
+			z-index: 2;
+		}
+
+		.profile-img {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 5px solid white;
+			margin-bottom: 1.5rem;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+			transition: transform 0.5s ease;
+		}
+
+		.profile-img:hover {
+			transform: scale(1.05) rotate(5deg);
+		}
+
+		h1 {
+			font-size: 2.7rem;
+			margin-bottom: 0.5rem;
+			font-weight: 700;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		.title {
+			font-size: 1.3rem;
+			margin-bottom: 1.5rem;
+			font-weight: 400;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		/* Modern Keyword Animation */
+		.keyword-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			pointer-events: none;
+			overflow: hidden;
+		}
+
+		.keyword-tag {
+			position: absolute;
+			background: rgba(255, 255, 255, 0.15);
+			color: rgba(255, 255, 255, 0.8);
+			padding: 8px 16px;
+			border-radius: 30px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			white-space: nowrap;
+			backdrop-filter: blur(5px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			transform: translateY(0) scale(1);
+			opacity: 0;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+			user-select: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 60px;
+			text-align: center;
+		}
+
+		.keyword-tag.visible {
+			opacity: 1;
+		}
+
+		.keyword-tag:nth-child(odd) {
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		.keyword-tag i {
+			margin-right: 6px;
+			font-size: 0.8em;
+		}
+
+		.contact-info {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			background: rgba(255, 255, 255, 0.2);
+			padding: 0.5rem 1rem;
+			border-radius: 30px;
+			backdrop-filter: blur(5px);
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		}
+
+		.contact-item i {
+			font-size: 1.2rem;
+		}
+
+		.social-links {
+			display: flex;
+			gap: 1.5rem;
+			margin-top: 1rem;
+		}
+
+		.social-links a {
+			color: white;
+			font-size: 1.5rem;
+			transition: transform 0.3s ease, color 0.3s ease;
+			background: rgba(255, 255, 255, 0.2);
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		.social-links a:hover {
+			transform: translateY(-5px);
+			background: rgba(255, 255, 255, 0.3);
+			color: white;
+		}
+
+		/* Floating circles animation */
+		.floating-circles {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: 0;
+		}
+
+		.floating-circles li {
+			position: absolute;
+			display: block;
+			list-style: none;
+			width: 20px;
+			height: 20px;
+			background: rgba(255, 255, 255, 0.15);
+			animation: float 25s linear infinite;
+			bottom: -150px;
+			border-radius: 50%;
+		}
+
+		.floating-circles li:nth-child(1) {
+			left: 25%;
+			width: 80px;
+			height: 80px;
+			animation-delay: 0s;
+		}
+
+		.floating-circles li:nth-child(2) {
+			left: 10%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 2s;
+			animation-duration: 12s;
+		}
+
+		.floating-circles li:nth-child(3) {
+			left: 70%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 4s;
+		}
+
+		.floating-circles li:nth-child(4) {
+			left: 40%;
+			width: 60px;
+			height: 60px;
+			animation-delay: 0s;
+			animation-duration: 18s;
+		}
+
+		.floating-circles li:nth-child(5) {
+			left: 65%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 0s;
+		}
+
+		.floating-circles li:nth-child(6) {
+			left: 75%;
+			width: 110px;
+			height: 110px;
+			animation-delay: 3s;
+		}
+
+		.floating-circles li:nth-child(7) {
+			left: 35%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 7s;
+		}
+
+		.floating-circles li:nth-child(8) {
+			left: 50%;
+			width: 25px;
+			height: 25px;
+			animation-delay: 15s;
+			animation-duration: 45s;
+		}
+
+		.floating-circles li:nth-child(9) {
+			left: 20%;
+			width: 15px;
+			height: 15px;
+			animation-delay: 2s;
+			animation-duration: 35s;
+		}
+
+		.floating-circles li:nth-child(10) {
+			left: 85%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 0s;
+			animation-duration: 11s;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0) rotate(0deg);
+				opacity: 1;
+				border-radius: 50%;
+			}
+
+			100% {
+				transform: translateY(-1000px) rotate(720deg);
+				opacity: 0;
+				border-radius: 20%;
+			}
+		}
+
+		/* Main Content Styles */
+		main {
+			padding: 3rem 0;
+		}
+
+		section {
+			margin-bottom: 3rem;
+			background: white;
+			border-radius: 12px;
+			padding: 2.5rem;
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		section::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			background: var(--primary);
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-bottom: 1.8rem;
+			color: var(--primary);
+			position: relative;
+			display: inline-block;
+			font-weight: 600;
+		}
+
+		h2::after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background: var(--accent);
+			border-radius: 2px;
+		}
+
+		h3 {
+			font-size: 1.4rem;
+			margin-bottom: 0.8rem;
+			color: var(--dark);
+			font-weight: 600;
+		}
+
+		.section-content {
+			margin-left: 1rem;
+		}
+
+		.summary {
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: #444;
+		}
+
+		.experience-item,
+		.education-item,
+		.award-item {
+			margin-bottom: 2.5rem;
+			padding-bottom: 1.5rem;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.experience-item.visible,
+		.education-item.visible,
+		.award-item.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.experience-item:last-child,
+		.education-item:last-child,
+		.award-item:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.job-title,
+		.degree {
+			font-weight: 600;
+			color: var(--secondary);
+			font-size: 1.2rem;
+		}
+
+		.company,
+		.university {
+			font-weight: 500;
+			color: var(--gray);
+			margin-bottom: 0.8rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.company i,
+		.university i {
+			font-size: 1rem;
+		}
+
+		.date {
+			background: var(--light-blue);
+			color: var(--primary);
+			padding: 0.3rem 1rem;
+			border-radius: 20px;
+			font-size: 0.85rem;
+			display: inline-block;
+			margin-bottom: 1rem;
+			font-weight: 500;
+		}
+
+		ul {
+			margin-left: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		li {
+			margin-bottom: 0.8rem;
+			position: relative;
+			color: #444;
+		}
+
+		li::before {
+			content: '•';
+			color: var(--primary);
+			font-weight: bold;
+			display: inline-block;
+			width: 1em;
+			margin-left: -1em;
+		}
+
+		.interests {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.interest-item {
+			background: var(--light-blue);
+			color: var(--primary);
+			padding: 0.6rem 1.2rem;
+			border-radius: 20px;
+			font-size: 0.95rem;
+			transition: transform 0.3s ease, background 0.3s ease;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.interest-item i {
+			font-size: 0.9rem;
+		}
+
+		.interest-item:hover {
+			background: var(--primary);
+			color: white;
+			transform: translateY(-3px);
+		}
+
+		.publication-item {
+			margin-bottom: 1.5rem;
+			padding-left: 1.2rem;
+			border-left: 3px solid var(--primary);
+		}
+
+		.publication-title {
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+			color: var(--dark);
+		}
+
+		.publication-details {
+			font-size: 0.95rem;
+			color: var(--gray);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.publication-details i {
+			font-size: 0.9rem;
+		}
+
+		.languages {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.language-item {
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+			background: var(--light-blue);
+			padding: 0.8rem 1.5rem;
+			border-radius: 30px;
+			font-weight: 500;
+		}
+
+		.language-proficiency {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: #ddd;
+		}
+
+		.language-proficiency.filled {
+			background: var(--primary);
+		}
+
+		footer {
+			background: var(--dark);
+			color: white;
+			text-align: center;
+			padding: 3rem 0;
+			margin-top: 3rem;
+		}
+
+		.footer-content {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			margin: 2rem 0;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: white;
+			text-decoration: none;
+			transition: color 0.3s ease;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-weight: 500;
+		}
+
+		.footer-links a:hover {
+			color: var(--accent);
+		}
+
+		.copyright {
+			opacity: 0.7;
+			font-size: 0.9rem;
+			margin-top: 1.5rem;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.animate-fadeIn {
+			animation: fadeIn 1s ease forwards;
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2.2rem;
+			}
+
+			.title {
+				font-size: 1.1rem;
+			}
+
+			.contact-info {
+				flex-direction: column;
+				align-items: center;
+				gap: 0.8rem;
+			}
+
+			section {
+				padding: 1.8rem;
+			}
+
+			h2 {
+				font-size: 1.7rem;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+			}
+
+			.keyword-tag {
+				font-size: 0.8rem;
+				padding: 6px 12px;
+			}
+		}
+
+		.back-to-top {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 50px;
+			height: 50px;
+			background: var(--primary);
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 1.2rem;
+			cursor: pointer;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+			z-index: 999;
+			box-shadow: 0 5px 15px rgba(42, 91, 215, 0.3);
+		}
+
+		.back-to-top.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.back-to-top:hover {
+			background: var(--secondary);
+			transform: translateY(-3px);
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 0.25rem 0.8rem;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin-right: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.badge-blue {
+			background: var(--light-blue);
+			color: var(--primary);
+		}
+
+		.badge-gray {
+			background: #f0f0f0;
+			color: #555;
+		}
+
+		.project-highlights {
+			margin-top: 1.5rem;
+		}
+
+		.project-item {
+			margin-bottom: 1.5rem;
+			padding: 1.5rem;
+			background: var(--light-blue);
+			border-radius: 10px;
+			border-left: 4px solid var(--primary);
+		}
+
+		.project-title {
+			font-weight: 600;
+			margin-bottom: 0.8rem;
+			color: var(--dark);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.project-title i {
+			color: var(--primary);
+		}
+
+		.project-description {
+			margin-bottom: 0.8rem;
+			color: #444;
+		}
+
+		.project-technologies {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		/* Skills Section Styles - REVISED */
+		.skills-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+		}
+
+		.skill-category {
+			flex: 1;
+			min-width: 300px;
+		}
+
+		.skill-category h3 {
+			margin-bottom: 1.5rem;
+			color: var(--secondary);
+			font-size: 1.3rem;
+			position: relative;
+			padding-bottom: 0.5rem;
+		}
+
+		.skill-category h3::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 40px;
+			height: 3px;
+			background: var(--accent);
+		}
+
+		.skill-item {
+			margin-bottom: 1.5rem;
+		}
+
+		.skill-name {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5rem;
+			font-weight: 500;
+			font-size: 1.1rem;
+			color: var(--dark);
+		}
+
+		.skill-bar {
+			height: 10px;
+			background: #f0f0f0;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+
+		.skill-progress {
+			height: 100%;
+			background: linear-gradient(90deg, var(--primary), var(--secondary));
+			border-radius: 5px;
+			transition: width 1.5s ease;
+		}
+
+		.skill-description {
+			font-size: 0.95rem;
+			color: var(--gray);
+			margin-top: 0.5rem;
+			line-height: 1.5;
+		}
+
+		/* Shortcut Buttons */
+		.shortcut-buttons-container {
+			position: sticky;
+			top: 0;
+			background: white;
+			z-index: 100;
+			padding: 1rem 0;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid #eee;
+		}
+
+		.shortcut-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.8rem;
+			justify-content: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.shortcut-button {
+			background: var(--primary);
+			color: white;
+			padding: 0.6rem 1.2rem;
+			border-radius: 30px;
+			font-weight: 600;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 5px rgba(42, 91, 215, 0.3);
+			font-size: 0.9rem;
+		}
+
+		.shortcut-button:hover {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(42, 91, 215, 0.4);
+		}
+
+		.shortcut-button.active {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(42, 91, 215, 0.4);
+		}
+
+		.shortcut-button i {
+			font-size: 0.9rem;
+		}
+
+		@media (max-width: 768px) {
+			.shortcut-buttons {
+				gap: 0.5rem;
+				justify-content: flex-start;
+				overflow-x: auto;
+				padding-bottom: 0.5rem;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none;
+			}
+
+			.shortcut-buttons::-webkit-scrollbar {
+				display: none;
+			}
+
+			.shortcut-button {
+				flex-shrink: 0;
+				padding: 0.5rem 1rem;
+				font-size: 0.8rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="floating-circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</div>
+		<div class="keyword-container"></div>
+		<div class="header-overlay"></div>
+		<div class="container">
+			<div class="header-content">
+				<img src="SAAD.jpg"
+					alt="Dr. Malik Saad Sultan" class="profile-img">
+				<h1>Dr. Malik Saad Sultan</h1>
+				<p class="title">Associate Principal Engineer | AI & Computer Vision Specialist</p>
+				<div class="contact-info">
+					<div class="contact-item">
+						<i class="fas fa-map-marker-alt"></i>
+						<span>Hong Kong Science Park, Shatin, Hong Kong</span>
+					</div>
+					<div class="contact-item">
+						<i class="fas fa-phone"></i>
+						<span>+852 5530 7949</span>
+					</div>
+					<div class="contact-item">
+						<i class="fas fa-envelope"></i>
+						<span>engr.saadsultan@gmail.com</span>
+					</div>
+				</div>
+				<div class="social-links">
+					<a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+					<a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+					<a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+					<a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Sticky Shortcut Buttons -->
+	<div class="shortcut-buttons-container">
+		<div class="shortcut-buttons">
+			<a href="#experience" class="shortcut-button"><i class="fas fa-briefcase"></i> Experience</a>
+			<a href="#education" class="shortcut-button"><i class="fas fa-graduation-cap"></i> Education</a>
+			<a href="#awards" class="shortcut-button"><i class="fas fa-trophy"></i> Awards</a>
+			<a href="#interests" class="shortcut-button"><i class="fas fa-heart"></i> Interests</a>
+			<a href="#skills" class="shortcut-button"><i class="fas fa-code"></i> Skills</a>
+			<a href="#publications" class="shortcut-button"><i class="fas fa-book"></i> Publications</a>
+			<a href="#languages" class="shortcut-button"><i class="fas fa-language"></i> Languages</a>
+		</div>
+	</div>
+
+	<main class="container">
+		<section id="summary" class="animate-fadeIn">
+			<h2>Professional Summary</h2>
+			<div class="section-content">
+				<p class="summary">
+					Dr. Malik Saad Sultan is an accomplished Associate Principal Engineer at the Hong Kong Applied
+					Science and Technology
+					Research Institute (ASTRI), the region's leading R&D center. With a Ph.D. in Computer Science and
+					over a decade of
+					expertise in artificial intelligence (AI) and computer vision, Dr. Sultan has led groundbreaking
+					projects in biometric
+					recognition, smart sensing technologies, and healthcare diagnostics.
+
+					His academic journey began with a BSc from the Federal Urdu University, Pakistan, followed by a
+					Master's in Robotic
+					Vision from the Beijing Institute of Technology, China, and a Ph.D. in Medical Image Processing from
+					the University of
+					Porto, Portugal. This strong foundation has enabled him to bridge cutting-edge research with
+					industrial applications,
+					resulting in patented innovations and high-impact publications.
+
+					As a Projects Lead and Senior Researcher, Dr. Sultan has successfully developed advanced AI systems
+					for autonomous
+					vehicles, privacy-preserving sensing, and computer-aided diagnosis. His contributions have earned
+					him prestigious
+					accolades, including ASTRI's Outstanding Employee Award (2022) and the Consecutive Best Team Award
+					(2020-2022).
+
+					Combining technical leadership with strategic vision, Dr. Sultan continues to drive AI solutions
+					that tackle real-world
+					challenges, solidifying his reputation as a key innovator in the field.
+				</p>
+			</div>
+		</section>
+
+		<section id="experience">
+			<h2>Professional Experience</h2>
+			<div class="section-content">
+				<div class="experience-item">
+					<h3 class="job-title">Associate Principal Engineer - Software Systems (AI)</h3>
+					<p class="company"><i class="fas fa-building"></i> ASTRI (Hong Kong Applied Science and Technology
+						Research Institute)</p>
+					<span class="date">2019 - Present</span>
+					<div class="project-highlights">
+						<div class="project-item">
+							<h4 class="project-title"><i class="fas fa-fingerprint"></i> Advanced Biometric Systems</h4>
+							<p class="project-description">Led the development of next-generation multimodal biometric
+								solutions integrating face (2D/3D), iris, palm print/vein, and gait recognition
+								technologies. Implemented deep learning architectures achieving 99.2% accuracy in
+								challenging real-world conditions.</p>
+							<div class="project-technologies">
+								<span class="badge badge-blue">Deep Learning</span>
+								<span class="badge badge-blue">OpenCV</span>
+								<span class="badge badge-blue">PyTorch</span>
+							</div>
+						</div>
+						<div class="project-item">
+							<h4 class="project-title"><i class="fas fa-eye"></i> Smart Sensing Technologies</h4>
+							<p class="project-description">Directed multiple projects in computer vision for industrial
+								applications, including PPE compliance monitoring on construction sites, eye-gaze/iris
+								tracking for AR/VR headsets, and intuitive hand gesture recognition systems for
+								augmented reality interfaces.</p>
+							<div class="project-technologies">
+								<span class="badge badge-blue">Computer Vision</span>
+								<span class="badge badge-blue">Edge AI</span>
+								<span class="badge badge-blue">Real-time Systems</span>
+							</div>
+						</div>
+						<div class="project-item">
+							<h4 class="project-title"><i class="fas fa-shield-alt"></i> Privacy-Preserving Vision
+								Systems</h4>
+							<p class="project-description">Developed cutting-edge dynamic vision systems with
+								privacy-preserving sensing capabilities for secure behavior analysis,
+								advancing surveillance technology. This breakthrough innovation resulted in a filed
+								patent application.</p>
+							<div class="project-technologies">
+								<span class="badge badge-blue">Privacy Tech</span>
+								<span class="badge badge-blue">Behaviour Analysis</span>
+								<span class="badge badge-blue">Multi-modality LLM</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="experience-item">
+					<h3 class="job-title">Senior Researcher - Medical Image Processing</h3>
+					<p class="company"><i class="fas fa-hospital"></i> Neadvance Ltd</p>
+					<span class="date">2014 - 2018</span>
+					<ul>
+						<li>Designed AI-powered diagnostic tools for rheumatoid arthritis using advanced ultrasound
+							segmentation algorithms,
+							achieving 94% diagnostic agreement with rheumatologists.</li>
+						<li>Developed an automated echocardiography system for rheumatic heart disease detection
+							utilizing mitral valve
+							segmentation, motion tracking, and Doppler jet analysis.</li>
+						<li>Streamlined medical image processing pipelines, reducing analysis time from 15 minutes to
+							under 30 seconds
+							without compromising diagnostic accuracy.</li>
+					</ul>
+				</div>
+
+				<div class="experience-item">
+					<h3 class="job-title">Research Associate - Robotic Vision</h3>
+					<p class="company"><i class="fas fa-robot"></i> Beijing Institute of Technology</p>
+					<span class="date">2010 - 2013</span>
+					<ul>
+						<li>Developed real-time robotic arm pose estimation algorithms for industrial pick-and-drop
+							applications, ensuring high
+							precision.</li>
+						<li>Implemented vehicle localization systems using infrared landmarks, achieving
+							high accuracy for autonomous navigation in structured environments.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="education">
+			<h2>Education & Credentials</h2>
+			<div class="section-content">
+				<div class="education-item">
+					<h3 class="degree">Doctor of Philosophy (PhD) in Computer Science</h3>
+					<p class="university"><i class="fas fa-university"></i> University of Porto, Portugal</p>
+					<span class="date">2014 - 2018</span>
+					<p><em>Thesis: "Automated Diagnosis of Rheumatic Heart Disease via Ultrasound Video Analysis"</em>
+					</p>
+					<ul>
+						<li>Recipient of competitive FCT-MAPi doctoral scholarship</li>
+						<li>Developed novel video processing algorithms for cardiac valve motion analysis</li>
+						<li>Published 3 first-author papers in Q1 journals</li>
+					</ul>
+				</div>
+
+				<div class="education-item">
+					<h3 class="degree">Master of Science in Mechatronics Engineering</h3>
+					<p class="university"><i class="fas fa-university"></i> Beijing Institute of Technology, China</p>
+					<span class="date">2010 - 2013</span>
+					<p><em>Thesis: "Precision 3D Vehicle Positioning Using Infrared Landmark Recognition"</em></p>
+					<ul>
+						<li>Awarded China Scholarship Council fellowship</li>
+						<li>Developed novel algorithms for landmark recognition and pose estimation</li>
+						<li>Recipient of Distinguished Student Award (Top 1% of cohort)</li>
+					</ul>
+				</div>
+
+				<div class="education-item">
+					<h3 class="degree">Applied Behavior Analyst Certification</h3>
+					<p class="university"><i class="fas fa-certificate"></i> Autism Partnership Foundation</p>
+					<span class="date">2020</span>
+					<p>Completed rigorous training program in applied behavior analysis for autism spectrum disorders
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="awards">
+			<h2>Awards & Distinctions</h2>
+			<div class="section-content">
+				<div class="award-item">
+					<h3>Outstanding Employee Award</h3>
+					<p>ASTRI | 2022</p>
+					<ul>
+						<li>Recognized as top performer among 500+ researchers for exceptional contributions to AI
+							projects</li>
+					</ul>
+				</div>
+				<div class="award-item">
+					<h3>Best Team Award (3 consecutive years)</h3>
+					<p>ASTRI | 2020-2022</p>
+					<ul>
+						<li>Led team recognized for excellence in delivering innovative computer vision solutions</li>
+					</ul>
+				</div>
+				<div class="award-item">
+					<h3>Research Grants & Fellowships</h3>
+					<p>2010-2018</p>
+					<ul>
+						<li>FCT-MAPi Doctoral Scholarship (Portugal)</li>
+						<li>China Scholarship Council Master's Fellowship</li>
+					</ul>
+				</div>
+				<div class="award-item">
+					<h3>1st Prize in Distinguished Student Awards</h3>
+					<p>Beijing Institute of Technology | 2013</p>
+					<ul>
+						<li>Awarded to top graduate student in Mechatronics Engineering</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="interests">
+			<h2>Research Interests</h2>
+			<div class="section-content">
+				<div class="interests">
+					<div class="interest-item"><i class="fas fa-brain"></i> AI/Deep Learning</div>
+					<div class="interest-item"><i class="fas fa-vr-cardboard"></i> AR/VR Technologies</div>
+					<div class="interest-item"><i class="fas fa-fingerprint"></i> Biometric Systems</div>
+					<div class="interest-item"><i class="fas fa-car-alt"></i> Autonomous Vehicles</div>
+					<div class="interest-item"><i class="fas fa-heartbeat"></i> Healthcare AI</div>
+					<div class="interest-item"><i class="fas fa-robot"></i> Robotic Vision</div>
+					<div class="interest-item"><i class="fas fa-lock"></i> Privacy-Preserving AI</div>
+					<div class="interest-item"><i class="fas fa-project-diagram"></i> Edge Computing</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="skills">
+			<h2>Technical Expertise</h2>
+			<div class="section-content">
+				<div class="skills-container">
+					<div class="skill-category">
+						<h3>AI & Computer Vision</h3>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Deep Learning Architectures</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 95%"></div>
+							</div>
+							<p class="skill-description">Transformer models, CNNs, RNNs, GANs, and diffusion models for
+								computer vision applications</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Computer Vision Systems</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 95%"></div>
+							</div>
+							<p class="skill-description">Object detection, segmentation, tracking, and 3D reconstruction
+							</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Biometric Recognition</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 90%"></div>
+							</div>
+							<p class="skill-description">Multimodal systems integrating face, iris, palm, and gait
+								recognition</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Medical Image Analysis</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 85%"></div>
+							</div>
+							<p class="skill-description">Ultrasound segmentation, echocardiography analysis, diagnostic
+								AI</p>
+						</div>
+					</div>
+
+					<div class="skill-category">
+						<h3>Programming & Tools</h3>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Python Development</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 95%"></div>
+							</div>
+							<p class="skill-description">Advanced Python for AI/ML, computer vision, and scientific
+								computing</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>PyTorch/TensorFlow</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 90%"></div>
+							</div>
+							<p class="skill-description">Deep learning framework expertise including model optimization
+								and deployment</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>OpenCV</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 90%"></div>
+							</div>
+							<p class="skill-description">Real-time computer vision applications and algorithm
+								development</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>MATLAB</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 85%"></div>
+							</div>
+							<p class="skill-description">Signal processing, image analysis, and algorithm prototyping
+							</p>
+						</div>
+					</div>
+
+					<div class="skill-category">
+						<h3>Professional Skills</h3>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Technical Leadership</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 90%"></div>
+							</div>
+							<p class="skill-description">Leading AI R&D teams and guiding technical strategy</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Project Management</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 85%"></div>
+							</div>
+							<p class="skill-description">Agile methodologies, resource allocation, and milestone
+								delivery</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Research & Development</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 90%"></div>
+							</div>
+							<p class="skill-description">From concept to commercialization of AI solutions</p>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Cross-functional Collaboration</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" style="width: 85%"></div>
+							</div>
+							<p class="skill-description">Bridging research, engineering, and business teams</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="publications">
+			<h2>Publications & Intellectual Property</h2>
+			<div class="section-content">
+				<h3>Patents</h3>
+				<div class="publication-item">
+					<p class="publication-title">"An Artificial Intelligent Action Recognition Dynamic Vision Sensing
+						System with Static
+						Capturing Mode via Optical Approach"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> Alwin Tam, M.S. Sultan, Xiuling Zhu,
+						Kenny Chan</p>
+					<p class="publication-journal"><i class="fas fa-gem"></i> US, China Patent</p>
+					<p class="publication-metrics"><i class="fas fa-calendar-alt"></i> Year: 2022</p>
+					<!-- For patents, you might want to include the patent number instead of DOI -->
+					<p class="publication-doi"><i class="fas fa-id-card"></i> Patent Number: [Insert Patent Number Here]
+					</p>
+				</div>
+
+				<h3>Journal Publications</h3>
+				<div class="publication-item">
+					<p class="publication-title">"Virtual M-Mode for Echocardiography: A New Approach for the
+						Segmentation of the
+						Anterior Mitral Leaflet"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, E. Costa, D.
+						Veiga, M.J.
+						Ferreira, S. Mattos, M. Coimbra</p>
+					<p class="publication-journal"><i class="fas fa-book-open"></i> IEEE Journal of Biomedical and
+						Health Informatics
+					</p>
+					<p class="publication-metrics"><i class="fas fa-chart-line"></i> Impact factor: 7.7 | SJR Q1</p>
+					<p class="publication-doi"><i class="fas fa-link"></i> DOI: 10.1109/JBHI.2018.2799738</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"A New Active Contours Approach for Finger Extensor Tendon Segmentation
+						in Ultrasound
+						Images using Prior Knowledge and Phase Symmetry"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> N. Martins, M.S. Sultan, D. Veiga, M.J.
+						Ferreira, F.
+						Teixeira, M. Coimbra</p>
+					<p class="publication-journal"><i class="fas fa-book-open"></i> IEEE Journal of Biomedical and
+						Health Informatics
+					</p>
+					<p class="publication-metrics"><i class="fas fa-chart-line"></i> Impact factor: 7.7 | SJR Q1</p>
+					<p class="publication-doi"><i class="fas fa-link"></i> DOI: 10.1109/JBHI.2017.2723819</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Improving Shape Retrieval by Integrating AIR and Modified Mutual NN
+						Graph"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> N. Qadeer, D. Hu, X. Liu, S. Anwar, M.S.
+						Sultan</p>
+					<p class="publication-journal"><i class="fas fa-book-open"></i> Advances in Multimedia</p>
+					<p class="publication-doi"><i class="fas fa-link"></i> DOI: 10.1155/2015/372172</p>
+				</div>
+
+				<h3>Conference Proceedings</h3>
+				<div class="publication-item">
+					<p class="publication-title">"Mitral Valve Leaflets Segmentation in Echocardiography using
+						Convolutional Neural
+						Networks"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> E. Costa, N. Martins, M.S. Sultan, D.
+						Veiga, M.J.
+						Ferreira, S. Mattos and M.T. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE 6th Portuguese Meeting on
+						Bioengineering
+						(ENBENG), Lisbon, Portugal, Feb 2019</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"A New Method for the Anterior Mitral Leaflet Segmentation in
+						Echocardiography Videos
+						using the Virtual M-mode Space"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, E. Costa, D.
+						Veiga, M.J.
+						Ferreira, S. Mattos and M.T. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Honolulu, Hawaii, Jul
+						2018</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Extracting Thickness Profiles of Anterior Mitral Leaflets in
+						Echocardiography Videos"
+					</p>
+					<p class="publication-details"><i class="fas fa-users"></i> L. Pires, M.S. Sultan, N. Martins, E.
+						Costa, D. Veiga,
+						M.J. Ferreira, and M.T. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Honolulu, Hawaii, Jul
+						2018</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Fully Automatic Finger Extensor Tendon Segmentation in Ultrasound
+						Images of the
+						Metacarpophalangeal Joint"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> N. Martins, M.S. Sultan, D. Veiga, M.
+						Ferreira, Miguel
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Honolulu, Hawaii, Jul
+						2018</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Joint Capsule Segmentation in Ultrasound Images of the
+						Metacarpophalangeal Joint using
+						a Split and Merge Approach"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> N. Martins, M.S. Sultan, D. Veiga, M.
+						Ferreira, Miguel
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE BHI, Nevada, USA, March
+						2018</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Tracking Large Anterior Mitral Leaflet Displacements by Incorporating
+						Optical Flow in
+						an Active Contours Framework"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, E. Costa, D.
+						Veiga, M.
+						Ferreira, S. Mattos, and M. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Jeju Island, South
+						Korea, Jul 2017
+						(DOI: 10.1109/EMBC.2017.8037548)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Real-time Anterior Mitral Leaflet Tracking using Morphological
+						Operators and Active
+						Contours"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, E. Costa, D.
+						Veiga, M.
+						Ferreira, S. Mattos, and M. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. Int. Joint Conf. on Biomedical
+						Engineering
+						Systems and Technologies, BIOSTEC, Porto, Portugal, Feb 2017 (DOI: 10.5220/0006244700390046)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"A Preliminary Approach for the Segmentation of Mitral Valve
+						Regurgitation Jet in
+						Doppler Ecocardiography Images"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> E. Costa, N. Martins, M.S. Sultan, D.
+						Veiga, M.
+						Ferreira, S. Mattos, and M. Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. Int. Joint Conf. on Biomedical
+						Engineering
+						Systems and Technologies, BIOSTEC, Porto, Portugal, Feb 2017 (DOI: 10.5220/0006248900470054)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Doppler echocardiography for subclinical rheumatic heart disease
+						evaluation of a
+						computerised diagnosis of the mitral valve apparatus"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> E. Costa, D. Veiga, N. Martins, M.S.
+						Sultan, M.
+						Ferreira, M. Coimbra and S. Mattos</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> 7th World Congress of Pediatric
+						Cardiology & Cardiac
+						Surgery, Vol. 27, P2077, July 2017 (DOI:10.1017/S104795111700110X)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Tracking of the Anterior Mitral Leaflet in Echocardiographic Sequences
+						using Active
+						Contours"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, D. Veiga, M.J.
+						Ferreira, and M.
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Orlando, USA, Aug
+						2016 (DOI:
+						10.1109/EMBC.2016.7590889)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Segmentation of the metacarpus and phalange in musculoskeletal
+						ultrasound images using
+						local active contours"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> N. Martins, M.S. Sultan, D. Veiga, M.J.
+						Ferreira, and M.
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Orlando, USA, Aug
+						2016 (DOI:
+						10.1109/EMBC.2016.7591627)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Automatic segmentation of extensor tendon of the MCP joint in
+						ultrasound images"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, D. Veiga, M.
+						Ferreira, M.
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. Int. Joint Conf. on Biomedical
+						Engineering
+						Systems and Technologies, BIOSTEC, Rome, Italy, Feb 2016 (DOI: 10.5220/0005692500710076)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"A multi-spot exploration of the topological structures of the
+						reconstructed
+						phase-space for the detection of cardiac murmurs"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> J. Oliveira, C. Oliveira, B. Cardoso,
+						M.S. Sultan, M.
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Milan, Italy, Aug
+						2015 (DOI:
+						10.1109/EMBC.2015.7319319)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Segmentation of Bones and MCP Joint Region of the Hand from Ultrasound
+						Images"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, N. Martins, M. Ferreira, M.
+						Coimbra</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE EMBC, Milan, Italy, Aug
+						2015 (DOI:
+						10.1109/EMBC.2015.7319023)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Hand-eye 3D pose estimation for a drawing robot"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, X.g Chen, G. Ma, J. Xue, W.
+						Ni, T. Zhang,
+						W. Zhang</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE ICMA,Takamatsu, Japan, Aug
+						2013 (DOI:
+						10.1109/ICMA.2013.6618105)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Hand-eye servo and flexible control of an anthropomorphic arm"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> G. Ma, H. Qiang, Z. yu, X. Chen, L.
+						Meng, M.S. Sultan,
+						W. Zhang, Y. Liu</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE ROBIO, Shenzhen, China, Dec
+						2013 (DOI:
+						10.1109/ROBIO.2013.6739667)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Vision guided path planning system for vehicles using infrared
+						landmark"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> M.S. Sultan, X. Chen, N. Qadeer, T.
+						Zhang, H. Qiang</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE ROBIO, Shenzhen, China, Dec
+						2013 (DOI:
+						10.1109/ROBIO.2013.6739455)</p>
+				</div>
+
+				<div class="publication-item">
+					<p class="publication-title">"Humanoids Robot Push Recovery through Foot Placement"</p>
+					<p class="publication-details"><i class="fas fa-users"></i> A. Yasin, Q. Huang, Q. Xu, M.S. Sultan
+					</p>
+					<p class="publication-conference"><i class="fas fa-book"></i> Proc. IEEE ICMA, Chengdu, China, Dec
+						2012 (DOI:
+						10.1109/ICMA.2012.6282737)</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="languages">
+			<h2>Language Proficiency</h2>
+			<div class="section-content">
+				<div class="languages">
+					<div class="language-item">
+						<span>Urdu</span>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<span>(Native Proficiency)</span>
+					</div>
+					<div class="language-item">
+						<span>English</span>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<span>(Professional Fluency)</span>
+					</div>
+					<div class="language-item">
+						<span>Mandarin</span>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<span>(Professional Fluency)</span>
+					</div>
+					<div class="language-item">
+						<span>Portuguese</span>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency filled"></div>
+						<div class="language-proficiency"></div>
+						<div class="language-proficiency"></div>
+						<div class="language-proficiency"></div>
+						<span>(Basic Communication)</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="supervision">
+			<h2>Leadership & Mentorship</h2>
+			<div class="section-content">
+				<div class="experience-item">
+					<h3 class="job-title">Academic Advisor</h3>
+					<p class="company"><i class="fas fa-user-graduate"></i> Hong Kong Metropolitan University</p>
+					<span class="date">2021 - 2023</span>
+					<ul>
+						<li>Advised postgraduate students in Electronic Engineering on research projects related to
+							computer vision and AI applications</li>
+						<li>Supervised thesis projects on real-time object detection and biometric systems</li>
+					</ul>
+				</div>
+				<div class="experience-item">
+					<h3 class="job-title">Technical Mentor</h3>
+					<p class="company"><i class="fas fa-users"></i> ASTRI Internship Program</p>
+					<span class="date">2020 - 2022</span>
+					<ul>
+						<li>Mentored 15+ interns and junior researchers on AI/VR projects</li>
+						<li>Developed training programs for computer vision and deep learning techniques</li>
+						<li>Two mentees received full-time research positions at ASTRI upon graduation</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-content">
+				<h2>Connect With Me</h2>
+				<p>I welcome opportunities for collaboration, research partnerships, or professional discussions in AI
+					and computer vision.</p>
+				<div class="footer-links">
+					<a href="mailto:engr.saadsultan@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+					<a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+					<a href="#"><i class="fab fa-google"></i> Scholar</a>
+					<a href="#"><i class="fas fa-file-pdf"></i> Download Full CV</a>
+				</div>
+				<p class="copyright">© 2023 Dr. Malik Saad Sultan. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<div class="back-to-top">
+		<i class="fas fa-arrow-up"></i>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			// Color scheme configuration
+			const colors = {
+				primary: '#3498db',       // Vibrant blue
+				secondary: '#2ecc71',    // Fresh green
+				accent: '#e74c3c',        // Bold red
+				dark: '#2c3e50',          // Deep navy
+				light: '#ecf0f1',         // Light gray
+				background: '#f9f9f9'     // Off-white background
+			};
+
+			// Apply color scheme to elements
+			document.documentElement.style.setProperty('--primary-color', colors.primary);
+			document.documentElement.style.setProperty('--secondary-color', colors.secondary);
+			document.documentElement.style.setProperty('--accent-color', colors.accent);
+			document.documentElement.style.setProperty('--dark-color', colors.dark);
+			document.documentElement.style.setProperty('--light-color', colors.light);
+			document.body.style.backgroundColor = colors.background;
+
+			// Improved intersection observer with color-aware animations
+			const animateElements = document.querySelectorAll('.experience-item, .education-item, .award-item, .project-card, .skill-item');
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Set initial state based on element type and position
+						const rect = entry.target.getBoundingClientRect();
+						const direction = rect.left > window.innerWidth / 2 ? 'right' : 'left';
+						const isEven = Array.from(animateElements).indexOf(entry.target) % 2 === 0;
+
+						// Content cards animation
+						entry.target.style.backgroundColor = colors.light;
+						entry.target.style.color = colors.dark;
+						entry.target.style.boxShadow = `0 5px 15px rgba(0,0,0,0.1)`;
+						entry.target.style.opacity = '0';
+						entry.target.style.transform = direction === 'left' ?
+							'translateX(-30px) rotateY(15deg)' :
+							'translateX(30px) rotateY(-15deg)';
+
+						setTimeout(() => {
+							entry.target.classList.add('visible');
+							entry.target.style.opacity = '1';
+							entry.target.style.transform = 'translateX(0) rotateY(0)';
+							entry.target.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease';
+						}, 150);
+
+						// For skill bars, animate the width
+						if (entry.target.classList.contains('skill-item')) {
+							const progressBar = entry.target.querySelector('.skill-progress');
+							const width = progressBar.style.width;
+							progressBar.style.width = '0';
+							setTimeout(() => {
+								progressBar.style.width = width;
+								progressBar.style.transition = 'width 1.5s ease';
+							}, 300);
+						}
+					}
+				});
+			}, {
+				threshold: 0.1,
+				rootMargin: '0px 0px -20% 0px'
+			});
+
+			animateElements.forEach(el => {
+				el.style.transition = 'none';
+				observer.observe(el);
+			});
+
+			// Enhanced back to top button with better contrast
+			const backToTopBtn = document.querySelector('.back-to-top');
+			backToTopBtn.style.backgroundColor = colors.accent;
+			backToTopBtn.style.color = colors.light;
+
+			window.addEventListener('scroll', () => {
+				if (window.pageYOffset > 300) {
+					backToTopBtn.style.transform = 'scale(1) translateY(0)';
+					backToTopBtn.style.opacity = '1';
+					backToTopBtn.style.boxShadow = `0 4px 12px ${colors.accent}80`;
+				} else {
+					backToTopBtn.style.transform = 'scale(0.8) translateY(20px)';
+					backToTopBtn.style.opacity = '0';
+					backToTopBtn.style.boxShadow = 'none';
+				}
+			});
+
+			// Floating circles with better contrast
+			const floatingCircles = document.querySelectorAll('.floating-circles li');
+			floatingCircles.forEach(circle => {
+				const randomDelay = Math.random() * 2;
+				const randomDuration = 10 + Math.random() * 8;
+				const randomSize = 8 + Math.random() * 15;
+
+				// Alternate circle colors for better visibility
+				const circleColors = [colors.primary, colors.secondary, colors.accent];
+				const randomColor = circleColors[Math.floor(Math.random() * circleColors.length)];
+
+				circle.style.animationDelay = `${randomDelay}s`;
+				circle.style.animationDuration = `${randomDuration}s`;
+				circle.style.width = `${randomSize}px`;
+				circle.style.height = `${randomSize}px`;
+				circle.style.backgroundColor = randomColor;
+				circle.style.opacity = '0.2';
+				circle.style.boxShadow = `0 0 10px ${randomColor}`;
+			});
+
+			// Keyword animation with improved text visibility
+			const keywords = [
+				{ text: 'AI', icon: 'fas fa-brain', color: colors.primary },
+				{ text: 'Computer Vision', icon: 'fas fa-eye', color: colors.secondary },
+				{ text: 'Deep Learning', icon: 'fas fa-network-wired', color: colors.accent },
+				{ text: 'Biometrics', icon: 'fas fa-fingerprint', color: colors.primary },
+				{ text: 'AR/VR', icon: 'fas fa-vr-cardboard', color: colors.secondary },
+				{ text: 'Healthcare', icon: 'fas fa-heartbeat', color: colors.accent },
+				{ text: 'Robotics', icon: 'fas fa-robot', color: colors.primary },
+				{ text: 'Privacy', icon: 'fas fa-lock', color: colors.secondary },
+				{ text: 'Edge AI', icon: 'fas fa-microchip', color: colors.accent },
+				{ text: 'Algorithms', icon: 'fas fa-project-diagram', color: colors.primary },
+				{ text: 'Large Language Model', icon: 'fas fa-comment-dots', color: colors.secondary },
+				{ text: 'Multi-modality', icon: 'fas fa-layer-group', color: colors.accent }
+			];
+
+			const keywordContainer = document.querySelector('.keyword-container');
+			const header = document.querySelector('header');
+			header.style.backgroundColor = colors.dark; // Dark background for contrast
+			header.style.color = colors.light; // Light text for readability
+
+			keywords.forEach((keyword, index) => {
+				const tag = document.createElement('div');
+				tag.className = 'keyword-tag';
+
+				// Set colors based on configuration
+				tag.style.backgroundColor = `${keyword.color}20`; // 20% opacity
+				tag.style.color = keyword.color;
+				tag.style.border = `1px solid ${keyword.color}`;
+				tag.style.boxShadow = `0 0 10px ${keyword.color}40`;
+
+				// Add icon if available
+				if (keyword.icon) {
+					const icon = document.createElement('i');
+					icon.className = keyword.icon;
+					icon.style.color = keyword.color;
+					tag.appendChild(icon);
+				}
+
+				// Add text with better typography
+				const text = document.createElement('span');
+				text.textContent = keyword.text;
+				text.style.fontWeight = '600';
+				text.style.textShadow = `0 1px 2px rgba(0,0,0,0.2)`;
+				tag.appendChild(text);
+
+				keywordContainer.appendChild(tag);
+
+				// Calculate dimensions
+				const tagWidth = 100 + (keyword.text.length * 6);
+				const tagHeight = 36;
+				const maxX = header.offsetWidth - tagWidth;
+				const maxY = header.offsetHeight - tagHeight;
+
+				// Physics properties
+				const scale = 0.9 + Math.random() * 0.2;
+				let posX = Math.random() * maxX;
+				let posY = Math.random() * maxY;
+				let velocityX = (Math.random() - 0.5) * 1.2;
+				let velocityY = (Math.random() - 0.5) * 1.2;
+				let rotation = (Math.random() - 0.5) * 15;
+				let rotationVelocity = (Math.random() - 0.5) * 0.2;
+
+				// Initial state
+				tag.style.width = `${tagWidth}px`;
+				tag.style.height = `${tagHeight}px`;
+				tag.style.left = `${posX}px`;
+				tag.style.top = `${posY}px`;
+				tag.style.opacity = '0';
+				tag.style.transform = `translateY(20px) scale(${scale * 0.7}) rotate(${rotation}deg)`;
+				tag.style.transition = 'none';
+
+				// Animate in with spring effect
+				setTimeout(() => {
+					tag.style.opacity = '1';
+					tag.style.transform = `translateY(0) scale(${scale}) rotate(${rotation}deg)`;
+					tag.style.transition = 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
+				}, index * 120);
+
+				// Physics animation with boundary checking
+				function updatePosition() {
+					posX += velocityX;
+					posY += velocityY;
+					rotation += rotationVelocity;
+
+					// Boundary collision with damping
+					if (posX > maxX || posX < 0) {
+						velocityX *= -0.85;
+						rotationVelocity = (Math.random() - 0.5) * 0.3;
+						posX = Math.max(0, Math.min(posX, maxX));
+					}
+
+					if (posY > maxY || posY < 0) {
+						velocityY *= -0.85;
+						rotationVelocity = (Math.random() - 0.5) * 0.3;
+						posY = Math.max(0, Math.min(posY, maxY));
+					}
+
+					// Apply transformation
+					tag.style.left = `${posX}px`;
+					tag.style.top = `${posY}px`;
+					tag.style.transform = `translateY(0) scale(${scale}) rotate(${rotation}deg)`;
+
+					requestAnimationFrame(updatePosition);
+				}
+
+				// Start physics animation after appearance
+				setTimeout(updatePosition, index * 120 + 500);
+			});
+
+			// Improve text visibility in all sections
+			document.querySelectorAll('section').forEach(section => {
+				section.style.color = colors.dark;
+				section.style.backgroundColor = colors.background;
+			});
+
+			// Special treatment for hero section
+			const hero = document.querySelector('.hero');
+			if (hero) {
+				hero.style.color = colors.light;
+				hero.style.backgroundColor = colors.dark;
+			}
+
+			// Highlight active section in shortcut buttons
+			const sections = document.querySelectorAll('section');
+			const navLinks = document.querySelectorAll('.shortcut-button');
+
+			window.addEventListener('scroll', () => {
+				let current = '';
+
+				sections.forEach(section => {
+					const sectionTop = section.offsetTop;
+					const sectionHeight = section.clientHeight;
+					if (pageYOffset >= (sectionTop - 150)) {
+						current = section.getAttribute('id');
+					}
+				});
+
+				navLinks.forEach(link => {
+					link.classList.remove('active');
+					if (link.getAttribute('href') === `#${current}`) {
+						link.classList.add('active');
+					}
+				});
+			});
+
+			// Smooth scrolling for shortcut buttons
+			document.querySelectorAll('.shortcut-button').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+
+					const targetId = this.getAttribute('href');
+					const targetElement = document.querySelector(targetId);
+
+					window.scrollTo({
+						top: targetElement.offsetTop - 100,
+						behavior: 'smooth'
+					});
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>
