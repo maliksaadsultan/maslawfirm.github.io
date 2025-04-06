@@ -1028,6 +1028,354 @@
 			height: 100%;
 			z-index: 0;
 		}
+
+		/* Compact Family Tree Styles */
+		/* Elegant Family Tree Styles */
+		.elegant-family-tree {
+			position: relative;
+			min-height: 400px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 3rem 0;
+		}
+
+		.family-member {
+			text-align: center;
+			position: relative;
+			z-index: 2;
+			transition: all 0.4s ease;
+		}
+
+		.family-member.father {
+			margin-bottom: 4rem;
+		}
+
+		.member-image {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			overflow: hidden;
+			margin: 0 auto 1rem;
+			border: 4px solid white;
+			box-shadow: 0 10px 25px rgba(42, 91, 215, 0.3);
+			position: relative;
+		}
+
+		.father .member-image {
+			width: 140px;
+			height: 140px;
+			border-width: 5px;
+			border-color: #2a5bd7;
+		}
+
+		.member-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+
+		.image-hover-effect {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(135deg, rgba(42, 91, 215, 0.3), rgba(26, 61, 143, 0.3));
+			border-radius: 50%;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.member-info h3 {
+			font-size: 1.3rem;
+			margin-bottom: 0.3rem;
+			color: #2a5bd7;
+			font-weight: 600;
+		}
+
+		.father .member-info h3 {
+			font-size: 1.5rem;
+			color: #1a3d8f;
+		}
+
+		.member-role {
+			font-size: 0.9rem;
+			color: #6c757d;
+			margin-bottom: 0.5rem;
+			font-weight: 500;
+		}
+
+		.member-quote {
+			font-size: 0.85rem;
+			color: #2a5bd7;
+			font-style: italic;
+			opacity: 0;
+			transform: translateY(10px);
+			transition: all 0.3s ease;
+			max-width: 200px;
+			margin: 0 auto;
+		}
+
+		/* Tree branch connections */
+		.branch-connector {
+			position: absolute;
+			bottom: -4rem;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 2px;
+			height: 4rem;
+			background: linear-gradient(to bottom, #2a5bd7, rgba(42, 91, 215, 0.3));
+		}
+
+		.sons-container {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			width: 100%;
+			max-width: 900px;
+			margin: 0 auto;
+			padding-top: 2rem;
+		}
+
+		.branch-curve {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80%;
+			height: 100px;
+			border-top: 2px dashed rgba(42, 91, 215, 0.5);
+			border-radius: 50% 50% 0 0;
+		}
+
+		.sons-container .family-member {
+			flex: 1;
+			max-width: 180px;
+			padding: 0 1rem;
+		}
+
+		/* Family values section */
+		.family-values-elegant {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 2rem;
+			margin-top: 4rem;
+		}
+
+		.value-item {
+			background: white;
+			border-radius: 12px;
+			padding: 1.5rem;
+			text-align: center;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+			transition: all 0.3s ease;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		.value-item:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(42, 91, 215, 0.1);
+		}
+
+		.value-icon {
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(135deg, #2a5bd7, #1a3d8f);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 1rem;
+			color: white;
+			font-size: 1.5rem;
+			box-shadow: 0 5px 15px rgba(42, 91, 215, 0.3);
+		}
+
+		.value-item h4 {
+			color: #2a5bd7;
+			margin-bottom: 0.5rem;
+			font-size: 1.1rem;
+		}
+
+		.value-item p {
+			color: #6c757d;
+			font-size: 0.9rem;
+			margin: 0;
+		}
+
+		/* Animations */
+		.animate-pop-in {
+			animation: popIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+			opacity: 0;
+			transform: scale(0.8);
+		}
+
+		.animate-slide-up {
+			animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+		}
+
+		@keyframes popIn {
+			0% {
+				opacity: 0;
+				transform: scale(0.8);
+			}
+
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		@keyframes slideUp {
+			0% {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.sons-container {
+				flex-wrap: wrap;
+				padding-top: 1rem;
+			}
+
+			.sons-container .family-member {
+				flex: 0 0 50%;
+				max-width: 50%;
+				margin-bottom: 2rem;
+			}
+
+			.branch-curve {
+				display: none;
+			}
+
+			.branch-connector {
+				height: 2rem;
+				bottom: -2rem;
+			}
+
+			.family-values-elegant {
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+		}
+
+		/* Add these new styles to your existing CSS */
+		.location-flag {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			margin: 0.5rem 0;
+			font-size: 0.85rem;
+			color: var(--gray);
+		}
+
+		.flag-image {
+			width: 20px;
+			height: 15px;
+			border-radius: 2px;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			object-fit: cover;
+		}
+
+		.member-info {
+			position: relative;
+		}
+
+		/* Adjust spacing for the new flag element */
+		.member-role {
+			margin-bottom: 0.3rem;
+		}
+
+		.member-quote {
+			margin-top: 0.5rem;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.location-flag {
+				font-size: 0.75rem;
+			}
+
+			.flag-image {
+				width: 16px;
+				height: 12px;
+			}
+		}
+
+		/* Add these new styles to your existing CSS */
+		.location-flag {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			margin: 0.5rem 0;
+			font-size: 0.85rem;
+			color: var(--gray);
+		}
+
+		.flag-image {
+			width: 20px;
+			height: 15px;
+			border-radius: 2px;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			object-fit: cover;
+		}
+
+		.member-info {
+			position: relative;
+		}
+
+		/* Make quotes always visible */
+		.member-quote.always-visible {
+			opacity: 1;
+			transform: translateY(0);
+			max-width: 220px;
+			margin: 0.5rem auto 0;
+			font-size: 0.85rem;
+			color: var(--primary);
+			font-style: italic;
+			line-height: 1.4;
+			transition: none;
+		}
+
+		/* Adjust spacing for the new layout */
+		.member-role {
+			margin-bottom: 0.3rem;
+		}
+
+		/* Remove hover effects that controlled quotes */
+		.family-member:hover .member-quote {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.location-flag {
+				font-size: 0.75rem;
+			}
+
+			.flag-image {
+				width: 16px;
+				height: 12px;
+			}
+
+			.member-quote.always-visible {
+				font-size: 0.8rem;
+				max-width: 180px;
+			}
+		}
 	</style>
 </head>
 
@@ -1097,6 +1445,7 @@
 			<a href="#skills" class="shortcut-button"><i class="fas fa-code"></i> Skills</a>
 			<a href="#publications" class="shortcut-button"><i class="fas fa-book"></i> Publications</a>
 			<a href="#languages" class="shortcut-button"><i class="fas fa-language"></i> Languages</a>
+			<a href="#family" class="shortcut-button"><i class="fas fa-users"></i> Family</a>
 		</div>
 	</div>
 
@@ -1809,6 +2158,114 @@
 				</div>
 			</div>
 		</section>
+
+		<section id="family">
+			<h2>Family Legacy</h2>
+			<div class="section-content">
+				<div class="elegant-family-tree">
+					<!-- Father at the top with animation -->
+					<div class="family-member father animate-pop-in" style="--delay: 0.1s">
+						<div class="member-image">
+							<img src="abu.jpg" alt="Malik Mehmood Sultan">
+							<div class="image-hover-effect"></div>
+						</div>
+						<div class="member-info">
+							<h3>Malik Mehmood Sultan</h3>
+							<p class="member-role">The Visionary Patriarch</p>
+							<div class="location-flag">
+								<img src="https://flagcdn.com/w40/pk.png" srcset="https://flagcdn.com/w80/pk.png 2x"
+									alt="Pakistan" class="flag-image">
+								<span>Pakistan</span>
+							</div>
+							<div class="A father’s love is the fuel that enables a child to achieve the impossible.">"A
+								father’s love is the fuel that enables a child to achieve the impossible."</div>
+						</div>
+						<div class="branch-connector"></div>
+					</div>
+
+					<!-- Sons in a curved layout -->
+					<div class="sons-container">
+						<div class="branch-curve"></div>
+
+						<div class="family-member son animate-pop-in" style="--delay: 0.3s">
+							<div class="member-image">
+								<img src="saad1.jpg" alt="Malik Saad Sultan">
+								<div class="image-hover-effect"></div>
+							</div>
+							<div class="member-info">
+								<h3>Malik Saad Sultan</h3>
+								<p class="member-role">The Technologist</p>
+								<div class="location-flag">
+									<img src="https://flagcdn.com/w40/hk.png" srcset="https://flagcdn.com/w80/hk.png 2x"
+										alt="Hong Kong" class="flag-image">
+									<span>Hong Kong</span>
+								</div>
+								<div class="member-quote always-visible">"Innovation distinguishes between a leader and
+									a follower."
+								</div>
+							</div>
+						</div>
+
+						<div class="family-member son animate-pop-in" style="--delay: 0.4s">
+							<div class="member-image">
+								<img src="fahad.jpg" alt="Malik Fahad Sultan">
+								<div class="image-hover-effect"></div>
+							</div>
+							<div class="member-info">
+								<h3>Malik Fahad Sultan</h3>
+								<p class="member-role">The Entrepreneur</p>
+								<div class="location-flag">
+									<img src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+										alt="United Kingdom" class="flag-image">
+									<span>United Kingdom</span>
+								</div>
+								<div class="member-quote always-visible">"Opportunities don’t happen. You create them."
+								</div>
+							</div>
+						</div>
+
+						<div class="family-member son animate-pop-in" style="--delay: 0.5s">
+							<div class="member-image">
+								<img src="anjum.jpg" alt="Malik Anjum Sultan">
+								<div class="image-hover-effect"></div>
+							</div>
+							<div class="member-info">
+								<h3>Malik Anjum Sultan</h3>
+								<p class="member-role">The Legal Strategist</p>
+								<div class="location-flag">
+									<img src="https://flagcdn.com/w40/pk.png" srcset="https://flagcdn.com/w80/pk.png 2x"
+										alt="Pakistan" class="flag-image">
+									<span>Pakistan</span>
+								</div>
+								<div class="member-quote always-visible">"Truth is the foundation of all just
+									arguments."
+								</div>
+							</div>
+						</div>
+
+						<div class="family-member son animate-pop-in" style="--delay: 0.6s">
+							<div class="member-image">
+								<img src="ahmed.jpg" alt="Malik Ahmed Sultan">
+								<div class="image-hover-effect"></div>
+							</div>
+							<div class="member-info">
+								<h3>Malik Ahmed Sultan</h3>
+								<p class="member-role">The Manager</p>
+								<div class="location-flag">
+									<img src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+										alt="United Kingdom" class="flag-image">
+									<span>United Kingdom</span>
+								</div>
+								<div class="member-quote always-visible">"The role of a manager is not to control
+									people, but to unleash their potential."
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 	</main>
 
 	<footer>
@@ -1833,6 +2290,7 @@
 	<div class="back-to-top">
 		<i class="fas fa-arrow-up"></i>
 	</div>
+
 
 	<!-- Load particle.js library -->
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -2052,6 +2510,8 @@
 				},
 				"retina_detect": true
 			});
+
+
 
 			// Color scheme configuration
 			const colors = {
