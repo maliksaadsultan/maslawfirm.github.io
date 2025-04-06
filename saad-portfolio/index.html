@@ -511,31 +511,141 @@
 			font-size: 0.9rem;
 		}
 
-		.languages {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 1rem;
+		/* Modern Language Proficiency Styles */
+		.language-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 1.5rem;
+			width: 100%;
 		}
 
-		.language-item {
+		.language-card {
+			background: white;
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+			transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.language-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.language-card::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: linear-gradient(90deg, var(--primary), var(--secondary));
+		}
+
+		.language-header {
 			display: flex;
 			align-items: center;
-			gap: 0.8rem;
-			background: var(--light-blue);
-			padding: 0.8rem 1.5rem;
-			border-radius: 30px;
-			font-weight: 500;
+			gap: 0.75rem;
+			margin-bottom: 1rem;
 		}
 
-		.language-proficiency {
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			background: #ddd;
+		.language-flag {
+			width: 32px;
+			height: 24px;
+			border-radius: 4px;
+			object-fit: cover;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 		}
 
-		.language-proficiency.filled {
+		.language-name {
+			font-size: 1.1rem;
+			font-weight: 600;
+			color: var(--dark);
+			margin: 0;
+			flex-grow: 1;
+		}
+
+		.language-level {
+			font-size: 0.85rem;
+			font-weight: 600;
+			color: white;
 			background: var(--primary);
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+		}
+
+		.language-progress {
+			height: 8px;
+			background: #f0f0f0;
+			border-radius: 4px;
+			margin: 1rem 0;
+			overflow: hidden;
+		}
+
+		.progress-bar {
+			height: 100%;
+			border-radius: 4px;
+			background: linear-gradient(90deg, var(--color), var(--secondary));
+			width: var(--progress);
+			transition: width 1s ease-out;
+			position: relative;
+		}
+
+		.progress-bar::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(90deg,
+					rgba(255, 255, 255, 0.2) 0%,
+					rgba(255, 255, 255, 0.4) 50%,
+					rgba(255, 255, 255, 0.2) 100%);
+			animation: shimmer 2s infinite linear;
+			background-size: 200% 100%;
+		}
+
+		@keyframes shimmer {
+			0% {
+				background-position: 200% 0;
+			}
+
+			100% {
+				background-position: -200% 0;
+			}
+		}
+
+		.language-meta {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			font-size: 0.9rem;
+		}
+
+		.meta-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: var(--gray);
+		}
+
+		.meta-item i {
+			color: var(--primary);
+			font-size: 0.9em;
+		}
+
+		@media (max-width: 768px) {
+			.language-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.language-card {
+				padding: 1.25rem;
+			}
 		}
 
 		footer {
@@ -1603,45 +1713,73 @@
 		<section id="languages">
 			<h2>Language Proficiency</h2>
 			<div class="section-content">
-				<div class="languages">
-					<div class="language-item">
-						<span><img src="https://flagcdn.com/w20/pk.png" alt="Pakistan flag" title="Pakistan">
-							Urdu</span>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<span>(Native Proficiency)</span>
+				<div class="language-grid">
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/pk.png" srcset="https://flagcdn.com/w80/pk.png 2x"
+								alt="Pakistan" class="language-flag">
+							<h3 class="language-name">Urdu</h3>
+							<span class="language-level">Native</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 100%; --color: var(--primary)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-check-circle"></i> Full professional
+								proficiency</span>
+							<span class="meta-item"><i class="fas fa-comment-alt"></i> Speaking, writing, reading</span>
+						</div>
 					</div>
-					<div class="language-item">
-						<span><img src="https://flagcdn.com/w20/gb.png" alt="UK flag" title="United Kingdom">
-							English</span>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<span>(Professional Fluency)</span>
+
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+								alt="United Kingdom" class="language-flag">
+							<h3 class="language-name">English</h3>
+							<span class="language-level">Professional</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 100%; --color: var(--primary)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-check-circle"></i> Full professional
+								proficiency</span>
+							<span class="meta-item"><i class="fas fa-comment-alt"></i> Speaking, writing, reading</span>
+						</div>
 					</div>
-					<div class="language-item">
-						<span><img src="https://flagcdn.com/w20/cn.png" alt="China flag" title="China"> Mandarin</span>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<span>(Professional Fluency)</span>
+
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/cn.png" srcset="https://flagcdn.com/w80/cn.png 2x"
+								alt="China" class="language-flag">
+							<h3 class="language-name">Mandarin</h3>
+							<span class="language-level">Professional</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 70%; --color: var(--primary)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-check-circle"></i> Limited working
+								proficiency</span>
+							<span class="meta-item"><i class="fas fa-comment-alt"></i> Speaking, writing, reading</span>
+						</div>
 					</div>
-					<div class="language-item">
-						<span><img src="https://flagcdn.com/w20/pt.png" alt="Portugal flag" title="Portugal">
-							Portuguese</span>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency filled"></div>
-						<div class="language-proficiency"></div>
-						<div class="language-proficiency"></div>
-						<div class="language-proficiency"></div>
-						<span>(Basic Communication)</span>
+
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/pt.png" srcset="https://flagcdn.com/w80/pt.png 2x"
+								alt="Portugal" class="language-flag">
+							<h3 class="language-name">Portuguese</h3>
+							<span class="language-level">Basic</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 40%; --color: var(--gray)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-info-circle"></i> Limited working
+								proficiency</span>
+							<span class="meta-item"><i class="fas fa-comment-alt"></i> Conversational speaking</span>
+						</div>
 					</div>
 				</div>
 			</div>
