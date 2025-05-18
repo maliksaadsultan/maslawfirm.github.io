@@ -11,6 +11,98 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet">
 	<style>
+		/* Awards Gallery Styles */
+		.gallery-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.award-card {
+			background: white;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+			position: relative;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		.award-card.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.award-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(42, 91, 215, 0.2);
+		}
+
+		.award-image {
+			height: 200px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.award-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+
+		.award-card:hover .award-image img {
+			transform: scale(1.05);
+		}
+
+		.award-content {
+			padding: 1.5rem;
+		}
+
+		.award-content h3 {
+			color: var(--primary);
+			margin-bottom: 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.award-content p {
+			color: var(--gray);
+			font-size: 0.9rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.award-year {
+			color: var(--accent);
+			font-weight: 600;
+			margin-top: 0.5rem;
+			display: inline-block;
+			padding: 0.25rem 0.75rem;
+			background: rgba(255, 107, 107, 0.1);
+			border-radius: 20px;
+		}
+
+		/* Animation for gallery items */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.gallery-container {
+				grid-template-columns: 1fr;
+			}
+		}
+
 		:root {
 			--primary: #2a5bd7;
 			--secondary: #1a3d8f;
@@ -1454,7 +1546,7 @@
 			<h2>Professional Summary</h2>
 			<div class="section-content">
 				<p class="summary">
-					<p> Dr. Malik Saad Sultan is an accomplished Associate Principal Engineer at the Hong Kong Applied
+				<p> Dr. Malik Saad Sultan is an accomplished Associate Principal Engineer at the Hong Kong Applied
 					Science and Technology
 					Research Institute (ASTRI), the region's leading R&D center. With a Ph.D. in Computer Science and
 					over a decade of
@@ -1462,7 +1554,7 @@
 					projects in biometric
 					recognition, smart sensing technologies, and healthcare diagnostics.</p>
 
-					<p>🎓 His academic journey began with a BSc from the Federal Urdu University, Pakistan, followed by a
+				<p>🎓 His academic journey began with a BSc from the Federal Urdu University, Pakistan, followed by a
 					Master's in Robotic
 					Vision from the Beijing Institute of Technology, China, and a Ph.D. in Medical Image Processing from
 					the University of
@@ -1470,17 +1562,22 @@
 					industrial applications,
 					resulting in patented innovations and high-impact publications.</p>
 
-					<p>🚀 As Projects Lead and Senior Researcher, Dr. Sultan has led the development of advanced AI systems in 
-					autonomous vehicles, privacy-preserving sensing and behavior understanding, and computer-aided diagnosis. 
-					His contributions have earned him several prestigious awards, including the 🏆 Silver Medal at the 50th 
-					International Exhibition 
-					of Inventions Geneva (2025), 🏅 ASTRI’s Outstanding Employee Award (2022), and 🤝 ASTRI’s Best 
-					Team Award (2020–2022). His 🎓 academic achievements include the FCT-MAPi Grant for his PhD (2014), the 
-					RHEUMUS Research Grant (2014), and the CSC Grant for his Master’s degree (2010). He also received 
-					the Excellent Student Award from the International Student Centre (1st Prize, 2013) and the Distinguished 
+				<p>🚀 As Projects Lead and Senior Researcher, Dr. Sultan has led the development of advanced AI systems
+					in
+					autonomous vehicles, privacy-preserving sensing and behavior understanding, and computer-aided
+					diagnosis.
+					His contributions have earned him several prestigious awards, including the 🏆 Silver Medal at the
+					50th
+					International Exhibition
+					of Inventions Geneva (2025), 🏅 ASTRI’s Outstanding Employee Award (2022), and 🤝 ASTRI’s Best
+					Team Award (2020–2022). His 🎓 academic achievements include the FCT-MAPi Grant for his PhD (2014),
+					the
+					RHEUMUS Research Grant (2014), and the CSC Grant for his Master’s degree (2010). He also received
+					the Excellent Student Award from the International Student Centre (1st Prize, 2013) and the
+					Distinguished
 					Student Award from Beijing Institute of Technology (1st Prize, 2013).</p>
 
-					<p>🌐✨ Combining technical leadership with strategic vision, Dr. Sultan continues to drive AI solutions
+				<p>🌐✨ Combining technical leadership with strategic vision, Dr. Sultan continues to drive AI solutions
 					that tackle real-world
 					challenges, solidifying his reputation as a key innovator in the field.</p>
 				</p>
@@ -1631,29 +1728,110 @@
 						<li>FCT-MAPi Doctoral Scholarship (Portugal)</li>
 					</ul>
 				</div>
-    				<div class="award-item">
-      					<h3>1st Prize in Distinguished Student Awards</h3>
-      					<p>Beijing Institute of Technology | 2013</p>
-      					<ul>
-        					<li>Awarded to top graduate student in Mechatronics Engineering</li>
-      					</ul>
-    				</div>
-    				<div class="award-item">
-      					<h3>1st Prize in Excellent Student Award</h3>
-      					<p>International Student Centre (ISC), Beijing Institute of Technology | 2013</p>
-      					<ul>
-        					<li>Recognized for outstanding academic performance and student leadership</li>
-      					</ul>
-    				</div>
+				<div class="award-item">
+					<h3>1st Prize in Distinguished Student Awards</h3>
+					<p>Beijing Institute of Technology | 2013</p>
+					<ul>
+						<li>Awarded to top graduate student in Mechatronics Engineering</li>
+					</ul>
+				</div>
+				<div class="award-item">
+					<h3>1st Prize in Excellent Student Award</h3>
+					<p>International Student Centre (ISC), Beijing Institute of Technology | 2013</p>
+					<ul>
+						<li>Recognized for outstanding academic performance and student leadership</li>
+					</ul>
+				</div>
 
-    				<div class="award-item">
-      					<h3>Silver Medal – 50th International Exhibition of Inventions Geneva</h3>
-      					<p>ASTRI | Hong Kong</p>
-						<li>Dynamic Vision Sensing System with A Static Capturing Mode — A compact, 
-							energy-efficient invention that detects both dynamic and static objects 
+				<div class="award-item">
+					<h3>Silver Medal – 50th International Exhibition of Inventions Geneva</h3>
+					<p>ASTRI | Hong Kong</p>
+					<ul>
+						<li>Dynamic Vision Sensing System with A Static Capturing Mode — A compact,
+							energy-efficient invention that detects both dynamic and static objects
 							using advanced optics and AI. </li>
+					</ul>
+				</div>
+		</section>
+
+
+		<section id="awards-gallery">
+			<h2>Awards Gallery</h2>
+			<div class="section-content">
+				<div class="gallery-container">
+					<div class="award-card" data-aos="fade-up" data-aos-delay="100">
+						<div class="award-image">
+							<img src="Geneva_UPLOAD.jpg" alt="Silver Medal - Geneva Invention">
+						</div>
+						<div class="award-content">
+							<h3>Silver Medal</h3>
+							<p>50th International Exhibition of Inventions Geneva</p>
+							<p class="award-year">2025</p>
+						</div>
+					</div>
+
+					<div class="award-card" data-aos="fade-up" data-aos-delay="200">
+						<div class="award-image">
+							<img src="OUTSTANDING_EMPLOY.jpg" alt="Outstanding Employee Award">
+						</div>
+						<div class="award-content">
+							<h3>Outstanding Employee Award</h3>
+							<p>ASTRI</p>
+							<p class="award-year">2022</p>
+						</div>
+					</div>
+
+					<div class="award-card" data-aos="fade-up" data-aos-delay="400">
+						<div class="award-image">
+							<img src="MAPI.JPG" alt="FCT-MAPi Doctoral Scholarship">
+						</div>
+						<div class="award-content">
+							<h3>FCT-MAPi Doctoral Scholarship</h3>
+							<p>University of Porto, Portugal</p>
+							<p class="award-year">2014</p>
+						</div>
+					</div>
+
+					<div class="award-card" data-aos="fade-up" data-aos-delay="500">
+						<div class="award-image">
+							<img src="Distinguish_student_award_English.jpg" alt="Distinguished Student Award">
+						</div>
+						<div class="award-content">
+							<h3>Distinguished Student Award</h3>
+							<p>Beijing Institute of Technology</p>
+							<p class="award-year">2013</p>
+						</div>
+					</div>
+
+					<div class="award-card" data-aos="fade-up" data-aos-delay="600">
+						<div class="award-image">
+							<img src="Excellent_student_award.jpg" alt="Excellent Student Award">
+						</div>
+						<div class="award-content">
+							<h3>Excellent Student Award</h3>
+							<p>International Student Centre</p>
+							<p class="award-year">2013</p>
+						</div>
+					</div>
+
+					<div class="award-card" data-aos="fade-up" data-aos-delay="400">
+						<div class="award-image">
+							<img src="CSC_Scholarship.jpg" alt="CSC Scholarships">
+						</div>
+						<div class="award-content">
+							<h3>CSC Master Scholarship</h3>
+							<p>Beijing Institute of Technology, Beijing, China</p>
+							<p class="award-year">2010</p>
+						</div>
+					</div>
+
+
+
+				</div>
 			</div>
 		</section>
+
+
 
 		<section id="interests">
 			<h2>Research Interests</h2>
@@ -1663,12 +1841,13 @@
 					<div class="interest-item"><i class="fas fa-vr-cardboard"></i> AR/VR Technologies</div>
 					<div class="interest-item"><i class="fas fa-fingerprint"></i> Biometric Systems</div>
 					<div class="interest-item"><i class="fas fa-car-alt"></i> Autonomous Vehicles</div>
-					<div class="interest-item"><i class="fas fa-drone-alt"></i> Drone Technology</div>
+					<div class="interest-item"><i class="fas fa-plane"></i> Drone Technology</div>
 					<div class="interest-item"><i class="fas fa-heartbeat"></i> Healthcare AI</div>
 					<div class="interest-item"><i class="fas fa-robot"></i> Robotic Vision</div>
 					<div class="interest-item"><i class="fas fa-lock"></i> Privacy-Preserving AI</div>
 					<div class="interest-item"><i class="fas fa-project-diagram"></i> Edge Computing</div>
-					
+					<div class="interest-item"><i class="fas fa-database"></i> Synthetic Data Creation</div>
+
 				</div>
 			</div>
 		</section>
@@ -2316,6 +2495,25 @@
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 	<script>
+		// Initialize gallery animations
+		const awardCards = document.querySelectorAll('.award-card');
+
+		const galleryObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting) {
+					setTimeout(() => {
+						entry.target.classList.add('visible');
+					}, index * 100);
+				}
+			});
+		}, {
+			threshold: 0.1,
+			rootMargin: '0px 0px -20% 0px'
+		});
+
+		awardCards.forEach(card => {
+			galleryObserver.observe(card);
+		});
 		document.addEventListener('DOMContentLoaded', function () {
 			// Initialize main particles.js background
 			particlesJS('particles-js', {
