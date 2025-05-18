@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet">
 	<style>
-		/* Awards Gallery Styles */
+		/* Updated Awards Gallery Styles */
 		.gallery-container {
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -57,6 +57,36 @@
 			transform: scale(1.05);
 		}
 
+		/* Full image overlay styles */
+		.full-image-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.full-image-overlay img {
+			max-width: 90%;
+			max-height: 90%;
+			object-fit: contain;
+			border: 3px solid white;
+			border-radius: 8px;
+		}
+
+		.award-image:hover .full-image-overlay {
+			opacity: 1;
+			visibility: visible;
+		}
+
 		.award-content {
 			padding: 1.5rem;
 		}
@@ -100,6 +130,11 @@
 		@media (max-width: 768px) {
 			.gallery-container {
 				grid-template-columns: 1fr;
+			}
+
+			.full-image-overlay img {
+				max-width: 95%;
+				max-height: 95%;
 			}
 		}
 
@@ -1762,6 +1797,9 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="100">
 						<div class="award-image">
 							<img src="Geneva_UPLOAD.jpg" alt="Silver Medal - Geneva Invention">
+							<div class="full-image-overlay">
+								<img src="Geneva_UPLOAD.jpg" alt="Silver Medal - Geneva Invention (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>Silver Medal</h3>
@@ -1773,6 +1811,9 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="200">
 						<div class="award-image">
 							<img src="OUTSTANDING_EMPLOY.jpg" alt="Outstanding Employee Award">
+							<div class="full-image-overlay">
+								<img src="OUTSTANDING_EMPLOY.jpg" alt="Outstanding Employee Award (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>Outstanding Employee Award</h3>
@@ -1784,6 +1825,9 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="400">
 						<div class="award-image">
 							<img src="MAPI.JPG" alt="FCT-MAPi Doctoral Scholarship">
+							<div class="full-image-overlay">
+								<img src="MAPI.JPG" alt="FCT-MAPi Doctoral Scholarship (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>FCT-MAPi Doctoral Scholarship</h3>
@@ -1795,6 +1839,10 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="500">
 						<div class="award-image">
 							<img src="Distinguish_student_award_English.jpg" alt="Distinguished Student Award">
+							<div class="full-image-overlay">
+								<img src="Distinguish_student_award_English.jpg"
+									alt="Distinguished Student Award (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>Distinguished Student Award</h3>
@@ -1806,6 +1854,9 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="600">
 						<div class="award-image">
 							<img src="Excellent_student_award.jpg" alt="Excellent Student Award">
+							<div class="full-image-overlay">
+								<img src="Excellent_student_award.jpg" alt="Excellent Student Award (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>Excellent Student Award</h3>
@@ -1817,6 +1868,9 @@
 					<div class="award-card" data-aos="fade-up" data-aos-delay="400">
 						<div class="award-image">
 							<img src="CSC_Scholarship.jpg" alt="CSC Scholarships">
+							<div class="full-image-overlay">
+								<img src="CSC_Scholarship.jpg" alt="CSC Scholarships (Full View)">
+							</div>
 						</div>
 						<div class="award-content">
 							<h3>CSC Master Scholarship</h3>
@@ -1824,9 +1878,6 @@
 							<p class="award-year">2010</p>
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 		</section>
