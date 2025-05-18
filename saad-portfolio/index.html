@@ -13,6 +13,198 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet">
 	<style>
+		/* Video Gallery Styles */
+		.video-gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.video-card {
+			background: white;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+			position: relative;
+			opacity: 0;
+			transform: translateY(20px);
+			cursor: pointer;
+		}
+
+		.video-card.visible {
+			opacity: 1;
+			transform: translateY(0);
+			animation: fadeInUp 0.6s ease forwards;
+		}
+
+		.video-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 30px rgba(42, 91, 215, 0.2);
+		}
+
+		.video-thumbnail {
+			position: relative;
+			height: 180px;
+			overflow: hidden;
+			border-radius: 12px 12px 0 0;
+		}
+
+		.thumbnail-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+
+		.video-card:hover .thumbnail-image {
+			transform: scale(1.1);
+		}
+
+		.play-icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60px;
+			height: 60px;
+			background: rgba(255, 255, 255, 0.9);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 2;
+			transition: all 0.3s ease;
+		}
+
+		.play-icon i {
+			color: var(--primary);
+			font-size: 1.5rem;
+			margin-left: 5px;
+		}
+
+		.hover-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(135deg, rgba(42, 91, 215, 0.7), rgba(26, 61, 143, 0.7));
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			z-index: 1;
+		}
+
+		.video-card:hover .hover-overlay {
+			opacity: 1;
+		}
+
+		.video-card:hover .play-icon {
+			background: var(--primary);
+		}
+
+		.video-card:hover .play-icon i {
+			color: white;
+		}
+
+		.video-info {
+			padding: 1.5rem;
+		}
+
+		.video-info h3 {
+			color: var(--dark);
+			margin-bottom: 0.5rem;
+			font-size: 1.2rem;
+			transition: color 0.3s ease;
+		}
+
+		.video-card:hover .video-info h3 {
+			color: var(--primary);
+		}
+
+		.video-info p {
+			color: var(--gray);
+			font-size: 0.9rem;
+			margin-bottom: 0;
+		}
+
+		/* Video Modal Styles */
+		.video-modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.video-modal.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.modal-content {
+			position: relative;
+			width: 80%;
+			max-width: 1000px;
+			background: transparent;
+		}
+
+		.close-modal {
+			position: absolute;
+			top: -40px;
+			right: 0;
+			color: white;
+			font-size: 2rem;
+			cursor: pointer;
+			transition: color 0.3s ease;
+		}
+
+		.close-modal:hover {
+			color: var(--accent);
+		}
+
+		#modal-video {
+			width: 100%;
+			border-radius: 8px;
+			outline: none;
+		}
+
+		/* Animation */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.video-gallery {
+				grid-template-columns: 1fr;
+			}
+
+			.modal-content {
+				width: 95%;
+			}
+		}
+
+
+
+
 		/* Updated Awards Gallery Styles */
 		.gallery-container {
 			display: grid;
@@ -1738,6 +1930,38 @@
 			</div>
 		</section>
 
+		<!-- Add this section where you want the demo videos to appear -->
+		<section id="demos">
+			<h2>Demo Videos</h2>
+			<div class="section-content">
+				<div class="video-gallery">
+					<!-- Video 1 -->
+					<div class="video-card" data-video="BIT_LAB_FNL.mp4">
+						<div class="video-thumbnail">
+							<div class="play-icon"><i class="fas fa-play"></i></div>
+							<div class="hover-overlay"></div>
+							<img src="Beijing_Institute_of_Technology.png" alt="BIT Lab Demo 1" class="thumbnail-image">
+						</div>
+						<div class="video-info">
+							<h3>Projects during master (BIT)</h3>
+							<p>Table Tennis Playing Robot</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Video Modal -->
+		<div class="video-modal">
+			<div class="modal-content">
+				<span class="close-modal">&times;</span>
+				<video controls id="modal-video">
+					<source src="" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+			</div>
+		</div>
+
 		<section id="awards">
 			<h2>Awards & Distinctions</h2>
 			<div class="section-content">
@@ -2494,6 +2718,72 @@
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 	<script>
+
+		// Initialize video gallery animations
+		const videoCards = document.querySelectorAll('.video-card');
+
+		const videoObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting) {
+					setTimeout(() => {
+						entry.target.classList.add('visible');
+					}, index * 100);
+				}
+			});
+		}, {
+			threshold: 0.1,
+			rootMargin: '0px 0px -20% 0px'
+		});
+
+		videoCards.forEach(card => {
+			videoObserver.observe(card);
+		});
+
+		// Video modal functionality
+		const videoModal = document.querySelector('.video-modal');
+		const modalVideo = document.getElementById('modal-video');
+		const closeModal = document.querySelector('.close-modal');
+
+		document.querySelectorAll('.video-card').forEach(card => {
+			card.addEventListener('click', function () {
+				const videoSrc = this.getAttribute('data-video');
+				modalVideo.src = videoSrc;
+				videoModal.classList.add('active');
+				document.body.style.overflow = 'hidden';
+
+				// Play video when modal opens
+				setTimeout(() => {
+					modalVideo.play();
+				}, 300);
+			});
+		});
+
+		closeModal.addEventListener('click', function () {
+			videoModal.classList.remove('active');
+			modalVideo.pause();
+			document.body.style.overflow = 'auto';
+		});
+
+		// Close modal when clicking outside
+		videoModal.addEventListener('click', function (e) {
+			if (e.target === videoModal) {
+				videoModal.classList.remove('active');
+				modalVideo.pause();
+				document.body.style.overflow = 'auto';
+			}
+		});
+
+		// Close with ESC key
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+				videoModal.classList.remove('active');
+				modalVideo.pause();
+				document.body.style.overflow = 'auto';
+			}
+		});
+
+
+
 		// Initialize gallery animations
 		const awardCards = document.querySelectorAll('.award-card');
 
@@ -2832,6 +3122,7 @@
 				circle.style.opacity = '0.2';
 				circle.style.boxShadow = `0 0 10px ${randomColor}`;
 			});
+
 
 			// Keyword animation with improved text visibility
 			const keywords = [
