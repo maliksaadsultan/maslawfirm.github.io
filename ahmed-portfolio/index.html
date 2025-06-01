@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AHMED SULTAN MALIK - Professional Portfolio</title>
+	<meta name="description"
+		content="Professional portfolio of AHMED SULTAN MALIK, an experienced Operations & Administration Professional.">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+	<style>
+		.supervisor {
+			font-size: 0.9em;
+			color: #666;
+			margin-top: 5px;
+			font-style: italic;
+		}
+
+		/* Video Gallery Styles - Removed as per CV */
+		/* Updated Awards Gallery Styles */
+		.gallery-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.award-card {
+			background: white;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+			position: relative;
+			opacity: 0;
+			transform: translateY(20px);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.award-card.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.award-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(42, 91, 215, 0.2);
+		}
+
+		.award-image {
+			display: none;
+			/* Hidden as no images are provided */
+		}
+
+		.award-content {
+			padding: 1.5rem;
+		}
+
+		.award-content h3 {
+			color: var(--primary);
+			margin-bottom: 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.award-content p {
+			color: var(--gray);
+			font-size: 0.9rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.award-year {
+			color: var(--accent);
+			font-weight: 600;
+			margin-top: 0.5rem;
+			display: inline-block;
+			padding: 0.25rem 0.75rem;
+			background: rgba(255, 107, 107, 0.1);
+			border-radius: 20px;
+		}
+
+		/* Animation for gallery items */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.gallery-container {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		:root {
+			--primary: #2a5bd7;
+			--secondary: #1a3d8f;
+			--dark: #1a1a2e;
+			--light: #f8f9fa;
+			--gray: #6c757d;
+			--accent: #ff6b6b;
+			--light-blue: #e6f0ff;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			background-color: #f5f7ff;
+			color: var(--dark);
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Header Styles */
+		header {
+			background: linear-gradient(135deg, var(--primary), var(--secondary));
+			color: white;
+			padding: 2.5rem 0;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(42, 91, 215, 0.3);
+		}
+
+		.header-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to bottom,
+					rgba(0, 0, 0, 0.1),
+					rgba(0, 0, 0, 0.3));
+			z-index: 1;
+			pointer-events: none;
+		}
+
+		.header-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			position: relative;
+			z-index: 2;
+		}
+
+		.profile-img {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 5px solid white;
+			margin-bottom: 1.5rem;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+			transition: transform 0.5s ease;
+		}
+
+		.profile-img:hover {
+			transform: scale(1.05) rotate(5deg);
+		}
+
+		h1 {
+			font-size: 2.7rem;
+			margin-bottom: 0.5rem;
+			font-weight: 700;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		.title {
+			font-size: 1.3rem;
+			margin-bottom: 1.5rem;
+			font-weight: 400;
+			text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		/* Modern Keyword Animation */
+		.keyword-container {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			pointer-events: none;
+			overflow: hidden;
+		}
+
+		.keyword-tag {
+			position: absolute;
+			background: rgba(255, 255, 255, 0.15);
+			color: rgba(255, 255, 255, 0.8);
+			padding: 8px 16px;
+			border-radius: 30px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			white-space: nowrap;
+			backdrop-filter: blur(5px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			transform: translateY(0) scale(1);
+			opacity: 0;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+			user-select: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 60px;
+			text-align: center;
+		}
+
+		.keyword-tag.visible {
+			opacity: 1;
+		}
+
+		.keyword-tag:nth-child(odd) {
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		.keyword-tag i {
+			margin-right: 6px;
+			font-size: 0.8em;
+		}
+
+		.contact-info {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			background: rgba(255, 255, 255, 0.2);
+			padding: 0.5rem 1rem;
+			border-radius: 30px;
+			backdrop-filter: blur(5px);
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		}
+
+		.contact-item i {
+			font-size: 1.2rem;
+		}
+
+		.social-links {
+			display: flex;
+			gap: 1.5rem;
+			margin-top: 1rem;
+		}
+
+		.social-links a {
+			color: white;
+			font-size: 1.5rem;
+			transition: transform 0.3s ease, color 0.3s ease;
+			background: rgba(255, 255, 255, 0.2);
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		.social-links a:hover {
+			transform: translateY(-5px);
+			background: rgba(255, 255, 255, 0.3);
+			color: white;
+		}
+
+		/* Floating circles animation */
+		.floating-circles {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: 0;
+		}
+
+		.floating-circles li {
+			position: absolute;
+			display: block;
+			list-style: none;
+			width: 20px;
+			height: 20px;
+			background: rgba(255, 255, 255, 0.15);
+			animation: float 25s linear infinite;
+			bottom: -150px;
+			border-radius: 50%;
+		}
+
+		.floating-circles li:nth-child(1) {
+			left: 25%;
+			width: 80px;
+			height: 80px;
+			animation-delay: 0s;
+		}
+
+		.floating-circles li:nth-child(2) {
+			left: 10%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 2s;
+			animation-duration: 12s;
+		}
+
+		.floating-circles li:nth-child(3) {
+			left: 70%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 4s;
+		}
+
+		.floating-circles li:nth-child(4) {
+			left: 40%;
+			width: 60px;
+			height: 60px;
+			animation-delay: 0s;
+			animation-duration: 18s;
+		}
+
+		.floating-circles li:nth-child(5) {
+			left: 65%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 0s;
+		}
+
+		.floating-circles li:nth-child(6) {
+			left: 75%;
+			width: 110px;
+			height: 110px;
+			animation-delay: 3s;
+		}
+
+		.floating-circles li:nth-child(7) {
+			left: 35%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 7s;
+		}
+
+		.floating-circles li:nth-child(8) {
+			left: 50%;
+			width: 25px;
+			height: 25px;
+			animation-delay: 15s;
+			animation-duration: 45s;
+		}
+
+		.floating-circles li:nth-child(9) {
+			left: 20%;
+			width: 15px;
+			height: 15px;
+			animation-delay: 2s;
+			animation-duration: 35s;
+		}
+
+		.floating-circles li:nth-child(10) {
+			left: 85%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 0s;
+			animation-duration: 11s;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0) rotate(0deg);
+				opacity: 1;
+				border-radius: 50%;
+			}
+
+			100% {
+				transform: translateY(-1000px) rotate(720deg);
+				opacity: 0;
+				border-radius: 20%;
+			}
+		}
+
+		/* Main Content Styles */
+		main {
+			padding: 3rem 0;
+		}
+
+		section {
+			margin-bottom: 3rem;
+			background: white;
+			border-radius: 12px;
+			padding: 2.5rem;
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		section:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		section::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			background: var(--primary);
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-bottom: 1.8rem;
+			color: var(--primary);
+			position: relative;
+			display: inline-block;
+			font-weight: 600;
+		}
+
+		h2::after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background: var(--accent);
+			border-radius: 2px;
+		}
+
+		h3 {
+			font-size: 1.4rem;
+			margin-bottom: 0.8rem;
+			color: var(--dark);
+			font-weight: 600;
+		}
+
+		.section-content {
+			margin-left: 1rem;
+		}
+
+		.summary {
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: #444;
+		}
+
+		.experience-item,
+		.education-item,
+		.award-item,
+		.skill-item,
+		/* Added skill-item here */
+		.language-card {
+			/* Added language-card here */
+			margin-bottom: 2.5rem;
+			padding-bottom: 1.5rem;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.5s ease, transform 0.5s ease;
+		}
+
+		.experience-item:last-child,
+		.education-item:last-child,
+		.award-item:last-child,
+		.skill-item:last-child,
+		/* Added skill-item here */
+		.language-card:last-child {
+			/* Added language-card here */
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.experience-item.visible,
+		.education-item.visible,
+		.award-item.visible,
+		.skill-item.visible,
+		/* Added skill-item here */
+		.language-card.visible {
+			/* Added language-card here */
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+
+		.job-title,
+		.degree {
+			font-weight: 600;
+			color: var(--secondary);
+			font-size: 1.2rem;
+		}
+
+		.company,
+		.university {
+			font-weight: 500;
+			color: var(--gray);
+			margin-bottom: 0.8rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.company i,
+		.university i {
+			font-size: 1rem;
+		}
+
+		.date {
+			background: var(--light-blue);
+			color: var(--primary);
+			padding: 0.3rem 1rem;
+			border-radius: 20px;
+			font-size: 0.85rem;
+			display: inline-block;
+			margin-bottom: 1rem;
+			font-weight: 500;
+		}
+
+		ul {
+			margin-left: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		li {
+			margin-bottom: 0.8rem;
+			position: relative;
+			color: #444;
+		}
+
+		li::before {
+			content: '•';
+			color: var(--primary);
+			font-weight: bold;
+			display: inline-block;
+			width: 1em;
+			margin-left: -1em;
+		}
+
+		.interests {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.interest-item {
+			background: var(--light-blue);
+			color: var(--primary);
+			padding: 0.6rem 1.2rem;
+			border-radius: 20px;
+			font-size: 0.95rem;
+			transition: transform 0.3s ease, background 0.3s ease;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.interest-item i {
+			font-size: 0.9rem;
+		}
+
+		.interest-item:hover {
+			background: var(--primary);
+			color: white;
+			transform: translateY(-3px);
+		}
+
+		.publication-item {
+			margin-bottom: 1.5rem;
+			padding-left: 1.2rem;
+			border-left: 3px solid var(--primary);
+		}
+
+		.publication-title {
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+			color: var(--dark);
+		}
+
+		.publication-details {
+			font-size: 0.95rem;
+			color: var(--gray);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.publication-details i {
+			font-size: 0.9rem;
+		}
+
+		/* Modern Language Proficiency Styles */
+		.language-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 1.5rem;
+			width: 100%;
+			grid-auto-rows: 1fr;
+			/* Ensures all rows have equal height */
+		}
+
+		.language-card {
+			background: white;
+			border-radius: 12px;
+			padding: 1.5rem;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+			transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.language-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.language-card::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: linear-gradient(90deg, var(--primary), var(--secondary));
+		}
+
+		.language-header {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			margin-bottom: 1rem;
+		}
+
+		.language-flag {
+			width: 32px;
+			height: 24px;
+			border-radius: 4px;
+			object-fit: cover;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		}
+
+		.language-name {
+			font-size: 1.1rem;
+			font-weight: 600;
+			color: var(--dark);
+			margin: 0;
+			flex-grow: 1;
+		}
+
+		.language-level {
+			font-size: 0.85rem;
+			font-weight: 600;
+			color: white;
+			background: var(--primary);
+			padding: 0.25rem 0.75rem;
+			border-radius: 20px;
+		}
+
+		.language-progress {
+			height: 8px;
+			background: #f0f0f0;
+			border-radius: 4px;
+			margin: 1rem 0;
+			overflow: hidden;
+		}
+
+		.progress-bar {
+			height: 100%;
+			border-radius: 4px;
+			background: linear-gradient(90deg, var(--color), var(--secondary));
+			width: var(--progress);
+			transition: width 1s ease-out;
+			position: relative;
+		}
+
+		.progress-bar::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(90deg,
+					rgba(255, 255, 255, 0.2) 0%,
+					rgba(255, 255, 255, 0.4) 50%,
+					rgba(255, 255, 255, 0.2) 100%);
+			animation: shimmer 2s infinite linear;
+			background-size: 200% 100%;
+		}
+
+		@keyframes shimmer {
+			0% {
+				background-position: 200% 0;
+			}
+
+			100% {
+				background-position: -200% 0;
+			}
+		}
+
+		.language-meta {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			font-size: 0.9rem;
+		}
+
+		.meta-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: var(--gray);
+		}
+
+		.meta-item i {
+			color: var(--primary);
+			font-size: 0.9em;
+		}
+
+		@media (max-width: 768px) {
+			.language-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.language-card {
+				padding: 1.25rem;
+			}
+		}
+
+		footer {
+			background: var(--dark);
+			color: white;
+			text-align: center;
+			padding: 3rem 0;
+			margin-top: 3rem;
+		}
+
+		.footer-content {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			margin: 2rem 0;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: white;
+			text-decoration: none;
+			transition: color 0.3s ease;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-weight: 500;
+		}
+
+		.footer-links a:hover {
+			color: var(--accent);
+		}
+
+		.copyright {
+			opacity: 0.7;
+			font-size: 0.9rem;
+			margin-top: 1.5rem;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.animate-fadeIn {
+			animation: fadeIn 1s ease forwards;
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2.2rem;
+			}
+
+			.title {
+				font-size: 1.1rem;
+			}
+
+			.contact-info {
+				flex-direction: column;
+				align-items: center;
+				gap: 0.8rem;
+			}
+
+			section {
+				padding: 1.8rem;
+			}
+
+			h2 {
+				font-size: 1.7rem;
+			}
+
+			h3 {
+				font-size: 1.3rem;
+			}
+
+			.keyword-tag {
+				font-size: 0.8rem;
+				padding: 6px 12px;
+			}
+		}
+
+		.back-to-top {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 50px;
+			height: 50px;
+			background: var(--primary);
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 1.2rem;
+			cursor: pointer;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+			z-index: 999;
+			box-shadow: 0 5px 15px rgba(42, 91, 215, 0.3);
+		}
+
+		.back-to-top.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.back-to-top:hover {
+			background: var(--secondary);
+			transform: translateY(-3px);
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 0.25rem 0.8rem;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			margin-right: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.badge-blue {
+			background: var(--light-blue);
+			color: var(--primary);
+		}
+
+		.badge-gray {
+			background: #f0f0f0;
+			color: #555;
+		}
+
+		.project-highlights {
+			margin-top: 1.5rem;
+		}
+
+		.project-item {
+			margin-bottom: 1.5rem;
+			padding: 1.5rem;
+			background: var(--light-blue);
+			border-radius: 10px;
+			border-left: 4px solid var(--primary);
+		}
+
+		.project-title {
+			font-weight: 600;
+			margin-bottom: 0.8rem;
+			color: var(--dark);
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.project-title i {
+			color: var(--primary);
+		}
+
+		.project-description {
+			margin-bottom: 0.8rem;
+			color: #444;
+		}
+
+		.project-technologies {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		/* Skills Section Styles - REVISED */
+		.skills-container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+		}
+
+		.skill-category {
+			flex: 1;
+			min-width: 300px;
+		}
+
+		.skill-category h3 {
+			margin-bottom: 1.5rem;
+			color: var(--secondary);
+			font-size: 1.3rem;
+			position: relative;
+			padding-bottom: 0.5rem;
+		}
+
+		.skill-category h3::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 40px;
+			height: 3px;
+			background: var(--accent);
+		}
+
+		.skill-item {
+			margin-bottom: 1.5rem;
+		}
+
+		.skill-name {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5rem;
+			font-weight: 500;
+			font-size: 1.1rem;
+			color: var(--dark);
+		}
+
+		.skill-bar {
+			height: 10px;
+			background: #f0f0f0;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+
+		.skill-progress {
+			height: 100%;
+			background: linear-gradient(90deg, var(--primary), var(--secondary));
+			border-radius: 5px;
+			width: 0;
+			/* Initial state for animation */
+			transition: width 1.5s ease;
+		}
+
+		.skill-progress.filled {
+			width: var(--skill-percent);
+			/* Target width set by JS */
+		}
+
+		.skill-description {
+			font-size: 0.95rem;
+			color: var(--gray);
+			margin-top: 0.5rem;
+			line-height: 1.5;
+		}
+
+		/* Shortcut Buttons */
+		.shortcut-buttons-container {
+			position: sticky;
+			top: 0;
+			background: white;
+			z-index: 100;
+			padding: 1rem 0;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid #eee;
+		}
+
+		.shortcut-buttons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.8rem;
+			justify-content: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.shortcut-button {
+			background: var(--primary);
+			color: white;
+			padding: 0.6rem 1.2rem;
+			border-radius: 30px;
+			font-weight: 600;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 5px rgba(42, 91, 215, 0.3);
+			font-size: 0.9rem;
+		}
+
+		.shortcut-button:hover {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(42, 91, 215, 0.4);
+		}
+
+		.shortcut-button.active {
+			background: var(--secondary);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(42, 91, 215, 0.4);
+		}
+
+		.shortcut-button i {
+			font-size: 0.9rem;
+		}
+
+		@media (max-width: 768px) {
+			.shortcut-buttons {
+				gap: 0.5rem;
+				justify-content: flex-start;
+				overflow-x: auto;
+				padding-bottom: 0.5rem;
+				-webkit-overflow-scrolling: touch;
+				scrollbar-width: none;
+			}
+
+			.shortcut-buttons::-webkit-scrollbar {
+				display: none;
+			}
+
+			.shortcut-button {
+				flex-shrink: 0;
+				padding: 0.5rem 1rem;
+				font-size: 0.8rem;
+			}
+
+		}
+
+		/* Wave animation */
+		.wave {
+			animation: wave 2s ease-in-out infinite;
+			display: inline-block;
+			transform-origin: 70% 70%;
+		}
+
+		@keyframes wave {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			10% {
+				transform: rotate(14deg);
+			}
+
+			20% {
+				transform: rotate(-8deg);
+			}
+
+			30% {
+				transform: rotate(14deg);
+			}
+
+			40% {
+				transform: rotate(-4deg);
+			}
+
+			50% {
+				transform: rotate(10deg);
+			}
+
+			60% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(0deg);
+			}
+		}
+
+		/* Particle animation for background */
+		.particle {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		.particle canvas {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		/* Header particle animation */
+		.header-particles {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+
+		/* Compact Family Tree Styles - Removed as per CV */
+		/* Add these new styles to your existing CSS */
+		.location-flag {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			margin: 0.5rem 0;
+			font-size: 0.85rem;
+			color: var(--gray);
+		}
+
+		.flag-image {
+			width: 20px;
+			height: 15px;
+			border-radius: 2px;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			object-fit: cover;
+		}
+
+		.member-info {
+			position: relative;
+		}
+
+		/* Adjust spacing for the new flag element */
+		.member-role {
+			margin-bottom: 0.3rem;
+		}
+
+		.member-quote {
+			margin-top: 0.5rem;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.location-flag {
+				font-size: 0.75rem;
+			}
+
+			.flag-image {
+				width: 16px;
+				height: 12px;
+			}
+		}
+
+		/* Add these new styles to your existing CSS */
+		.location-flag {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			margin: 0.5rem 0;
+			font-size: 0.85rem;
+			color: var(--gray);
+		}
+
+		.flag-image {
+			width: 20px;
+			height: 15px;
+			border-radius: 2px;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			object-fit: cover;
+		}
+
+		.member-info {
+			position: relative;
+		}
+
+		/* Make quotes always visible */
+		.member-quote.always-visible {
+			opacity: 1;
+			transform: translateY(0);
+			max-width: 220px;
+			margin: 0.5rem auto 0;
+			font-size: 0.85rem;
+			color: var(--primary);
+			font-style: italic;
+			line-height: 1.4;
+			transition: none;
+		}
+
+		/* Adjust spacing for the new layout */
+		.member-role {
+			margin-bottom: 0.3rem;
+		}
+
+		/* Remove hover effects that controlled quotes */
+		.family-member:hover .member-quote {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.location-flag {
+				font-size: 0.75rem;
+			}
+
+			.flag-image {
+				width: 16px;
+				height: 12px;
+			}
+
+			.member-quote.always-visible {
+				font-size: 0.8rem;
+				max-width: 180px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Particle animation background -->
+	<div class="particle" id="particles-js"></div>
+	<header>
+		<!-- Header particle animation -->
+		<div class="header-particles" id="header-particles"></div>
+		<div class="floating-circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</div>
+		<div class="keyword-container"></div>
+		<div class="header-overlay"></div>
+		<div class="container">
+			<div class="header-content">
+				<img src="Ahmed_pic1.JPG" alt="Profile Image" class="profile-img">
+				<h1>AHMED SULTAN MALIK</h1>
+				<p class="title">Experienced Operations & Administration Professional</p>
+				<div class="contact-info">
+					<div class="contact-item">
+						<i class="fas fa-map-marker-alt"></i>
+						<span>9th Elizabeth Court, Yew Tree Road Slough, SL1 2AH, UK</span>
+					</div>
+					<div class="contact-item">
+						<i class="fas fa-phone"></i>
+						<span>+447988615942</span>
+					</div>
+					<div class="contact-item">
+						<i class="fas fa-envelope"></i>
+						<span>malikahmedsutan@gmail.com</span>
+					</div>
+				</div>
+				<div class="social-links">
+					<!-- No specific social media links provided, keeping email and a placeholder for CV -->
+					<a href="mailto:malikahmedsutan@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+					<a href="#" title="View Resume" target="_blank" rel="noopener noreferrer">
+						<i class="fas fa-id-card-alt"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Sticky Shortcut Buttons -->
+	<div class="shortcut-buttons-container">
+		<div class="shortcut-buttons">
+			<a href="#summary" class="shortcut-button"><i class="fas fa-file-alt"></i> Summary</a>
+			<a href="#leadership" class="shortcut-button"><i class="fas fa-users-cog"></i> Leadership</a>
+			<a href="#experience" class="shortcut-button"><i class="fas fa-briefcase"></i> Experience</a>
+			<a href="#education" class="shortcut-button"><i class="fas fa-graduation-cap"></i> Education</a>
+			<a href="#certifications" class="shortcut-button"><i class="fas fa-certificate"></i> Certifications</a>
+			<a href="#key-interests" class="shortcut-button"><i class="fas fa-lightbulb"></i> Interests</a>
+			<a href="#skills" class="shortcut-button"><i class="fas fa-tools"></i> Skills</a>
+			<a href="#languages" class="shortcut-button"><i class="fas fa-language"></i> Languages</a>
+		</div>
+	</div>
+
+	<main class="container">
+		<section id="summary" class="animate-fadeIn">
+			<h2>Professional Summary</h2>
+			<div class="section-content">
+				<p class="summary">
+					“I’m a committed and proactive professional who is looking to secure a challenging position in a
+					reputable organization to expand my learning, knowledge, and skills. Secure a responsible career
+					opportunity to utilize my training fully and abilities while making a significant contribution to
+					the success of the company.”
+					<br><br>
+					A Competent professional with experience in Office Administration, and Management. Skilled in data
+					collecting from internal and external sources, compiling data, accuracy checking, and organizing
+					data. Capable of adopting new measures and understanding changed circumstances for fast adaptability
+					& ensuring implementation in the organization for its benefits. Possesses skills in maintaining
+					records & writing the minutes of the meeting and corresponding with external & internal clients. An
+					effective communicator with excellent interpersonal, analytical & relationship management skills.
+				</p>
+			</div>
+		</section>
+
+		<section id="leadership">
+			<h2>Leadership & Mentorship</h2>
+			<div class="section-content">
+				<div class="experience-item">
+					<h3 class="job-title">Team Leader</h3>
+					<p class="company"><i class="fas fa-building"></i> Choice Care Group. (UK)</p>
+					<span class="date">Aug 2024 - Present</span>
+					<ul>
+						<li>Oversee daily operations and provide guidance to care workers, ensuring adherence to care
+							plans and organizational policies.</li>
+						<li>Monitor care delivery to maintain high standards, address any issues promptly, and ensure
+							compliance with regulatory requirements.</li>
+						<li>Collaborate with residents, families, and healthcare professionals to update and implement
+							individualized care plans.</li>
+						<li>Organize and lead team meetings, conduct training sessions, and support staff in achieving
+							professional growth.</li>
+						<li>Manage shift schedules, maintain accurate documentation, and handle operational logistics,
+							including supplies and resources.</li>
+						<li>Act as the primary point of contact during emergencies, resolving conflicts and ensuring the
+							safety and well-being of residents and staff.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="experience">
+			<h2>Professional Experience</h2>
+			<div class="section-content">
+				<div class="experience-item">
+					<h3 class="job-title">Social Care Worker</h3>
+					<p class="company"><i class="fas fa-building"></i> Choice Care Group. (UK)</p>
+					<span class="date">Nov 2023 - Aug 2024</span>
+					<ul>
+						<li>Managed financial records for residents, documenting expenditures and ensuring
+							transparency.</li>
+						<li>Assisted residents with budgeting and financial decision-making as needed.</li>
+						<li>Conducted regular cleaning of communal areas and residents' living spaces.</li>
+						<li>Prepared nutritious and well-balanced meals based on residents' dietary requirements.</li>
+						<li>Provided assistance with activities of daily living, including bathing, dressing, and
+							grooming.</li>
+						<li>Fostered a respectful and dignified approach to personal care for residents.</li>
+						<li>Giving Medication to residents and Monitoring any changes or concerns related to medication
+							effects.</li>
+					</ul>
+				</div>
+
+				<div class="experience-item">
+					<h3 class="job-title">General Worker (Food Packaging, and Handling)</h3>
+					<p class="company"><i class="fas fa-building"></i> AERO Associates Services Ltd. (UK)</p>
+					<span class="date">May 2022 - Nov 2022</span>
+					<ul>
+						<li>Packaging food according to their weighing, measuring, sealing, and labeling.</li>
+						<li>Maintaining documentation of food packaging and staff attendance.</li>
+						<li>Maintaining cleanliness and hygiene in the food packaging.</li>
+						<li>Handling various materials and supplies required for the packaging process.</li>
+					</ul>
+				</div>
+
+				<div class="experience-item">
+					<h3 class="job-title">Assistant Manager</h3>
+					<p class="company"><i class="fas fa-building"></i> Malik Autos-Travel & Tours</p>
+					<span class="date">Jan 2018 - Jan 2022</span>
+					<ul>
+						<li>Purchasing of the mechanical and the electric parts of vehicles.</li>
+						<li>Arrange and manage vehicles for tours.</li>
+						<li>Schedule the time and adjust the roots of tour.</li>
+						<li>Handle the pressure of demand and delivery.</li>
+						<li>Controlling credit and ensuring debtors pay on time.</li>
+						<li>Reconciliation of direct debits and finance accounts.</li>
+						<li>Working with journals, sales and purchase ledgers and spreadsheets.</li>
+						<li>Planning and budget control.</li>
+					</ul>
+				</div>
+
+				<div class="experience-item">
+					<h3 class="job-title">Shift Manager</h3>
+					<p class="company"><i class="fas fa-building"></i> Ali Family Hospital</p>
+					<span class="date">Mar 2016 - Jan 2018</span>
+					<ul>
+						<li>Assessing patients and gaining their trust.</li>
+						<li>Planning and delivering patients' care.</li>
+						<li>Monitoring patients' progress.</li>
+						<li>Taking samples, temperatures and blood pressures.</li>
+						<li>Monitoring and administering medication.</li>
+						<li>Writing and maintaining records.</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="education">
+			<h2>Education & Credentials</h2>
+			<div class="section-content">
+				<div class="education-item">
+					<h3 class="degree">MSc Management</h3>
+					<p class="university"><i class="fas fa-university"></i> University of Hertfordshire, UK</p>
+					<span class="date">Completed</span>
+				</div>
+				<div class="education-item">
+					<h3 class="degree">MS in Supply Chain Management</h3>
+					<p class="university"><i class="fas fa-university"></i> Bahria University, Islamabad</p>
+					<span class="date">Completed</span>
+				</div>
+				<div class="education-item">
+					<h3 class="degree">BBA</h3>
+					<p class="university"><i class="fas fa-university"></i> National University Of Modern Languages,
+						Islamabad, Pakistan</p>
+					<span class="date">Completed</span>
+				</div>
+			</div>
+		</section>
+
+		<section id="certifications">
+			<h2>Certifications</h2>
+			<div class="section-content">
+				<div class="gallery-container">
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Emergency First Aid At Work (Level 3)</h3>
+							<p>SAFELINE SECURITY</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Six Sigma Yellow Belt</h3>
+							<p>6SigmaStudy</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Medication Administration</h3>
+							<p>Safe Storage, safe practice procedure, administration</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Pressure Ulcer Prevention</h3>
+							<p>Grading structure of wound and prevention</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Infection Prevention & Control</h3>
+							<p>Identifying infection, preventing and controlling infection</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Food Safety</h3>
+							<p>LEVEL 1, LEVEL 2</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Health & Safety</h3>
+							<p>Safety in workplace, Risks, Hazard, Control Measures</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>First Aid</h3>
+							<p>eLFY (CPR, AED, Treatment of burn)</p>
+						</div>
+					</div>
+					<div class="award-card">
+						<div class="award-content">
+							<h3>Care Certificate</h3>
+							<p>Communication, Fluid and Nutrition, Duty of Care</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="key-interests">
+			<h2>Key Interests</h2>
+			<div class="section-content">
+				<div class="interests">
+					<div class="interest-item"><i class="fas fa-building"></i> Office Administration</div>
+					<div class="interest-item"><i class="fas fa-chart-bar"></i> Data Management</div>
+					<div class="interest-item"><i class="fas fa-users"></i> Team Leadership</div>
+					<div class="interest-item"><i class="fas fa-money-bill-wave"></i> Financial Management</div>
+					<div class="interest-item"><i class="fas fa-cogs"></i> Operational Logistics</div>
+					<div class="interest-item"><i class="fas fa-handshake"></i> Client Relations</div>
+					<div class="interest-item"><i class="fas fa-sync-alt"></i> Process Improvement</div>
+					<div class="interest-item"><i class="fas fa-truck"></i> Supply Chain Management</div>
+					<div class="interest-item"><i class="fas fa-car"></i> Automotive Operations</div>
+					<div class="interest-item"><i class="fas fa-hospital"></i> Healthcare Management</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="skills">
+			<h2>Technical Expertise</h2>
+			<div class="section-content">
+				<div class="skills-container">
+					<div class="skill-category">
+						<h3>Core Skills</h3>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Office Administration</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="95"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Data Entry & Management</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="90"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Customer Service</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="95"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Time Management</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="90"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Strategic Planning</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="85"></div>
+							</div>
+						</div>
+					</div>
+					<div class="skill-category">
+						<h3>Software & Other</h3>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>MS-Word</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="95"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>MS-Excel</span>
+								<span>90%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="90"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>MS-PowerPoint</span>
+								<span>85%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="85"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Driving License</span>
+								<span>100%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="100"></div>
+							</div>
+						</div>
+						<div class="skill-item">
+							<div class="skill-name">
+								<span>Attention to Detail</span>
+								<span>95%</span>
+							</div>
+							<div class="skill-bar">
+								<div class="skill-progress" data-percent="95"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="languages">
+			<h2>Language Proficiency</h2>
+			<div class="section-content">
+				<div class="language-grid">
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/gb.png" srcset="https://flagcdn.com/w80/gb.png 2x"
+								alt="English" class="language-flag">
+							<h3 class="language-name">English</h3>
+							<span class="language-level">Fluent</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 100%; --color: var(--primary)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-check-circle"></i> Full professional
+								proficiency</span>
+						</div>
+					</div>
+					<div class="language-card">
+						<div class="language-header">
+							<img src="https://flagcdn.com/w40/pk.png" srcset="https://flagcdn.com/w80/pk.png 2x"
+								alt="Urdu" class="language-flag">
+							<h3 class="language-name">Urdu</h3>
+							<span class="language-level">Native</span>
+						</div>
+						<div class="language-progress">
+							<div class="progress-bar" style="--progress: 100%; --color: var(--primary)"></div>
+						</div>
+						<div class="language-meta">
+							<span class="meta-item"><i class="fas fa-check-circle"></i> Native speaker</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="footer-content">
+				<h2>Connect With Me</h2>
+				<p>I am always open to new opportunities and collaborations. Feel free to reach out!</p>
+				<div class="footer-links">
+					<a href="mailto:malikahmedsutan@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+					<a href="#" target="_blank"><i class="fas fa-file-pdf"></i> View Full CV</a>
+				</div>
+				<p class="copyright">© 2025 AHMED SULTAN MALIK. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<div class="back-to-top">
+		<i class="fas fa-arrow-up"></i>
+	</div>
+
+	<!-- Load particle.js library -->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+	<script>
+		// Initialize gallery animations for certifications
+		const awardCards = document.querySelectorAll('.award-card');
+
+		const galleryObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting) {
+					setTimeout(() => {
+						entry.target.classList.add('visible');
+					}, index * 100);
+				}
+			});
+		}, {
+			threshold: 0.1,
+			rootMargin: '0px 0px -20% 0px'
+		});
+
+		awardCards.forEach(card => {
+			galleryObserver.observe(card);
+		});
+
+		document.addEventListener('DOMContentLoaded', function () {
+			// Initialize main particles.js background
+			particlesJS('particles-js', {
+				"particles": {
+					"number": {
+						"value": 200,
+						"density": {
+							"enable": true,
+							"value_area": 800
+						}
+					},
+					"color": {
+						"value": "#2a5bd7"
+					},
+					"shape": {
+						"type": "circle",
+						"stroke": {
+							"width": 0,
+							"color": "#000000"
+						},
+						"polygon": {
+							"nb_sides": 5
+						}
+					},
+					"opacity": {
+						"value": 0.3,
+						"random": false,
+						"anim": {
+							"enable": false,
+							"speed": 1,
+							"opacity_min": 0.1,
+							"sync": false
+						}
+					},
+					"size": {
+						"value": 3,
+						"random": true,
+						"anim": {
+							"enable": false,
+							"speed": 40,
+							"size_min": 0.1,
+							"sync": false
+						}
+					},
+					"line_linked": {
+						"enable": true,
+						"distance": 150,
+						"color": "#2a5bd7",
+						"opacity": 0.2,
+						"width": 3
+					},
+					"move": {
+						"enable": true,
+						"speed": 2,
+						"direction": "none",
+						"random": false,
+						"straight": false,
+						"out_mode": "out",
+						"bounce": false,
+						"attract": {
+							"enable": false,
+							"rotateX": 600,
+							"rotateY": 1200
+						}
+					}
+				},
+				"interactivity": {
+					"detect_on": "canvas",
+					"events": {
+						"onhover": {
+							"enable": true,
+							"mode": "grab"
+						},
+						"onclick": {
+							"enable": true,
+							"mode": "push"
+						},
+						"resize": true
+					},
+					"modes": {
+						"grab": {
+							"distance": 140,
+							"line_linked": {
+								"opacity": 1
+							}
+						},
+						"bubble": {
+							"distance": 400,
+							"size": 40,
+							"duration": 2,
+							"opacity": 8,
+							"speed": 3
+						},
+						"repulse": {
+							"distance": 200,
+							"duration": 0.4
+						},
+						"push": {
+							"particles_nb": 4
+						},
+						"remove": {
+							"particles_nb": 2
+						}
+					}
+				},
+				"retina_detect": true
+			});
+
+			// Initialize header particles with different configuration
+			particlesJS('header-particles', {
+				"particles": {
+					"number": {
+						"value": 200,
+						"density": {
+							"enable": true,
+							"value_area": 500
+						}
+					},
+					"color": {
+						"value": "#ffffff"
+					},
+					"shape": {
+						"type": "circle",
+						"stroke": {
+							"width": 0,
+							"color": "#000000"
+						},
+						"polygon": {
+							"nb_sides": 5
+						}
+					},
+					"opacity": {
+						"value": 0.5,
+						"random": true,
+						"anim": {
+							"enable": false,
+							"speed": 1,
+							"opacity_min": 0.1,
+							"sync": false
+						}
+					},
+					"size": {
+						"value": 6,
+						"random": true,
+						"anim": {
+							"enable": false,
+							"speed": 40,
+							"size_min": 0.1,
+							"sync": false
+						}
+					},
+					"line_linked": {
+						"enable": true,
+						"distance": 100,
+						"color": "#ffffff",
+						"opacity": 0.2,
+						"width": 1
+					},
+					"move": {
+						"enable": true,
+						"speed": 1.5,
+						"direction": "none",
+						"random": false,
+						"straight": false,
+						"out_mode": "out",
+						"bounce": false,
+						"attract": {
+							"enable": false,
+							"rotateX": 600,
+							"rotateY": 1200
+						}
+					}
+				},
+				"interactivity": {
+					"detect_on": "canvas",
+					"events": {
+						"onhover": {
+							"enable": false,
+							"mode": "grab"
+						},
+						"onclick": {
+							"enable": false,
+							"mode": "push"
+						},
+						"resize": true
+					},
+					"modes": {
+						"grab": {
+							"distance": 140,
+							"line_linked": {
+								"opacity": 1
+							}
+						},
+						"bubble": {
+							"distance": 400,
+							"size": 40,
+							"duration": 2,
+							"opacity": 8,
+							"speed": 3
+						},
+						"repulse": {
+							"distance": 200,
+							"duration": 0.4
+						},
+						"push": {
+							"particles_nb": 4
+						},
+						"remove": {
+							"particles_nb": 2
+						}
+					}
+				},
+				"retina_detect": true
+			});
+
+			// Color scheme configuration
+			const colors = {
+				primary: '#2a5bd7',
+				secondary: '#1a3d8f',
+				accent: '#ff6b6b',
+				dark: '#1a1a2e',
+				light: '#f8f9fa',
+				background: '#f5f7ff'
+			};
+
+			// Apply color scheme to elements
+			document.documentElement.style.setProperty('--primary', colors.primary);
+			document.documentElement.style.setProperty('--secondary', colors.secondary);
+			document.documentElement.style.setProperty('--accent', colors.accent);
+			document.documentElement.style.setProperty('--dark', colors.dark);
+			document.documentElement.style.setProperty('--light', colors.light);
+			document.documentElement.style.setProperty('--light-blue', '#e6f0ff');
+			document.body.style.backgroundColor = colors.background;
+
+			// Improved intersection observer with color-aware animations
+			const animateElements = document.querySelectorAll('.experience-item, .education-item, .award-card, .skill-item, .language-card');
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						// Add 'visible' class to trigger general fade-in/slide-up animation
+						entry.target.classList.add('visible');
+
+						// For skill bars, animate the width
+						if (entry.target.classList.contains('skill-item')) {
+							const progressBar = entry.target.querySelector('.skill-progress');
+							const skillPercent = progressBar.dataset.percent; // Get from data-percent attribute
+
+							// Set the CSS variable and add the 'filled' class
+							// Delay this slightly after the skill-item itself becomes visible
+							setTimeout(() => {
+								progressBar.style.setProperty('--skill-percent', `${skillPercent}%`);
+								progressBar.classList.add('filled');
+							}, 500); // Adjust delay as needed
+						}
+						observer.unobserve(entry.target); // Stop observing once animated
+					}
+				});
+			}, {
+				threshold: 0.1,
+				rootMargin: '0px 0px -20% 0px'
+			});
+
+			animateElements.forEach(el => {
+				// No need to set initial transitions to 'none' here, CSS handles initial state
+				observer.observe(el);
+			});
+
+			// Enhanced back to top button with better contrast
+			const backToTopBtn = document.querySelector('.back-to-top');
+			backToTopBtn.style.backgroundColor = colors.accent;
+			backToTopBtn.style.color = colors.light;
+
+			window.addEventListener('scroll', () => {
+				if (window.pageYOffset > 300) {
+					backToTopBtn.style.transform = 'scale(1) translateY(0)';
+					backToTopBtn.style.opacity = '1';
+					backToTopBtn.style.boxShadow = `0 4px 12px ${colors.accent}80`;
+				} else {
+					backToTopBtn.style.transform = 'scale(0.8) translateY(20px)';
+					backToTopBtn.style.opacity = '0';
+					backToTopBtn.style.boxShadow = 'none';
+				}
+			});
+
+			backToTopBtn.addEventListener('click', () => {
+				window.scrollTo({
+					top: 0,
+					behavior: 'smooth'
+				});
+			});
+
+
+			// Floating circles with better contrast
+			const floatingCircles = document.querySelectorAll('.floating-circles li');
+			floatingCircles.forEach(circle => {
+				const randomDelay = Math.random() * 2;
+				const randomDuration = 10 + Math.random() * 8;
+				const randomSize = 8 + Math.random() * 15;
+
+				// Alternate circle colors for better visibility
+				const circleColors = [colors.primary, colors.secondary, colors.accent];
+				const randomColor = circleColors[Math.floor(Math.random() * circleColors.length)];
+
+				circle.style.animationDelay = `${randomDelay}s`;
+				circle.style.animationDuration = `${randomDuration}s`;
+				circle.style.width = `${randomSize}px`;
+				circle.style.height = `${randomSize}px`;
+				circle.style.backgroundColor = randomColor;
+				circle.style.opacity = '0.2';
+				circle.style.boxShadow = `0 0 10px ${randomColor}`;
+			});
+
+			// Keyword animation with improved text visibility
+			const keywords = [
+				{ text: 'Office Administration', icon: 'fas fa-clipboard', color: '#27ae60' }, /* Green */
+				{ text: 'Team Leadership', icon: 'fas fa-users', color: '#e67e22' }, /* Orange */
+				{ text: 'Data Management', icon: 'fas fa-database', color: '#9b59b6' }, /* Purple */
+				{ text: 'Care Management', icon: 'fas fa-hand-holding-heart', color: '#27ae60' },
+				{ text: 'Financial Records', icon: 'fas fa-file-invoice-dollar', color: '#e67e22' },
+				{ text: 'Logistics', icon: 'fas fa-truck', color: '#9b59b6' },
+				{ text: 'Customer Service', icon: 'fas fa-headset', color: '#27ae60' },
+				{ text: 'Strategic Planning', icon: 'fas fa-lightbulb', color: '#e67e22' },
+				{ text: 'Record Keeping', icon: 'fas fa-book', color: '#9b59b6' },
+				{ text: 'Communication', icon: 'fas fa-comments', color: '#27ae60' },
+				{ text: 'Problem Solving', icon: 'fas fa-puzzle-piece', color: '#e67e22' },
+				{ text: 'Operations Management', icon: 'fas fa-cogs', color: '#9b59b6' },
+			];
+
+
+			const keywordContainer = document.querySelector('.keyword-container');
+			const header = document.querySelector('header');
+			header.style.backgroundColor = colors.dark; // Dark background for contrast
+			header.style.color = colors.light; // Light text for readability
+
+			keywords.forEach((keyword, index) => {
+				const tag = document.createElement('div');
+				tag.className = 'keyword-tag';
+
+				// Set colors based on configuration
+				tag.style.backgroundColor = `${keyword.color}20`; // 20% opacity
+				tag.style.color = keyword.color;
+				tag.style.border = `1px solid ${keyword.color}`;
+				tag.style.boxShadow = `0 0 10px ${keyword.color}40`;
+
+				// Add icon if available
+				if (keyword.icon) {
+					const icon = document.createElement('i');
+					icon.className = keyword.icon;
+					icon.style.color = keyword.color;
+					tag.appendChild(icon);
+				}
+
+				// Add text with better typography
+				const text = document.createElement('span');
+				text.textContent = keyword.text;
+				text.style.fontWeight = '600';
+				text.style.textShadow = `0 1px 2px rgba(0,0,0,0.2)`;
+				tag.appendChild(text);
+
+				keywordContainer.appendChild(tag);
+
+				// Calculate dimensions
+				const tagWidth = 100 + (keyword.text.length * 6);
+				const tagHeight = 36;
+				const maxX = header.offsetWidth - tagWidth;
+				const maxY = header.offsetHeight - tagHeight;
+
+				// Physics properties
+				let posX = Math.random() * maxX;
+				let posY = Math.random() * maxY;
+				let velocityX = (Math.random() - 0.5) * 1.2;
+				let velocityY = (Math.random() - 0.5) * 1.2;
+				let rotation = (Math.random() - 0.5) * 15;
+				let rotationVelocity = (Math.random() - 0.5) * 0.2;
+				const scale = 0.9 + Math.random() * 0.2;
+
+
+				// Initial state
+				tag.style.width = `${tagWidth}px`;
+				tag.style.height = `${tagHeight}px`;
+				tag.style.left = `${posX}px`;
+				tag.style.top = `${posY}px`;
+				tag.style.opacity = '0';
+				tag.style.transform = `translateY(20px) scale(${scale * 0.7}) rotate(${rotation}deg)`;
+				tag.style.transition = 'none';
+
+				// Animate in with spring effect
+				setTimeout(() => {
+					tag.style.opacity = '1';
+					tag.style.transform = `translateY(0) scale(${scale}) rotate(${rotation}deg)`;
+					tag.style.transition = 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
+				}, index * 120);
+
+				// Physics animation with boundary checking
+				function updatePosition() {
+					posX += velocityX;
+					posY += velocityY;
+					rotation += rotationVelocity;
+
+					// Boundary collision with damping
+					if (posX > maxX || posX < 0) {
+						velocityX *= -0.85;
+						rotationVelocity = (Math.random() - 0.5) * 0.3;
+						posX = Math.max(0, Math.min(posX, maxX));
+					}
+
+					if (posY > maxY || posY < 0) {
+						velocityY *= -0.85;
+						rotationVelocity = (Math.random() - 0.5) * 0.3;
+						posY = Math.max(0, Math.min(posY, maxY));
+					}
+
+					// Apply transformation
+					tag.style.left = `${posX}px`;
+					tag.style.top = `${posY}px`;
+					tag.style.transform = `translateY(0) scale(${scale}) rotate(${rotation}deg)`;
+
+					requestAnimationFrame(updatePosition);
+				}
+
+				// Start physics animation after appearance
+				setTimeout(updatePosition, index * 120 + 500);
+			});
+
+			// Improve text visibility in all sections
+			document.querySelectorAll('section').forEach(section => {
+				section.style.color = colors.dark;
+				section.style.backgroundColor = colors.background;
+			});
+
+			// Highlight active section in shortcut buttons
+			const sections = document.querySelectorAll('section');
+			const navLinks = document.querySelectorAll('.shortcut-button');
+
+			window.addEventListener('scroll', () => {
+				let current = '';
+
+				sections.forEach(section => {
+					const sectionTop = section.offsetTop;
+					const sectionHeight = section.clientHeight;
+					if (pageYOffset >= (sectionTop - 150)) {
+						current = section.getAttribute('id');
+					}
+				});
+
+				navLinks.forEach(link => {
+					link.classList.remove('active');
+					if (link.getAttribute('href') === `#${current}`) {
+						link.classList.add('active');
+					}
+				});
+			});
+
+			// Smooth scrolling for shortcut buttons
+			document.querySelectorAll('.shortcut-button').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+
+					const targetId = this.getAttribute('href');
+					const targetElement = document.querySelector(targetId);
+
+					window.scrollTo({
+						top: targetElement.offsetTop - 100,
+						behavior: 'smooth'
+					});
+				});
+			});
+
+			// Add wave animation to hand emoji in footer
+			const waveEmoji = document.createElement('span');
+			waveEmoji.className = 'wave';
+			waveEmoji.innerHTML = '👋';
+			const connectHeading = document.querySelector('footer h2');
+			connectHeading.insertBefore(waveEmoji, connectHeading.firstChild);
+		});
+	</script>
+</body>
+
+</html>
