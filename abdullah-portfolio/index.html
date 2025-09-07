@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik Abdullah Sultan | Explorer, Creator, Dreamer</title>
+
+    <!-- Google Fonts: Orbitron for headers, Roboto for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* --- CSS STYLES --- */
+
+        :root {
+            --bg-color: #0a041a;
+            --primary-color: #00f7ff;
+            /* Bright Cyan/Blue */
+            --accent-green: #00ff8c;
+            --accent-orange: #ff9a00;
+            --text-color: #e0e0e0;
+            --card-bg: rgba(20, 15, 40, 0.7);
+            --border-color: rgba(0, 247, 255, 0.3);
+            --glow-shadow: 0 0 15px rgba(0, 247, 255, 0.5), 0 0 5px rgba(0, 247, 255, 0.8);
+        }
+
+        /* --- Basic Reset & Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Animated Background --- */
+        #star-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            background-position: 0 0;
+        }
+
+        .stars.s1 {
+            background-image: radial-gradient(1px 1px at 20px 30px, #eee, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0));
+            background-size: 200px 200px;
+            animation: moveStars 120s linear infinite;
+        }
+
+        .stars.s2 {
+            background-image: radial-gradient(1px 1px at 50px 100px, #fff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 120px 80px, #ddd, rgba(0, 0, 0, 0));
+            background-size: 300px 300px;
+            animation: moveStars 90s linear infinite;
+        }
+
+        .stars.s3 {
+            background-image: radial-gradient(2px 2px at 10px 150px, #fff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+            background-size: 450px 450px;
+            animation: moveStars 60s linear infinite;
+        }
+
+        @keyframes moveStars {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 1000px 500px;
+            }
+        }
+
+        /* --- Earth Animation --- */
+        #earth-animation {
+            position: fixed;
+            top: 10%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            z-index: -1;
+            /* Behind content and astronauts */
+            pointer-events: none;
+            /* Make it non-interactive */
+            animation: rotateEarth 90s linear infinite;
+        }
+
+        #earth-animation img {
+            width: 100%;
+        }
+
+        @keyframes rotateEarth {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* --- Floating Astronauts --- */
+        .astronaut {
+            position: fixed;
+            z-index: 0;
+            /* Behind content, above stars */
+            pointer-events: none;
+            /* Make them non-interactive */
+        }
+
+        .astronaut img {
+            width: 100%;
+            /* The container div will control the size */
+        }
+
+        /* Astronaut 1: Bottom right, floating gently */
+        #astro1 {
+            bottom: 40px;
+            right: 30px;
+            width: 100px;
+            animation: floatGently 7s ease-in-out infinite;
+        }
+
+        @keyframes floatGently {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-25px) rotate(5deg);
+            }
+        }
+
+        /* Astronaut 2: Top left, drifting across screen */
+        #astro2 {
+            top: 10%;
+            left: -120px;
+            /* Start off-screen */
+            width: 70px;
+            animation: driftAcross 35s linear infinite;
+            animation-delay: 3s;
+            opacity: 0.8;
+        }
+
+        @keyframes driftAcross {
+            from {
+                transform: translateX(0vw) translateY(0vh) rotate(15deg);
+            }
+
+            to {
+                transform: translateX(110vw) translateY(10vh) rotate(-15deg);
+            }
+        }
+
+        /* Astronaut 3: Small and distant, slow drift */
+        #astro3 {
+            top: 30%;
+            right: 15%;
+            width: 40px;
+            opacity: 0.4;
+            /* Make it look distant */
+            animation: slowDrift 50s linear infinite alternate;
+        }
+
+        @keyframes slowDrift {
+            from {
+                transform: translate(0, 0) rotate(-20deg);
+            }
+
+            to {
+                transform: translate(50px, -70px) rotate(20deg);
+            }
+        }
+
+        /* --- ADDED ASTRONAUTS --- */
+
+        /* Astronaut 4: Very slow, distant, different drift */
+        #astro4 {
+            top: 50%;
+            left: 10%;
+            width: 35px;
+            opacity: 0.3;
+            animation: slowDrift 80s linear infinite alternate-reverse;
+            animation-delay: -10s;
+        }
+
+        /* Astronaut 5: Medium speed drifter from the bottom */
+        #astro5 {
+            top: 90%;
+            left: -100px;
+            width: 60px;
+            opacity: 0.7;
+            animation: driftAcross 45s linear infinite;
+            animation-delay: 15s;
+        }
+
+        /* Astronaut 6: Gentle floater on the left side */
+        #astro6 {
+            top: 20%;
+            left: 5%;
+            width: 50px;
+            opacity: 0.6;
+            animation: floatGently 11s ease-in-out infinite;
+            animation-delay: -3s;
+        }
+
+        /* Astronaut 7: Fast, small drifter, appears close then far */
+        #astro7 {
+            top: 5%;
+            left: -80px;
+            width: 80px;
+            opacity: 0.9;
+            animation: driftAcross 25s linear infinite;
+            animation-delay: 8s;
+        }
+
+        /* Astronaut 8: Very distant, barely moving */
+        #astro8 {
+            top: 70%;
+            right: 25%;
+            width: 25px;
+            opacity: 0.2;
+            animation: slowDrift 120s linear infinite alternate;
+            animation-delay: -30s;
+        }
+
+
+        /* --- Main Content Container --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Typography --- */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            text-shadow: none;
+        }
+
+        a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--accent-orange);
+        }
+
+        /* --- Photo Placeholder Style --- */
+        .photo-placeholder {
+            background-color: #1a1533;
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* MODIFIED: Ensures the image fits without cropping */
+            border-radius: 6px;
+            /* Match the inner radius slightly */
+        }
+
+        /* --- Headshot Image Style --- */
+        .headshot-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* This will ensure the image covers the area without distortion */
+            border-radius: 50%;
+            /* This makes the image inside the div circular */
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .headshot-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px auto;
+            border: 4px solid var(--primary-color);
+            box-shadow: var(--glow-shadow);
+            padding: 0;
+            /* Remove padding to let the image fill the container */
+            background-color: var(--bg-color);
+            /* Fallback color */
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #ccc;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Passions & Projects Section --- */
+        .passions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            /* Single column on mobile */
+            gap: 30px;
+        }
+
+        .passion-card {
+            border-left: 4px solid var(--accent-green);
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .passion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 140, 0.4);
+        }
+
+        .passion-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .passion-header .icon {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+        }
+
+        .passion-card ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .passion-card li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .passion-card li::before {
+            content: '>';
+            font-family: 'Orbitron', sans-serif;
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .project-photo {
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+            border-radius: 8px;
+            padding: 0;
+            /* Remove padding for image to fit perfectly */
+            border: 2px solid var(--border-color);
+            /* Kept a solid border for images */
+        }
+
+        /* --- My Journey Section (Timeline) --- */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -49.5px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-orange);
+            margin-bottom: 5px;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .headshot-placeholder {
+                width: 150px;
+                height: 150px;
+            }
+
+            /* Make Earth smaller on mobile */
+            #earth-animation {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* Main astronaut smaller on mobile */
+            #astro1 {
+                width: 70px;
+            }
+
+            /* Hide some extra astronauts on small screens to reduce clutter */
+            #astro2,
+            #astro3,
+            #astro5,
+            #astro7,
+            #astro8 {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .passions-grid {
+                /* Two columns on tablets and larger */
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Animated Background DIVs -->
+    <div id="star-animation">
+        <div class="stars s1"></div>
+        <div class="stars s2"></div>
+        <div class="stars s3"></div>
+    </div>
+
+    <!-- Earth GIF Animation -->
+    <div id="earth-animation">
+        <img src="earth.gif" alt="Spinning Earth">
+    </div>
+
+    <!-- Floating Astronaut Images -->
+    <div class="astronaut" id="astro1"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro2"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro3"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro4"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro5"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro6"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro7"><img src="astronaut.png" alt="Floating Astronaut"></div>
+    <div class="astronaut" id="astro8"><img src="astronaut.png" alt="Floating Astronaut"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Header Section -->
+        <header>
+            <div class="headshot-placeholder">
+                <img src="Portfolio_PIC.png" alt="Headshot of Malik Abdullah Sultan">
+            </div>
+            <h1>Malik Abdullah Sultan: Explorer, Creator, Dreamer!</h1>
+            <p class="tagline">A curious mind from Porto to Hong Kong, always ready to learn and build.</p>
+        </header>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
+            <p>Hello! I'm Malik Abdullah Sultan, a 10-year-old student currently in Primary 6 at Man Kiu Association
+                Primary School in Hong Kong. My journey has been quite an adventure!</p>
+            <p>I was born in the beautiful city of Porto, Portugal, where I spent my first two years of school.
+                Then, I
+                moved to Pakistan for another two years, experiencing new cultures and learning styles. Now, I'm
+                loving
+                life and learning in the bustling city of Hong Kong!</p>
+            <p>My mind is always buzzing with new ideas and questions. I'm fascinated by how things work, from the
+                intricacies of numbers to the logic of code, and the beauty of a canvas. I love to learn, create,
+                and
+                explore!</p>
+        </section>
+
+        <!-- Passions & Projects Section -->
+        <section id="passions">
+            <h2><i class="fas fa-rocket"></i> My Passions & Projects</h2>
+            <p>Here's a peek into what makes me tick!</p>
+            <br>
+            <div class="passions-grid">
+
+                <!-- Math Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-calculator icon"></i>
+                        <h3>Math: My Favorite Puzzle!</h3>
+                    </div>
+                    <p>Numbers are like puzzles to me, and I love figuring them out! Math makes my brain happy, and
+                        I
+                        enjoy the challenge of solving complex problems.</p>
+                    <ul>
+                        <li><b>Proud Achievement:</b> I've won several awards in Planetii Math competitions, proving
+                            that hard work (and a lot of fun) really pays off!</li>
+                    </ul>
+                    <div class="photo-placeholder project-photo"><img src="MATH.jpg" alt="Malik with his Math Award">
+                    </div>
+                </div>
+
+                <!-- Science & Innovation Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-lightbulb icon"></i>
+                        <h3>Science & Innovation: Building the Future</h3>
+                    </div>
+                    <p>I love to discover how the world works and how we can make cool things! My mind is always
+                        asking
+                        "why?" and "how can I build that?".</p>
+                    <ul>
+                        <li><b>My Cable Car Project:</b> I engineered a working cable car using wood pieces,
+                            batteries,
+                            a motor, and strings! It was amazing to see my idea come to life and move on its own.
+                        </li>
+                        <li><b>Future Explorer:</b> I'm super curious about Artificial Intelligence (AI), especially
+                            how
+                            Large Language Models (LLMs) work.</li>
+                    </ul>
+                    <div class="photo-placeholder project-photo"><img src="cablecar.png"
+                            alt="Working cable car project"></div>
+                </div>
+
+                <!-- Art & Creativity Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-palette icon"></i>
+                        <h3>Art & Creativity: My Colorful Canvas</h3>
+                    </div>
+                    <p>When I'm not solving equations or writing code, I love to express myself through art. It's a
+                        wonderful way to tell stories and share my imagination.</p>
+                    <ul>
+                        <li><b>Exhibition Highlight:</b> One of my paintings was selected to be displayed in the
+                            prestigious Man Kiu Association Primary School Art Exhibition!</li>
+                    </ul>
+                    <div class="photo-placeholder project-photo"><img src="Gallery.png" alt="School Gallery"></div>
+                </div>
+
+                <!-- Coding & Game Dev Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-gamepad icon"></i>
+                        <h3>Coding & Game Development: Making Worlds Come Alive!</h3>
+                    </div>
+                    <p>Coding is like magic! I love turning my ideas into interactive games and stories. It's so
+                        much
+                        fun to bring characters and challenges to life.</p>
+                    <ul>
+                        <li><b>Scratch Expert:</b> I'm an expert in Scratch coding and have developed several
+                            exciting
+                            games.</li>
+                        <li><b>Popular Game Creator:</b> One of my games is even getting popular among my friends
+                            and
+                            online! I love seeing people enjoy what I've created.</li>
+                        <li><a href="#" title="Link to Scratch Profile">Check out my games on Scratch!</a></li>
+                    </ul>
+                    <div class="photo-placeholder project-photo"><img src="game.png" alt="Screenshot of a Scratch game">
+                    </div>
+                </div>
+
+                <!-- Swimming Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-swimmer icon"></i>
+                        <h3>Swimming: My Splashy Escape</h3>
+                    </div>
+                    <p>Beyond the screen and the canvas, I love to dive into the water! Swimming is a great way to
+                        stay
+                        active, clear my mind, and have fun. It helps me feel strong and refreshed.</p>
+                    <div class="photo-placeholder project-photo"><img src="swiming.png" alt="Malik swimming in a pool">
+                    </div>
+                </div>
+
+                <!-- Public Speaking Card -->
+                <div class="passion-card">
+                    <div class="passion-header">
+                        <i class="fas fa-microphone-alt icon"></i>
+                        <h3>Public Speaking & Hosting</h3>
+                    </div>
+                    <p>I love being on stage and connecting with an audience! Whether I'm hosting a school event or
+                        presenting a project, I enjoy sharing my ideas and making events fun and engaging for everyone.
+                    </p>
+                    <ul>
+                        <li><b>Event Host:</b> I have experience hosting special events.</li>
+                        <li><b>Confident Speaker:</b> I am comfortable speaking in front of large groups and enjoy
+                            making my presentations exciting.</li>
+                    </ul>
+                    <div class="photo-placeholder project-photo"><img src="Hosting.png"
+                            alt="Malik hosting a school event"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- My Journey So Far Section -->
+        <section id="journey">
+            <h2><i class="fas fa-map-marked-alt"></i> My Journey So Far</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Born in Porto, Portugal</h3>
+                    <p>Started my education there (2 years).</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Studied in Pakistan</h3>
+                    <p>Continued my schooling and made new friends (2 years).</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Currently in Hong Kong</h3>
+                    <p>Primary 6 at Man Kiu Association Primary School, learning new things every day!</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
