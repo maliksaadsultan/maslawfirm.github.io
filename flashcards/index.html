@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🀄 Mandarin & Cantonese Flashcards</title>
+    <style>
+        :root {
+            --red: #c0392b;
+            --gold: #f39c12;
+            --dark: #1a1a2e;
+            --mid: #16213e;
+            --card-w: 320px;
+            --card-h: 240px;
+            --radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .45);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--dark);
+            color: #eee;
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: linear-gradient(135deg, var(--red), #8e1010);
+            padding: 24px 20px 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .5);
+        }
+
+        header h1 {
+            font-size: 1.9rem;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        header p {
+            margin-top: 5px;
+            color: #ffd;
+            font-size: .9rem;
+        }
+
+        /* ── CONTROLS ── */
+        #controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            background: var(--mid);
+            border-bottom: 2px solid #2a2a3a;
+        }
+
+        #search {
+            padding: 10px 18px;
+            border-radius: 30px;
+            border: 2px solid #444;
+            background: #222;
+            color: #eee;
+            font-size: .95rem;
+            width: 280px;
+            outline: none;
+            transition: border .2s;
+        }
+
+        #search:focus {
+            border-color: var(--gold);
+        }
+
+        #search::placeholder {
+            color: #666;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: .88rem;
+            font-weight: 700;
+            letter-spacing: .5px;
+            transition: all .2s;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #111;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border-color: #555;
+            color: #bbb;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .4);
+        }
+
+        /* ── PROGRESS ── */
+        #progress-wrap {
+            background: #12122a;
+            padding: 10px 20px 8px;
+            text-align: center;
+        }
+
+        #progress-label {
+            font-size: .82rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        #progress-bar-bg {
+            background: #2a2a3a;
+            border-radius: 10px;
+            height: 9px;
+            max-width: 640px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--red));
+            border-radius: 10px;
+            transition: width .4s;
+            width: 0%;
+        }
+
+        /* ── SECTION TITLE ── */
+        #section-title {
+            text-align: center;
+            padding: 12px;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: #0f0f22;
+            border-bottom: 1px solid #222;
+        }
+
+        /* ── CARD GRID ── */
+        #grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            justify-content: center;
+            padding: 24px 16px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ── FLASHCARD ── */
+        .card-wrap {
+            width: var(--card-w);
+            height: var(--card-h);
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+            border-radius: var(--radius);
+        }
+
+        .card-wrap.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            overflow: hidden;
+        }
+
+        /* FRONT */
+        .card-front {
+            background: linear-gradient(145deg, #1e2a4a, #2d1b3d);
+            border: 2px solid #3a3a6a;
+        }
+
+        .card-front::before {
+            content: '🀄';
+            position: absolute;
+            font-size: 6rem;
+            opacity: .05;
+            right: -8px;
+            bottom: -8px;
+            pointer-events: none;
+        }
+
+        .card-day {
+            font-size: .7rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .card-english {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            line-height: 1.5;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-hint {
+            font-size: .7rem;
+            color: #555;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        .card-done-badge {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: .95rem;
+        }
+
+        /* ── SPEAKER BUTTON ── */
+        .speak-btn {
+            background: none;
+            border: 1.5px solid #555;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            color: #aaa;
+            transition: all .2s;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .speak-btn:hover {
+            background: rgba(255, 255, 255, .12);
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: scale(1.15);
+        }
+
+        .speak-btn.speaking {
+            border-color: #2ecc71;
+            color: #2ecc71;
+            animation: pulse .7s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, .4);
+            }
+
+            to {
+                box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
+            }
+        }
+
+        /* Front speaker row */
+        .front-speaker-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .front-speak-label {
+            font-size: .72rem;
+            color: #666;
+        }
+
+        /* BACK */
+        .card-back {
+            background: linear-gradient(145deg, #1a0a00, #2a1200);
+            border: 2px solid #5a2a00;
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            padding: 10px 14px;
+            overflow-y: auto;
+            gap: 0;
+        }
+
+        .lang-block {
+            width: 100%;
+            padding: 5px 0;
+            border-bottom: 1px solid #3a1a00;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-block:last-child {
+            border-bottom: none;
+        }
+
+        .lang-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lang-label {
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .lang-label.man {
+            color: #f39c12;
+        }
+
+        .lang-label.can {
+            color: #e74c3c;
+        }
+
+        .lang-label.pin {
+            color: #7fb3f5;
+        }
+
+        .lang-label.jyu {
+            color: #7fd99a;
+        }
+
+        .lang-char {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .lang-roman {
+            font-size: .82rem;
+            color: #ccc;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        /* ── STATS BAR ── */
+        #stats {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(8, 8, 20, .96);
+            border-top: 2px solid #2a2a3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            padding: 9px 20px;
+            font-size: .82rem;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat span {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* ── NO RESULTS ── */
+        #no-results {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: #555;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        /* ── TTS WARNING ── */
+        #tts-warning {
+            display: none;
+            background: #2a1a00;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-align: center;
+            padding: 8px 20px;
+            font-size: .82rem;
+        }
+
+        /* ── CARD IN ANIMATION ── */
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card-wrap {
+            animation: cardIn .28s ease both;
+        }
+
+        /* scrollbar */
+        .card-back::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .card-back::-webkit-scrollbar-thumb {
+            background: #5a2a00;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --card-w: 290px;
+                --card-h: 230px;
+            }
+
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            #search {
+                width: 230px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🀄 Mandarin & Cantonese Flashcards</h1>
+        <p>6 Months · 24 Weeks · 168 Cards · Click to flip · 🔊 to listen</p>
+    </header>
+
+    <div id="tts-warning">
+        ⚠️ Your browser may not support all voices. For best results use Chrome or Edge on desktop.
+    </div>
+
+    <div id="controls">
+        <input id="search" type="text" placeholder="🔍 Search English, Chinese, Pinyin…" oninput="doSearch()" />
+        <button class="btn btn-gold" onclick="showAll()">📋 Show All</button>
+        <button class="btn btn-ghost" onclick="shuffleCards()">🔀 Shuffle</button>
+        <button class="btn btn-ghost" onclick="resetProgress()">↺ Reset Progress</button>
+    </div>
+
+    <div id="progress-wrap">
+        <div id="progress-label">Studied: 0 / 168 cards (0%)</div>
+        <div id="progress-bar-bg">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div id="section-title">📋 All Cards · 168 cards</div>
+    <div id="grid"></div>
+    <div id="no-results">No cards match your search.</div>
+
+    <div id="stats">
+        <div class="stat"><span id="s-total">168</span>Total</div>
+        <div class="stat"><span id="s-seen">0</span>Studied</div>
+        <div class="stat"><span id="s-left">168</span>Remaining</div>
+        <div class="stat"><span id="s-pct">0%</span>Progress</div>
+    </div>
+
+    <script>
+        // ── TTS ENGINE ────────────────────────────────────────────────────────────────
+        const synth = window.speechSynthesis;
+        let currentSpeakBtn = null;
+
+        function getVoice(lang) {
+            const voices = synth.getVoices();
+            // Try exact match first, then prefix
+            return voices.find(v => v.lang === lang)
+                || voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+        }
+
+        function speak(text, lang, btn) {
+            if (!synth) return;
+            synth.cancel();
+
+            // Un-highlight previous button
+            if (currentSpeakBtn && currentSpeakBtn !== btn) {
+                currentSpeakBtn.classList.remove('speaking');
+                currentSpeakBtn.textContent = '🔊';
+            }
+
+            const utt = new SpeechSynthesisUtterance(text);
+            utt.lang = lang;
+            const voice = getVoice(lang);
+            if (voice) utt.voice = voice;
+
+            // Rate adjustments per language
+            if (lang === 'zh-CN') utt.rate = 0.85;
+            else if (lang === 'zh-HK') utt.rate = 0.85;
+            else utt.rate = 0.95;
+
+            btn.classList.add('speaking');
+            btn.textContent = '🔉';
+            currentSpeakBtn = btn;
+
+            utt.onend = () => {
+                btn.classList.remove('speaking');
+                btn.textContent = '🔊';
+                currentSpeakBtn = null;
+            };
+            utt.onerror = () => {
+                btn.classList.remove('speaking');
+                btn.textContent = '🔊';
+                currentSpeakBtn = null;
+            };
+
+            synth.speak(utt);
+        }
+
+        // Voices may load async
+        if (synth) {
+            synth.onvoiceschanged = () => synth.getVoices();
+            // Check if zh voices are available after a short delay
+            setTimeout(() => {
+                const voices = synth.getVoices();
+                const hasZH = voices.some(v => v.lang.startsWith('zh'));
+                if (!hasZH) {
+                    document.getElementById('tts-warning').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        // ── DATA ──────────────────────────────────────────────────────────────────────
+        const ALL_CARDS = [
+            // WEEK 1
+            { day: "01A", wk: 1, en: "Hello.", man: "你好。", mpin: "Nǐ hǎo.", can: "你好。", jyu: "nei5 hou2." },
+            { day: "01B", wk: 1, en: "Thank you.", man: "谢谢。", mpin: "Xièxie.", can: "多謝。", jyu: "do1 ze6." },
+            { day: "02A", wk: 1, en: "Good morning.", man: "早上好。", mpin: "Zǎoshang hǎo.", can: "早晨。", jyu: "zou2 san4." },
+            { day: "02B", wk: 1, en: "Good night.", man: "晚安。", mpin: "Wǎn'ān.", can: "晚安。", jyu: "maan5 on1." },
+            { day: "03A", wk: 1, en: "My name is (Name).", man: "我叫（名字）。", mpin: "Wǒ jiào (míngzi).", can: "我叫（名）。", jyu: "ngo5 giu3 (meng2)." },
+            { day: "03B", wk: 1, en: "What's your name?", man: "你叫什么名字？", mpin: "Nǐ jiào shénme míngzi?", can: "你叫咩名？", jyu: "nei5 giu3 me1 meng2?" },
+            { day: "04A", wk: 1, en: "Nice to meet you.", man: "很高兴认识你。", mpin: "Hěn gāoxìng rènshi nǐ.", can: "好高興認識你。", jyu: "hou2 gou1 hing3 jing6 sik1 nei5." },
+            { day: "04B", wk: 1, en: "See you tomorrow.", man: "明天见。", mpin: "Míngtiān jiàn.", can: "聽日見。", jyu: "ting1 jat6 gin3." },
+            { day: "05A", wk: 1, en: "How are you?", man: "你好吗？", mpin: "Nǐ hǎo ma?", can: "你好嗎？", jyu: "nei5 hou2 maa3?" },
+            { day: "05B", wk: 1, en: "I'm fine.", man: "我很好。", mpin: "Wǒ hěn hǎo.", can: "我幾好。", jyu: "ngo5 gei2 hou2." },
+            { day: "06A", wk: 1, en: "Excuse me.", man: "不好意思。", mpin: "Bù hǎoyìsi.", can: "唔好意思。", jyu: "m4 hou2 ji3 si1." },
+            { day: "06B", wk: 1, en: "Sorry.", man: "对不起。", mpin: "Duìbuqǐ.", can: "對唔住。", jyu: "deoi3 m4 zyu6." },
+            { day: "07A", wk: 1, en: "You're welcome.", man: "不客气。", mpin: "Bú kèqi.", can: "唔使客氣。", jyu: "m4 sai2 haak3 hei3." },
+            { day: "07B", wk: 1, en: "No problem.", man: "没关系。", mpin: "Méi guānxi.", can: "冇問題。", jyu: "mou5 man6 tai4." },
+            // WEEK 2
+            { day: "08A", wk: 2, en: "Yes.", man: "是。", mpin: "Shì.", can: "係。", jyu: "hai6." },
+            { day: "08B", wk: 2, en: "No.", man: "不是。", mpin: "Bú shì.", can: "唔係。", jyu: "m4 hai6." },
+            { day: "09A", wk: 2, en: "I understand.", man: "我明白。", mpin: "Wǒ míngbai.", can: "我明白。", jyu: "ngo5 ming4 baak6." },
+            { day: "09B", wk: 2, en: "I don't understand.", man: "我不明白。", mpin: "Wǒ bù míngbai.", can: "我唔明白。", jyu: "ngo5 m4 ming4 baak6." },
+            { day: "10A", wk: 2, en: "Please speak slowly.", man: "请说慢一点。", mpin: "Qǐng shuō màn yìdiǎn.", can: "請講慢啲。", jyu: "cing2 gong2 maan6 di1." },
+            { day: "10B", wk: 2, en: "Please say it again.", man: "请再说一遍。", mpin: "Qǐng zài shuō yí biàn.", can: "請再講一次。", jyu: "cing2 zoi3 gong2 jat1 ci3." },
+            { day: "11A", wk: 2, en: "What does this mean?", man: "这是什么意思？", mpin: "Zhè shì shénme yìsi?", can: "呢個係乜嘢意思？", jyu: "ni1 go3 hai6 mat1 je5 ji3 si1?" },
+            { day: "11B", wk: 2, en: "How do you say this in Chinese?", man: "这个用中文怎么说？", mpin: "Zhège yòng Zhōngwén zěnme shuō?", can: "呢個用中文點講？", jyu: "ni1 go3 jung6 zung1 man2 dim2 gong2?" },
+            { day: "12A", wk: 2, en: "Can you help me?", man: "你能帮我吗？", mpin: "Nǐ néng bāng wǒ ma?", can: "你可唔可以幫我呀？", jyu: "nei5 ho2 m4 ho2 ji5 bong1 ngo5 aa3?" },
+            { day: "12B", wk: 2, en: "Wait a moment.", man: "等一下。", mpin: "Děng yíxià.", can: "等陣先。", jyu: "dang2 zan6 sin1." },
+            { day: "13A", wk: 2, en: "I speak a little Mandarin.", man: "我会说一点普通话。", mpin: "Wǒ huì shuō yìdiǎn Pǔtōnghuà.", can: "我識講少少普通話。", jyu: "ngo5 sik1 gong2 siu2 siu2 pou2 tung1 waa2." },
+            { day: "13B", wk: 2, en: "I speak a little Cantonese.", man: "我会说一点粤语。", mpin: "Wǒ huì shuō yìdiǎn Yuèyǔ.", can: "我識講少少廣東話。", jyu: "ngo5 sik1 gong2 siu2 siu2 gwong2 dung1 waa2." },
+            { day: "14A", wk: 2, en: "I like this language.", man: "我喜欢这门语言。", mpin: "Wǒ xǐhuan zhè mén yǔyán.", can: "我鍾意呢門語言。", jyu: "ngo5 zung1 ji3 ni1 mun4 jyu5 jin4." },
+            { day: "14B", wk: 2, en: "I learn every day.", man: "我每天都学习。", mpin: "Wǒ měitiān dōu xuéxí.", can: "我每日都學。", jyu: "ngo5 mui5 jat6 dou1 hok6." },
+            // WEEK 3
+            { day: "15A", wk: 3, en: "Where are you from?", man: "你从哪里来？", mpin: "Nǐ cóng nǎlǐ lái?", can: "你係邊度人？", jyu: "nei5 hai6 bin1 dou6 jan4?" },
+            { day: "15B", wk: 3, en: "I am from the United States.", man: "我来自美国。", mpin: "Wǒ láizì Měiguó.", can: "我嚟自美國。", jyu: "ngo5 lai4 zi6 mei5 gwok3." },
+            { day: "16A", wk: 3, en: "I live in this city.", man: "我住在这个城市。", mpin: "Wǒ zhù zài zhège chéngshì.", can: "我住喺呢個城市。", jyu: "ngo5 zyu6 hai2 ni1 go3 sing4 si5." },
+            { day: "16B", wk: 3, en: "Where do you live?", man: "你住在哪里？", mpin: "Nǐ zhù zài nǎlǐ?", can: "你住喺邊度呀？", jyu: "nei5 zyu6 hai2 bin1 dou6 aa3?" },
+            { day: "17A", wk: 3, en: "Do you speak English?", man: "你会说英语吗？", mpin: "Nǐ huì shuō Yīngyǔ ma?", can: "你識唔識講英文呀？", jyu: "nei5 sik1 m4 sik1 gong2 jing1 man2 aa3?" },
+            { day: "17B", wk: 3, en: "I only speak a little bit.", man: "我只会说一点点。", mpin: "Wǒ zhǐ huì shuō yìdiǎndiǎn.", can: "我淨係識講少少。", jyu: "ngo5 zing6 hai6 sik1 gong2 siu2 siu2." },
+            { day: "18A", wk: 3, en: "What is your job?", man: "你做什么工作？", mpin: "Nǐ zuò shénme gōngzuò?", can: "你做咩職業呀？", jyu: "nei5 zou6 me1 zik1 jip6 aa3?" },
+            { day: "18B", wk: 3, en: "I am a student.", man: "我是学生。", mpin: "Wǒ shì xuésheng.", can: "我係學生。", jyu: "ngo5 hai6 hok6 saang1." },
+            { day: "19A", wk: 3, en: "I am a teacher.", man: "我是老师。", mpin: "Wǒ shì lǎoshī.", can: "我係老師。", jyu: "ngo5 hai6 lou5 si1." },
+            { day: "19B", wk: 3, en: "I work in an office.", man: "我在办公室工作。", mpin: "Wǒ zài bàngōngshì gōngzuò.", can: "我喺辦公室做嘢。", jyu: "ngo5 hai2 baan6 gung1 sat1 zou6 je5." },
+            { day: "20A", wk: 3, en: "I am a doctor.", man: "我是医生。", mpin: "Wǒ shì yīshēng.", can: "我係醫生。", jyu: "ngo5 hai6 ji1 sang1." },
+            { day: "20B", wk: 3, en: "I am an engineer.", man: "我是工程师。", mpin: "Wǒ shì gōngchéngshī.", can: "我係工程師。", jyu: "ngo5 hai6 gung1 cing4 si1." },
+            { day: "21A", wk: 3, en: "I work today.", man: "我今天上班。", mpin: "Wǒ jīntiān shàngbān.", can: "我今日返工。", jyu: "ngo5 gam1 jat6 faan1 gung1." },
+            { day: "21B", wk: 3, en: "I am free tomorrow.", man: "我明天有空。", mpin: "Wǒ míngtiān yǒu kòng.", can: "我聽日得閒。", jyu: "ngo5 ting1 jat6 dak1 haan4." },
+            // WEEK 4
+            { day: "22A", wk: 4, en: "One, two, three.", man: "一，二，三。", mpin: "Yī, èr, sān.", can: "一，二，三。", jyu: "jat1, ji6, saam1." },
+            { day: "22B", wk: 4, en: "Four, five, six.", man: "四，五，六。", mpin: "Sì, wǔ, liù.", can: "四，五，六。", jyu: "sei3, ng5, luk6." },
+            { day: "23A", wk: 4, en: "Seven, eight, nine.", man: "七，八，九。", mpin: "Qī, bā, jiǔ.", can: "七，八，九。", jyu: "cat1, baat3, gau2." },
+            { day: "23B", wk: 4, en: "Ten, one hundred, one thousand.", man: "十，一百，一千。", mpin: "Shí, yìbǎi, yìqiān.", can: "十，一百，一千。", jyu: "sap6, jat1 baak3, jat1 cin1." },
+            { day: "24A", wk: 4, en: "What time is it?", man: "现在几点了？", mpin: "Xiànzài jǐ diǎn le?", can: "而家幾點呀？", jyu: "ji4 gaa1 gei2 dim2 aa3?" },
+            { day: "24B", wk: 4, en: "It's eight o'clock.", man: "现在八点。", mpin: "Xiànzài bā diǎn.", can: "而家八點。", jyu: "ji4 gaa1 baat3 dim2." },
+            { day: "25A", wk: 4, en: "It's half past two.", man: "现在两点半。", mpin: "Xiànzài liǎng diǎn bàn.", can: "而家兩點半。", jyu: "ji4 gaa1 loeng5 dim2 bun3." },
+            { day: "25B", wk: 4, en: "It's quarter past three.", man: "现在三点一刻。", mpin: "Xiànzài sān diǎn yí kè.", can: "而家三點一個字。", jyu: "ji4 gaa1 saam1 dim2 jat1 go3 zi6." },
+            { day: "26A", wk: 4, en: "Today is Monday.", man: "今天星期一。", mpin: "Jīntiān xīngqī yī.", can: "今日星期一。", jyu: "gam1 jat6 sing1 kei4 jat1." },
+            { day: "26B", wk: 4, en: "Tomorrow is Tuesday.", man: "明天星期二。", mpin: "Míngtiān xīngqī èr.", can: "聽日星期二。", jyu: "ting1 jat6 sing1 kei4 ji6." },
+            { day: "27A", wk: 4, en: "Wednesday, Thursday, Friday.", man: "星期三，四，五。", mpin: "Xīngqīsān, sì, wǔ.", can: "星期三，四，五。", jyu: "sing1 kei4 saam1, sei3, ng5." },
+            { day: "27B", wk: 4, en: "Saturday and Sunday.", man: "星期六和星期天。", mpin: "Xīngqīliù hé xīngqītiān.", can: "星期六同星期日。", jyu: "sing1 kei4 luk6 tung4 sing1 kei4 jat6." },
+            { day: "28A", wk: 4, en: "I am busy today.", man: "我今天很忙。", mpin: "Wǒ jīntiān hěn máng.", can: "我今日好忙。", jyu: "ngo5 gam1 jat6 hou2 mong4." },
+            { day: "28B", wk: 4, en: "See you tonight.", man: "今晚见。", mpin: "Jīnwǎn jiàn.", can: "今晚見。", jyu: "gam1 maan5 gin3." },
+            // WEEK 5
+            { day: "29A", wk: 5, en: "I'm hungry.", man: "我饿了。", mpin: "Wǒ è le.", can: "我肚餓。", jyu: "ngo5 tou5 ngo6." },
+            { day: "29B", wk: 5, en: "I'm thirsty.", man: "我渴了。", mpin: "Wǒ kě le.", can: "我口渴。", jyu: "ngo5 hau2 hot3." },
+            { day: "30A", wk: 5, en: "A table for two, please.", man: "两人桌，谢谢。", mpin: "Liǎng rén zhuō, xièxie.", can: "唔該，兩位。", jyu: "m4 goi1, loeng5 wai2." },
+            { day: "30B", wk: 5, en: "Menu, please.", man: "请给我菜单。", mpin: "Qǐng gěi wǒ càidān.", can: "唔該，餐牌。", jyu: "m4 goi1, caan1 paai4." },
+            { day: "31A", wk: 5, en: "I would like to order.", man: "我要点菜。", mpin: "Wǒ yào diǎncài.", can: "唔該，寫嘢食。", jyu: "m4 goi1, se2 je5 sik6." },
+            { day: "31B", wk: 5, en: "Please give me a glass of water.", man: "请给我一杯水。", mpin: "Qǐng gěi wǒ yì bēi shuǐ.", can: "唔該畀杯水我。", jyu: "m4 goi1 bei2 bui1 seoi2 ngo5." },
+            { day: "32A", wk: 5, en: "I want to eat rice.", man: "我想吃米饭。", mpin: "Wǒ xiǎng chī mǐfàn.", can: "我想食飯。", jyu: "ngo5 soeng2 sik6 faan6." },
+            { day: "32B", wk: 5, en: "I want to eat noodles.", man: "我想吃面条。", mpin: "Wǒ xiǎng chī miàntiáo.", can: "我想食麵。", jyu: "ngo5 soeng2 sik6 min6." },
+            { day: "33A", wk: 5, en: "I don't eat meat.", man: "我不吃肉。", mpin: "Wǒ bù chī ròu.", can: "我唔食肉。", jyu: "ngo5 m4 sik6 juk6." },
+            { day: "33B", wk: 5, en: "I don't eat beef.", man: "我不吃牛肉。", mpin: "Wǒ bù chī niúròu.", can: "我唔食牛肉。", jyu: "ngo5 m4 sik6 ngau4 juk6." },
+            { day: "34A", wk: 5, en: "It's very delicious!", man: "很好吃！", mpin: "Hěn hǎochī!", can: "好好食！", jyu: "hou2 hou2 sik6!" },
+            { day: "34B", wk: 5, en: "It's too spicy.", man: "太辣了。", mpin: "Tài là le.", can: "太辣啦。", jyu: "taai3 laat6 laa3." },
+            { day: "35A", wk: 5, en: "Can you make it less spicy?", man: "可以少放辣吗？", mpin: "Kěyǐ shǎo fàng là ma?", can: "可唔可以少辣啲？", jyu: "ho2 m4 ho2 ji5 siu2 laat6 di1?" },
+            { day: "35B", wk: 5, en: "I am allergic to peanuts.", man: "我对花生过敏。", mpin: "Wǒ duì huāshēng guòmǐn.", can: "我對花生敏感。", jyu: "ngo5 deoi3 faa1 sang1 man5 gam2." },
+            // WEEK 6
+            { day: "36A", wk: 6, en: "Bill, please.", man: "买单。", mpin: "Mǎidān.", can: "唔該，埋單。", jyu: "m4 goi1, maai4 daan1." },
+            { day: "36B", wk: 6, en: "How much is it?", man: "多少钱？", mpin: "Duōshǎo qián?", can: "幾錢？", jyu: "gei2 cin2?" },
+            { day: "37A", wk: 6, en: "Do you take credit cards?", man: "可以刷卡吗？", mpin: "Kěyǐ shuākǎ ma?", can: "收唔收信用卡呀？", jyu: "sau1 m4 sau1 seon3 jung6 kaat1 aa3?" },
+            { day: "37B", wk: 6, en: "I need a receipt.", man: "我需要收据。", mpin: "Wǒ xūyào shōujù.", can: "我需要收據。", jyu: "ngo5 seoi1 jiu3 sau1 geoi3." },
+            { day: "38A", wk: 6, en: "I want to drink coffee.", man: "我想喝咖啡。", mpin: "Wǒ xiǎng hē kāfēi.", can: "我想飲咖啡。", jyu: "ngo5 soeng2 jam2 gaa3 fe1." },
+            { day: "38B", wk: 6, en: "Coffee or tea?", man: "咖啡还是茶？", mpin: "Kāfēi háishì chá?", can: "咖啡定係茶呀？", jyu: "gaa3 fe1 ding6 hai6 caa4 aa3?" },
+            { day: "39A", wk: 6, en: "I want a beer.", man: "我要一杯啤酒。", mpin: "Wǒ yào yì bēi píjiǔ.", can: "我要一杯啤酒。", jyu: "ngo5 jiu3 jat1 bui1 pe4 zau2." },
+            { day: "39B", wk: 6, en: "I don't drink alcohol.", man: "我不喝酒。", mpin: "Wǒ bù hē jiǔ.", can: "我唔飲酒。", jyu: "ngo5 m4 jam2 zau2." },
+            { day: "40A", wk: 6, en: "Do you have vegetarian food?", man: "你们有素食吗？", mpin: "Nǐmen yǒu sùshí ma?", can: "你哋有素食嗎？", jyu: "nei5 dei6 jau5 sou3 sik6 maa3?" },
+            { day: "40B", wk: 6, en: "I like this dish.", man: "我喜欢这道菜。", mpin: "Wǒ xǐhuan zhè dào cài.", can: "我鍾意呢道菜。", jyu: "ngo5 zung1 ji3 ni1 dou6 coi3." },
+            { day: "41A", wk: 6, en: "I want to try dim sum.", man: "我想尝试点心。", mpin: "Wǒ xiǎng chángshì diǎnxīn.", can: "我想試吓飲茶。", jyu: "ngo5 soeng2 si3 haa5 jam2 caa4." },
+            { day: "41B", wk: 6, en: "I ate too much.", man: "我吃太多了。", mpin: "Wǒ chī tài duō le.", can: "我食太多喇。", jyu: "ngo5 sik6 taai3 do1 laa3." },
+            { day: "42A", wk: 6, en: "I eat breakfast at home.", man: "我在家吃早饭。", mpin: "Wǒ zài jiā chī zǎofàn.", can: "我喺屋企食早餐。", jyu: "ngo5 hai2 uk1 kei2 sik6 zou2 caan1." },
+            { day: "42B", wk: 6, en: "I eat lunch outside.", man: "我在外面吃午饭。", mpin: "Wǒ zài wàimiàn chī wǔfàn.", can: "我喺出面食午餐。", jyu: "ngo5 hai2 ceot1 min6 sik6 ng5 caan1." },
+            // WEEK 7
+            { day: "43A", wk: 7, en: "Turn left.", man: "向左转。", mpin: "Xiàng zuǒ zhuǎn.", can: "轉左。", jyu: "zyun3 zo2." },
+            { day: "43B", wk: 7, en: "Turn right.", man: "向右转。", mpin: "Xiàng yòu zhuǎn.", can: "轉右。", jyu: "zyun3 jau6." },
+            { day: "44A", wk: 7, en: "Go straight.", man: "一直走。", mpin: "Yìzhí zǒu.", can: "一直行。", jyu: "jat1 zik6 haang4." },
+            { day: "44B", wk: 7, en: "Stop here.", man: "停在这里。", mpin: "Tíng zài zhèlǐ.", can: "喺度停。", jyu: "hai2 dou6 ting4." },
+            { day: "45A", wk: 7, en: "It is very close.", man: "很近。", mpin: "Hěn jìn.", can: "好近。", jyu: "hou2 gan5." },
+            { day: "45B", wk: 7, en: "It is too far.", man: "太远了。", mpin: "Tài yuǎn le.", can: "太遠啦。", jyu: "taai3 jyun5 laa3." },
+            { day: "46A", wk: 7, en: "Where is the subway station?", man: "地铁站在哪里？", mpin: "Dìtiě zhàn zài nǎlǐ?", can: "地鐵站喺邊度呀？", jyu: "dei6 tit3 zaam6 hai2 bin1 dou6 aa3?" },
+            { day: "46B", wk: 7, en: "Where is the bus stop?", man: "公交车站在哪里？", mpin: "Gōngjiāo chēzhàn zài nǎlǐ?", can: "巴士站喺邊度？", jyu: "baa1 si2 zaam6 hai2 bin1 dou6?" },
+            { day: "47A", wk: 7, en: "I want to take a taxi.", man: "我要打车。", mpin: "Wǒ yào dǎchē.", can: "我想搭的士。", jyu: "ngo5 soeng2 daap3 dik1 si2." },
+            { day: "47B", wk: 7, en: "Please take me to the hotel.", man: "请带我去酒店。", mpin: "Qǐng dài wǒ qù jiǔdiàn.", can: "唔該載我去酒店。", jyu: "m4 goi1 zoi3 ngo5 heoi3 zau2 dim3." },
+            { day: "48A", wk: 7, en: "What bus is this?", man: "这是几路车？", mpin: "Zhè shì jǐ lù chē?", can: "呢架係幾號巴士？", jyu: "ni1 gaa3 hai6 gei2 hou6 baa1 si2?" },
+            { day: "48B", wk: 7, en: "Where should I get off?", man: "我应该在哪儿下车？", mpin: "Wǒ yīnggāi zài nǎr xiàchē?", can: "我應該喺邊度落車？", jyu: "ngo5 jing1 goi1 hai2 bin1 dou6 lok6 ce1?" },
+            { day: "49A", wk: 7, en: "I am lost.", man: "我迷路了。", mpin: "Wǒ mílù le.", can: "我迷路喇。", jyu: "ngo5 mai4 lou6 laa3." },
+            { day: "49B", wk: 7, en: "Can you show me on the map?", man: "能在地图上指给我看吗？", mpin: "Néng zài dìtú shàng zhǐ gěi wǒ kàn ma?", can: "可唔可以喺地圖指畀我睇呀？", jyu: "ho2 m4 ho2 ji5 hai2 dei6 tou4 zi2 bei2 ngo5 tai2 aa3?" },
+            // WEEK 8
+            { day: "50A", wk: 8, en: "How much is this?", man: "这个多少钱？", mpin: "Zhège duōshǎo qián?", can: "呢個幾多錢呀？", jyu: "ni1 go3 gei2 do1 cin2 aa3?" },
+            { day: "50B", wk: 8, en: "Too expensive!", man: "太贵了！", mpin: "Tài guì le!", can: "太貴啦！", jyu: "taai3 gwai3 laa3!" },
+            { day: "51A", wk: 8, en: "Can you make it cheaper?", man: "能便宜一点吗？", mpin: "Néng piányi yìdiǎn ma?", can: "平啲得唔得呀？", jyu: "peng4 di1 dak1 m4 dak1 aa3?" },
+            { day: "51B", wk: 8, en: "I will buy it.", man: "我买了。", mpin: "Wǒ mǎi le.", can: "我買啦。", jyu: "ngo5 maai5 laa3." },
+            { day: "52A", wk: 8, en: "I want to try this on.", man: "我想试穿这个。", mpin: "Wǒ xiǎng shìchuān zhège.", can: "我想試下呢件。", jyu: "ngo5 soeng2 si3 haa5 ni1 gin6." },
+            { day: "52B", wk: 8, en: "Do you have a larger size?", man: "有大一点的吗？", mpin: "Yǒu dà yìdiǎn de ma?", can: "有冇大啲㗎？", jyu: "jau5 mou5 daai6 di1 gaa3?" },
+            { day: "53A", wk: 8, en: "Do you have it in black?", man: "有黑色的吗？", mpin: "Yǒu hēisè de ma?", can: "有冇黑色㗎？", jyu: "jau5 mou5 hak1 sik1 gaa3?" },
+            { day: "53B", wk: 8, en: "I like the red one.", man: "我喜欢红色的。", mpin: "Wǒ xǐhuan hóngsè de.", can: "我鍾意紅色嗰個。", jyu: "ngo5 zung1 ji3 hung4 sik1 go2 go3." },
+            { day: "54A", wk: 8, en: "I don't have cash.", man: "我没有现金。", mpin: "Wǒ méiyǒu xiànjīn.", can: "我冇現金。", jyu: "ngo5 mou5 jin6 gam1." },
+            { day: "54B", wk: 8, en: "Where is the ATM?", man: "提款机在哪里？", mpin: "Tíkuǎnjī zài nǎlǐ?", can: "提款機喺邊度呀？", jyu: "tai4 fun2 gei1 hai2 bin1 dou6 aa3?" },
+            { day: "55A", wk: 8, en: "Please give me a bag.", man: "请给我一个袋子。", mpin: "Qǐng gěi wǒ yí ge dàizi.", can: "唔該畀個膠袋我。", jyu: "m4 goi1 bei2 go3 gaau1 doi2 ngo5." },
+            { day: "55B", wk: 8, en: "I need a receipt.", man: "我需要收据。", mpin: "Wǒ xūyào shōujù.", can: "我需要收據。", jyu: "ngo5 seoi1 jiu3 sau1 geoi3." },
+            { day: "56A", wk: 8, en: "Where is the fruit?", man: "水果在哪里？", mpin: "Shuǐguǒ zài nǎlǐ?", can: "生果喺邊度呀？", jyu: "saang1 gwo2 hai2 bin1 dou6 aa3?" },
+            { day: "56B", wk: 8, en: "I bought some fruit.", man: "我买了一些水果。", mpin: "Wǒ mǎile yìxiē shuǐguǒ.", can: "我買咗啲水果。", jyu: "ngo5 maai5 zo2 di1 seoi2 gwo2." },
+            // WEEK 9
+            { day: "57A", wk: 9, en: "I wake up at seven.", man: "我七点起床。", mpin: "Wǒ qī diǎn qǐchuáng.", can: "我七點起身。", jyu: "ngo5 cat1 dim2 hei2 san1." },
+            { day: "57B", wk: 9, en: "I go to work at nine.", man: "我九点去上班。", mpin: "Wǒ jiǔ diǎn qù shàngbān.", can: "我九點返工。", jyu: "ngo5 gau2 dim2 faan1 gung1." },
+            { day: "58A", wk: 9, en: "I brush my teeth every morning.", man: "我每天早上刷牙。", mpin: "Wǒ měitiān zǎoshang shuāyá.", can: "我每朝早刷牙。", jyu: "ngo5 mui5 ziu1 zou2 caat3 ngaa4." },
+            { day: "58B", wk: 9, en: "I take a shower at night.", man: "我晚上冲凉。", mpin: "Wǒ wǎnshang chōngliáng.", can: "我夜晚沖涼。", jyu: "ngo5 je6 maan5 cung1 loeng4." },
+            { day: "59A", wk: 9, en: "I am studying right now.", man: "我现在在学习。", mpin: "Wǒ xiànzài zài xuéxí.", can: "我而家喺度學習。", jyu: "ngo5 ji4 gaa1 hai2 dou6 hok6 zaap6." },
+            { day: "59B", wk: 9, en: "I will rest later.", man: "我等一下要休息。", mpin: "Wǒ děng yíxià yào xiūxi.", can: "我陣間要休息。", jyu: "ngo5 zan6 gaan1 jiu3 jau1 sik1." },
+            { day: "60A", wk: 9, en: "I went to the store yesterday.", man: "我昨天去了商店。", mpin: "Wǒ zuótiān qùle shāngdiàn.", can: "我尋日去咗鋪頭。", jyu: "ngo5 cam4 jat6 heoi3 zo2 pou3 tau4." },
+            { day: "60B", wk: 9, en: "I will go tomorrow.", man: "我明天去。", mpin: "Wǒ míngtiān qù.", can: "我聽日去。", jyu: "ngo5 ting1 jat6 heoi3." },
+            { day: "61A", wk: 9, en: "Let's go together.", man: "我们一起去吧。", mpin: "Wǒmen yìqǐ qù ba.", can: "我哋一齊去啦。", jyu: "ngo5 dei6 jat1 cai4 heoi3 laa1." },
+            { day: "61B", wk: 9, en: "I want to sleep early tonight.", man: "我今晚想早睡。", mpin: "Wǒ jīnwǎn xiǎng zǎo shuì.", can: "我今晚想早啲瞓。", jyu: "ngo5 gam1 maan5 soeng2 zou2 di1 fan3." },
+            { day: "62A", wk: 9, en: "I cook dinner at home.", man: "我在家煮晚饭。", mpin: "Wǒ zài jiā zhǔ wǎnfàn.", can: "我喺屋企煮晚飯。", jyu: "ngo5 hai2 uk1 kei2 zyu2 maan5 faan6." },
+            { day: "62B", wk: 9, en: "I take the bus to work.", man: "我坐公交去上班。", mpin: "Wǒ zuò gōngjiāo qù shàngbān.", can: "我搭巴士返工。", jyu: "ngo5 daap3 baa1 si2 faan1 gung1." },
+            { day: "63A", wk: 9, en: "I exercise three times a week.", man: "我每周运动三次。", mpin: "Wǒ měi zhōu yùndòng sān cì.", can: "我每個禮拜做運動三次。", jyu: "ngo5 mui5 go3 lai5 baai3 zou6 wan6 dung6 saam1 ci3." },
+            { day: "63B", wk: 9, en: "I go to the gym on weekends.", man: "我周末去健身房。", mpin: "Wǒ zhōumò qù jiànshēnfáng.", can: "我週末去健身房。", jyu: "ngo5 zau1 mut6 heoi3 gin6 san1 fong2." },
+            // WEEK 10
+            { day: "64A", wk: 10, en: "I am happy.", man: "我很高兴。", mpin: "Wǒ hěn gāoxìng.", can: "我好開心。", jyu: "ngo5 hou2 hoi1 sam1." },
+            { day: "64B", wk: 10, en: "I am sad.", man: "我很伤心。", mpin: "Wǒ hěn shāngxīn.", can: "我好傷心。", jyu: "ngo5 hou2 soeng1 sam1." },
+            { day: "65A", wk: 10, en: "I am tired.", man: "我很累。", mpin: "Wǒ hěn lèi.", can: "我好攰。", jyu: "ngo5 hou2 gui6." },
+            { day: "65B", wk: 10, en: "I am a little tired.", man: "我有点累。", mpin: "Wǒ yǒudiǎn lèi.", can: "我有啲攰。", jyu: "ngo5 jau5 di1 gui6." },
+            { day: "66A", wk: 10, en: "I am excited.", man: "我很兴奋。", mpin: "Wǒ hěn xīngfèn.", can: "我好興奮。", jyu: "ngo5 hou2 hing3 fan5." },
+            { day: "66B", wk: 10, en: "I am nervous.", man: "我很紧张。", mpin: "Wǒ hěn jǐnzhāng.", can: "我好緊張。", jyu: "ngo5 hou2 gan2 zoeng1." },
+            { day: "67A", wk: 10, en: "I am angry.", man: "我很生气。", mpin: "Wǒ hěn shēngqì.", can: "我好嬲。", jyu: "ngo5 hou2 nau1." },
+            { day: "67B", wk: 10, en: "Don't worry.", man: "别担心。", mpin: "Bié dānxīn.", can: "唔使擔心。", jyu: "m4 sai2 daam1 sam1." },
+            { day: "68A", wk: 10, en: "I miss you.", man: "我想你。", mpin: "Wǒ xiǎng nǐ.", can: "我掛住你。", jyu: "ngo5 gwaa3 zyu6 nei5." },
+            { day: "68B", wk: 10, en: "I love you.", man: "我爱你。", mpin: "Wǒ ài nǐ.", can: "我愛你。", jyu: "ngo5 oi3 nei5." },
+            { day: "69A", wk: 10, en: "I am surprised!", man: "我很惊讶！", mpin: "Wǒ hěn jīngyà!", can: "我好驚訝！", jyu: "ngo5 hou2 geng1 ngaa6!" },
+            { day: "69B", wk: 10, en: "It's okay. Don't be sad.", man: "没关系，别伤心。", mpin: "Méi guānxi, bié shāngxīn.", can: "冇問題，唔好傷心。", jyu: "mou5 man6 tai4, m4 hou2 soeng1 sam1." },
+            { day: "70A", wk: 10, en: "I feel good today.", man: "我今天感觉很好。", mpin: "Wǒ jīntiān gǎnjué hěn hǎo.", can: "我今日感覺好好。", jyu: "ngo5 gam1 jat6 gam2 gok3 hou2 hou2." },
+            { day: "70B", wk: 10, en: "I feel terrible.", man: "我感觉很差。", mpin: "Wǒ gǎnjué hěn chà.", can: "我感覺好差。", jyu: "ngo5 gam2 gok3 hou2 caa1." },
+            // WEEK 11
+            { day: "71A", wk: 11, en: "I don't feel well.", man: "我不舒服。", mpin: "Wǒ bù shūfu.", can: "我唔舒服。", jyu: "ngo5 m4 syu1 fuk6." },
+            { day: "71B", wk: 11, en: "I am sick.", man: "我生病了。", mpin: "Wǒ shēngbìng le.", can: "我病咗。", jyu: "ngo5 beng6 zo2." },
+            { day: "72A", wk: 11, en: "I have a headache.", man: "我头痛。", mpin: "Wǒ tóutòng.", can: "我頭痛。", jyu: "ngo5 tau4 tung3." },
+            { day: "72B", wk: 11, en: "I have a stomachache.", man: "我肚子痛。", mpin: "Wǒ dùzi tòng.", can: "我肚痛。", jyu: "ngo5 tou5 tung3." },
+            { day: "73A", wk: 11, en: "I have a fever.", man: "我发烧了。", mpin: "Wǒ fāshāo le.", can: "我發燒喇。", jyu: "ngo5 faat3 siu1 laa3." },
+            { day: "73B", wk: 11, en: "I have a cold.", man: "我感冒了。", mpin: "Wǒ gǎnmào le.", can: "我傷風咗。", jyu: "ngo5 soeng1 fung1 zo2." },
+            { day: "74A", wk: 11, en: "I need to see a doctor.", man: "我需要看医生。", mpin: "Wǒ xūyào kàn yīshēng.", can: "我要睇醫生。", jyu: "ngo5 jiu3 tai2 ji1 sang1." },
+            { day: "74B", wk: 11, en: "Where is the pharmacy?", man: "药店在哪里？", mpin: "Yàodiàn zài nǎlǐ?", can: "藥房喺邊度呀？", jyu: "joek6 fong4 hai2 bin1 dou6 aa3?" },
+            { day: "75A", wk: 11, en: "I need medicine.", man: "我需要药。", mpin: "Wǒ xūyào yào.", can: "我需要藥。", jyu: "ngo5 seoi1 jiu3 joek6." },
+            { day: "75B", wk: 11, en: "I am allergic to this.", man: "我对这个过敏。", mpin: "Wǒ duì zhège guòmǐn.", can: "我對呢個敏感。", jyu: "ngo5 deoi3 ni1 go3 man5 gam2." },
+            { day: "76A", wk: 11, en: "My arm hurts.", man: "我的手臂痛。", mpin: "Wǒ de shǒubì tòng.", can: "我隻手臂痛。", jyu: "ngo5 zek3 sau2 bei3 tung3." },
+            { day: "76B", wk: 11, en: "My leg hurts.", man: "我的腿痛。", mpin: "Wǒ de tuǐ tòng.", can: "我條腳痛。", jyu: "ngo5 tiu4 goek3 tung3." },
+            { day: "77A", wk: 11, en: "I can't sleep.", man: "我睡不着。", mpin: "Wǒ shuì bù zháo.", can: "我瞓唔著。", jyu: "ngo5 fan3 m4 z着6." },
+            { day: "77B", wk: 11, en: "I need to rest.", man: "我需要休息。", mpin: "Wǒ xūyào xiūxi.", can: "我需要休息。", jyu: "ngo5 seoi1 jiu3 jau1 sik1." },
+            // WEEK 12
+            { day: "78A", wk: 12, en: "This is my mother.", man: "这是我的妈妈。", mpin: "Zhè shì wǒ de māmā.", can: "呢個係我媽媽。", jyu: "ni1 go3 hai6 ngo5 maa4 maa1." },
+            { day: "78B", wk: 12, en: "This is my father.", man: "这是我的爸爸。", mpin: "Zhè shì wǒ de bàba.", can: "呢個係我爸爸。", jyu: "ni1 go3 hai6 ngo5 baa4 baa1." },
+            { day: "79A", wk: 12, en: "I have one older brother.", man: "我有一个哥哥。", mpin: "Wǒ yǒu yí ge gēge.", can: "我有一個阿哥。", jyu: "ngo5 jau5 jat1 go3 aa3 go1." },
+            { day: "79B", wk: 12, en: "I have one older sister.", man: "我有一个姐姐。", mpin: "Wǒ yǒu yí ge jiějie.", can: "我有個家姐。", jyu: "ngo5 jau5 go3 gaa1 ze1." },
+            { day: "80A", wk: 12, en: "I have a younger brother.", man: "我有一个弟弟。", mpin: "Wǒ yǒu yí ge dìdi.", can: "我有一個細佬。", jyu: "ngo5 jau5 jat1 go3 sai3 lou2." },
+            { day: "80B", wk: 12, en: "I have a younger sister.", man: "我有一个妹妹。", mpin: "Wǒ yǒu yí ge mèimei.", can: "我有一個細妹。", jyu: "ngo5 jau5 jat1 go3 sai3 mui2." },
+            { day: "81A", wk: 12, en: "She lives in Hong Kong.", man: "她住在香港。", mpin: "Tā zhù zài Xiānggǎng.", can: "佢住喺香港。", jyu: "keoi5 zyu6 hai2 hoeng1 gong2." },
+            { day: "81B", wk: 12, en: "My family is very important to me.", man: "我的家人对我很重要。", mpin: "Wǒ de jiārén duì wǒ hěn zhòngyào.", can: "我家人對我好重要。", jyu: "ngo5 gaa1 jan4 deoi3 ngo5 hou2 zung6 jiu3." },
+            { day: "82A", wk: 12, en: "My grandmother is very healthy.", man: "我的奶奶很健康。", mpin: "Wǒ de nǎinai hěn jiànkāng.", can: "我嫲嫲好健康。", jyu: "ngo5 maa4 maa4 hou2 gin6 hong1." },
+            { day: "82B", wk: 12, en: "My grandfather likes to read.", man: "我的爷爷喜欢看书。", mpin: "Wǒ de yéye xǐhuan kàn shū.", can: "我爺爺鍾意睇書。", jyu: "ngo5 je4 je4 zung1 ji3 tai2 syu1." },
+            { day: "83A", wk: 12, en: "Do you have children?", man: "你有孩子吗？", mpin: "Nǐ yǒu háizi ma?", can: "你有冇小朋友？", jyu: "nei5 jau5 mou5 siu2 pang4 jau5?" },
+            { day: "83B", wk: 12, en: "I have one son and one daughter.", man: "我有一个儿子和一个女儿。", mpin: "Wǒ yǒu yí ge érzi hé yí ge nǚ'ér.", can: "我有一個仔同一個女。", jyu: "ngo5 jau5 jat1 go3 zai2 tung4 jat1 go3 neoi5." },
+            { day: "84A", wk: 12, en: "My wife is a nurse.", man: "我妻子是护士。", mpin: "Wǒ qīzi shì hùshi.", can: "我老婆係護士。", jyu: "ngo5 lou5 po4 hai6 wu6 si6." },
+            { day: "84B", wk: 12, en: "My husband works from home.", man: "我丈夫在家工作。", mpin: "Wǒ zhàngfū zài jiā gōngzuò.", can: "我老公喺屋企做嘢。", jyu: "ngo5 lou5 gung1 hai2 uk1 kei2 zou6 je5." },
+            // WEEK 13
+            { day: "85A", wk: 13, en: "I like to read.", man: "我喜欢看书。", mpin: "Wǒ xǐhuan kàn shū.", can: "我鍾意睇書。", jyu: "ngo5 zung1 ji3 tai2 syu1." },
+            { day: "85B", wk: 13, en: "I like to watch movies.", man: "我喜欢看电影。", mpin: "Wǒ xǐhuan kàn diànyǐng.", can: "我鍾意睇戲。", jyu: "ngo5 zung1 ji3 tai2 hei3." },
+            { day: "86A", wk: 13, en: "I love traveling.", man: "我喜欢旅游。", mpin: "Wǒ xǐhuan lǚyóu.", can: "我好鍾意去旅行。", jyu: "ngo5 hou2 zung1 ji3 heoi3 leoi5 hang4." },
+            { day: "86B", wk: 13, en: "I like music.", man: "我喜欢音乐。", mpin: "Wǒ xǐhuan yīnyuè.", can: "我鍾意音樂。", jyu: "ngo5 zung1 ji3 jam1 ngok6." },
+            { day: "87A", wk: 13, en: "What music do you like?", man: "你喜欢什么音乐？", mpin: "Nǐ xǐhuan shénme yīnyuè?", can: "你鍾意乜嘢音樂？", jyu: "nei5 zung1 ji3 mat1 je5 jam1 ngok6?" },
+            { day: "87B", wk: 13, en: "I like to play sports.", man: "我喜欢运动。", mpin: "Wǒ xǐhuan yùndòng.", can: "我鍾意做運動。", jyu: "ngo5 zung1 ji3 zou6 wan6 dung6." },
+            { day: "88A", wk: 13, en: "I play football.", man: "我踢足球。", mpin: "Wǒ tī zúqiú.", can: "我踢足球。", jyu: "ngo5 tek3 zuk1 kau4." },
+            { day: "88B", wk: 13, en: "Do you like basketball?", man: "你喜欢篮球吗？", mpin: "Nǐ xǐhuan lánqiú ma?", can: "你鍾唔鍾意打籃球？", jyu: "nei5 zung1 m4 zung1 ji3 daa2 laam4 kau4?" },
+            { day: "89A", wk: 13, en: "I enjoy cooking.", man: "我喜欢做饭。", mpin: "Wǒ xǐhuan zuòfàn.", can: "我鍾意煮嘢食。", jyu: "ngo5 zung1 ji3 zyu2 je5 sik6." },
+            { day: "89B", wk: 13, en: "I like taking photos.", man: "我喜欢拍照。", mpin: "Wǒ xǐhuan pāizhào.", can: "我鍾意影相。", jyu: "ngo5 zung1 ji3 jing2 soeng3." },
+            { day: "90A", wk: 13, en: "I like to sing.", man: "我喜欢唱歌。", mpin: "Wǒ xǐhuan chànggē.", can: "我鍾意唱歌。", jyu: "ngo5 zung1 ji3 coeng3 go1." },
+            { day: "90B", wk: 13, en: "I like to draw.", man: "我喜欢画画。", mpin: "Wǒ xǐhuan huà huà.", can: "我鍾意畫畫。", jyu: "ngo5 zung1 ji3 waak6 waa2." },
+            { day: "91A", wk: 13, en: "I play guitar.", man: "我会弹吉他。", mpin: "Wǒ huì tán jítā.", can: "我識彈結他。", jyu: "ngo5 sik1 taan4 git3 taa1." },
+            { day: "91B", wk: 13, en: "I like swimming.", man: "我喜欢游泳。", mpin: "Wǒ xǐhuan yóuyǒng.", can: "我鍾意游水。", jyu: "ngo5 zung1 ji3 jau4 seoi2." },
+            // WEEK 14
+            { day: "92A", wk: 14, en: "What are you doing this weekend?", man: "这个周末你做什么？", mpin: "Zhège zhōumò nǐ zuò shénme?", can: "今個星期尾你做咩呀？", jyu: "gam1 go3 sing1 kei4 mei5 nei5 zou6 me1 aa3?" },
+            { day: "92B", wk: 14, en: "I am free.", man: "我有空。", mpin: "Wǒ yǒu kòng.", can: "我得閒。", jyu: "ngo5 dak1 haan4." },
+            { day: "93A", wk: 14, en: "Do you want to eat together?", man: "你想一起吃饭吗？", mpin: "Nǐ xiǎng yìqǐ chīfàn ma?", can: "你想一齊食飯嗎？", jyu: "nei5 soeng2 jat1 cai4 sik6 faan6 maa3?" },
+            { day: "93B", wk: 14, en: "Sure! What time?", man: "好啊！几点？", mpin: "Hǎo a! Jǐ diǎn?", can: "好呀！幾點？", jyu: "hou2 aa3! gei2 dim2?" },
+            { day: "94A", wk: 14, en: "Let's meet at seven.", man: "我们七点见面吧。", mpin: "Wǒmen qī diǎn jiànmiàn ba.", can: "我哋七點見面啦。", jyu: "ngo5 dei6 cat1 dim2 gin3 min6 laa1." },
+            { day: "94B", wk: 14, en: "Where shall we meet?", man: "我们在哪里见面？", mpin: "Wǒmen zài nǎlǐ jiànmiàn?", can: "我哋喺邊度見面？", jyu: "ngo5 dei6 hai2 bin1 dou6 gin3 min6?" },
+            { day: "95A", wk: 14, en: "I can't make it. Sorry.", man: "我去不了。对不起。", mpin: "Wǒ qù bu liǎo. Duìbuqǐ.", can: "我去唔到。對唔住。", jyu: "ngo5 heoi3 m4 dou3. deoi3 m4 zyu6." },
+            { day: "95B", wk: 14, en: "Maybe next time.", man: "下次吧。", mpin: "Xià cì ba.", can: "下次啦。", jyu: "haa6 ci3 laa1." },
+            { day: "96A", wk: 14, en: "I had a great weekend!", man: "我的周末过得很好！", mpin: "Wǒ de zhōumò guò de hěn hǎo!", can: "我個週末過得好好！", jyu: "ngo5 go3 zau1 mut6 gwo3 dak1 hou2 hou2!" },
+            { day: "96B", wk: 14, en: "What did you do yesterday?", man: "你昨天做了什么？", mpin: "Nǐ zuótiān zuòle shénme?", can: "你尋日做咗咩？", jyu: "nei5 cam4 jat6 zou6 zo2 me1?" },
+            { day: "97A", wk: 14, en: "I went to the park.", man: "我去了公园。", mpin: "Wǒ qùle gōngyuán.", can: "我去咗公園。", jyu: "ngo5 heoi3 zo2 gung1 jyun2." },
+            { day: "97B", wk: 14, en: "I watched a movie last night.", man: "我昨晚看了电影。", mpin: "Wǒ zuówǎn kànle diànyǐng.", can: "我尋晚睇咗戲。", jyu: "ngo5 cam4 maan5 tai2 zo2 hei3." },
+            { day: "98A", wk: 14, en: "I went shopping with my friend.", man: "我和朋友去购物。", mpin: "Wǒ hé péngyou qù gòuwù.", can: "我同朋友去咗買嘢。", jyu: "ngo5 tung4 pang4 jau5 heoi3 zo2 maai5 je5." },
+            { day: "98B", wk: 14, en: "It was a lot of fun.", man: "真的很有趣。", mpin: "Zhēn de hěn yǒuqù.", can: "真係好好玩。", jyu: "zan1 hai6 hou2 hou2 waan2." },
+            // WEEK 15
+            { day: "99A", wk: 15, en: "I think this is good.", man: "我觉得这个很好。", mpin: "Wǒ juéde zhège hěn hǎo.", can: "我覺得呢個好好。", jyu: "ngo5 gok3 dak1 ni1 go3 hou2 hou2." },
+            { day: "99B", wk: 15, en: "I don't think so.", man: "我不这么认为。", mpin: "Wǒ bù zhème rènwéi.", can: "我唔係噉諗。", jyu: "ngo5 m4 hai6 gam2 lam2." },
+            { day: "100A", wk: 15, en: "That's interesting.", man: "那很有趣。", mpin: "Nà hěn yǒuqù.", can: "噉好有趣喎。", jyu: "gam2 hou2 jau5 ceoi3 wo3." },
+            { day: "100B", wk: 15, en: "That's boring.", man: "那很无聊。", mpin: "Nà hěn wúliáo.", can: "噉好悶喎。", jyu: "gam2 hou2 mun6 wo3." },
+            { day: "101A", wk: 15, en: "I agree with you.", man: "我同意你。", mpin: "Wǒ tóngyì nǐ.", can: "我同意你。", jyu: "ngo5 tung4 ji3 nei5." },
+            { day: "101B", wk: 15, en: "I disagree.", man: "我不同意。", mpin: "Wǒ bù tóngyì.", can: "我唔同意。", jyu: "ngo5 m4 tung4 ji3." },
+            { day: "102A", wk: 15, en: "I am not sure.", man: "我不确定。", mpin: "Wǒ bù quèdìng.", can: "我唔肯定。", jyu: "ngo5 m4 hang2 ding6." },
+            { day: "102B", wk: 15, en: "Maybe.", man: "也许吧。", mpin: "Yěxǔ ba.", can: "可能囉。", jyu: "ho2 nang4 lo3." },
+            { day: "103A", wk: 15, en: "That's great!", man: "太好了！", mpin: "Tài hǎo le!", can: "太好喇！", jyu: "taai3 hou2 laa3!" },
+            { day: "103B", wk: 15, en: "That's not good.", man: "那不太好。", mpin: "Nà bù tài hǎo.", can: "噉唔係幾好喎。", jyu: "gam2 m4 hai6 gei2 hou2 wo3." },
+            { day: "104A", wk: 15, en: "I prefer this one.", man: "我更喜欢这个。", mpin: "Wǒ gèng xǐhuan zhège.", can: "我更加鍾意呢個。", jyu: "ngo5 gang3 gaa1 zung1 ji3 ni1 go3." },
+            { day: "104B", wk: 15, en: "Which one do you like more?", man: "你更喜欢哪个？", mpin: "Nǐ gèng xǐhuan nǎge?", can: "你更加鍾意邊個？", jyu: "nei5 gang3 gaa1 zung1 ji3 bin1 go3?" },
+            { day: "105A", wk: 15, en: "I think it's delicious.", man: "我觉得很好吃。", mpin: "Wǒ juéde hěn hǎochī.", can: "我覺得好好食。", jyu: "ngo5 gok3 dak1 hou2 hou2 sik6." },
+            { day: "105B", wk: 15, en: "In my opinion, it's too expensive.", man: "我觉得太贵了。", mpin: "Wǒ juéde tài guì le.", can: "我覺得太貴喇。", jyu: "ngo5 gok3 dak1 taai3 gwai3 laa3." },
+            // WEEK 16
+            { day: "106A", wk: 16, en: "Call me.", man: "给我打电话。", mpin: "Gěi wǒ dǎ diànhuà.", can: "打電話畀我。", jyu: "daa2 din6 waa2 bei2 ngo5." },
+            { day: "106B", wk: 16, en: "I will send you a message.", man: "我会发信息给你。", mpin: "Wǒ huì fā xìnxī gěi nǐ.", can: "我會send message畀你。", jyu: "ngo5 wui5 send message bei2 nei5." },
+            { day: "107A", wk: 16, en: "My phone is out of battery.", man: "我的手机没电了。", mpin: "Wǒ de shǒujī méi diàn le.", can: "我部手機冇電喇。", jyu: "ngo5 bou6 sau2 gei1 mou5 din6 laa3." },
+            { day: "107B", wk: 16, en: "Where can I charge it?", man: "我在哪儿可以充电？", mpin: "Wǒ zài nǎr kěyǐ chōngdiàn?", can: "我喺邊度可以叉電？", jyu: "ngo5 hai2 bin1 dou6 ho2 ji5 caa1 din6?" },
+            { day: "108A", wk: 16, en: "What is the Wi-Fi password?", man: "Wi-Fi密码是什么？", mpin: "Wīfī mìmǎ shì shénme?", can: "Wi-Fi密碼係乜嘢？", jyu: "wai1 fai1 mat6 maa5 hai6 mat1 je5?" },
+            { day: "108B", wk: 16, en: "The Wi-Fi is very slow.", man: "Wi-Fi很慢。", mpin: "Wīfī hěn màn.", can: "Wi-Fi好慢。", jyu: "wai1 fai1 hou2 maan6." },
+            { day: "109A", wk: 16, en: "Can I use your phone?", man: "我可以用你的手机吗？", mpin: "Wǒ kěyǐ yòng nǐ de shǒujī ma?", can: "我可唔可以用你部手機？", jyu: "ngo5 ho2 m4 ho2 ji5 jung6 nei5 bou6 sau2 gei1?" },
+            { day: "109B", wk: 16, en: "I will contact you later.", man: "我晚点联系你。", mpin: "Wǒ wǎn diǎn liánxì nǐ.", can: "我遲啲聯絡你。", jyu: "ngo5 ci4 di1 lyun4 lok3 nei5." },
+            { day: "110A", wk: 16, en: "Add me on WeChat.", man: "加我微信。", mpin: "Jiā wǒ wēixìn.", can: "加我微信。", jyu: "gaa1 ngo5 mei4 seon3." },
+            { day: "110B", wk: 16, en: "What is your phone number?", man: "你的电话号码是什么？", mpin: "Nǐ de diànhuà hàomǎ shì shénme?", can: "你電話號碼係幾多？", jyu: "nei5 din6 waa2 hou6 maa5 hai6 gei2 do1?" },
+            { day: "111A", wk: 16, en: "My number is…", man: "我的号码是…", mpin: "Wǒ de hàomǎ shì…", can: "我電話號碼係…", jyu: "ngo5 din6 waa2 hou6 maa5 hai6…" },
+            { day: "111B", wk: 16, en: "I can't hear you well.", man: "我听不清楚你说的话。", mpin: "Wǒ tīng bù qīngchǔ nǐ shuō de huà.", can: "我聽唔清楚你講嘅嘢。", jyu: "ngo5 teng1 m4 cing1 co2 nei5 gong2 ge3 je5." },
+            { day: "112A", wk: 16, en: "I will call you tomorrow.", man: "我明天打电话给你。", mpin: "Wǒ míngtiān dǎ diànhuà gěi nǐ.", can: "我聽日打電話畀你。", jyu: "ngo5 ting1 jat6 daa2 din6 waa2 bei2 nei5." },
+            { day: "112B", wk: 16, en: "Let's video call.", man: "我们视频通话吧。", mpin: "Wǒmen shìpín tōnghuà ba.", can: "我哋視像通話啦。", jyu: "ngo5 dei6 si6 zoeng6 tung1 waa2 laa1." },
+            // WEEK 17
+            { day: "113A", wk: 17, en: "I have a reservation.", man: "我有预订。", mpin: "Wǒ yǒu yùdìng.", can: "我有預訂。", jyu: "ngo5 jau5 jyu6 deng6." },
+            { day: "113B", wk: 17, en: "Can I check in now?", man: "我现在可以入住吗？", mpin: "Wǒ xiànzài kěyǐ rùzhù ma?", can: "我而家可以入住嗎？", jyu: "ngo5 ji4 gaa1 ho2 ji5 jyu6 zyu6 maa3?" },
+            { day: "114A", wk: 17, en: "My room number is 508.", man: "我的房间号是五零八。", mpin: "Wǒ de fángjiān hào shì wǔ líng bā.", can: "我間房號係五零八。", jyu: "ngo5 gaan1 fong2 hou6 hai6 ng5 ling4 baat3." },
+            { day: "114B", wk: 17, en: "I will stay for three nights.", man: "我住三晚。", mpin: "Wǒ zhù sān wǎn.", can: "我住三晚。", jyu: "ngo5 zyu6 saam1 maan5." },
+            { day: "115A", wk: 17, en: "I will check out tomorrow morning.", man: "我明天早上退房。", mpin: "Wǒ míngtiān zǎoshang tuìfáng.", can: "我聽日朝早退房。", jyu: "ngo5 ting1 jat6 ziu1 zou2 teoi3 fong2." },
+            { day: "115B", wk: 17, en: "My room is too cold.", man: "我的房间太冷了。", mpin: "Wǒ de fángjiān tài lěng le.", can: "我間房太凍喇。", jyu: "ngo5 gaan1 fong2 taai3 dung3 laa3." },
+            { day: "116A", wk: 17, en: "Can I get more towels?", man: "可以给我多几条毛巾吗？", mpin: "Kěyǐ gěi wǒ duō jǐ tiáo máojīn ma?", can: "可唔可以再畀條毛巾我？", jyu: "ho2 m4 ho2 ji5 zoi3 bei2 tiu4 mou4 gan1 ngo5?" },
+            { day: "116B", wk: 17, en: "The hot water isn't working.", man: "热水不出水。", mpin: "Rèshuǐ bù chū shuǐ.", can: "熱水唔出水。", jyu: "jit6 seoi2 m4 ceot1 seoi2." },
+            { day: "117A", wk: 17, en: "Can I have a late checkout?", man: "我可以延迟退房吗？", mpin: "Wǒ kěyǐ yánchí tuìfáng ma?", can: "我可唔可以遲啲退房？", jyu: "ngo5 ho2 m4 ho2 ji5 ci4 di1 teoi3 fong2?" },
+            { day: "117B", wk: 17, en: "Where is the breakfast area?", man: "早餐在哪里吃？", mpin: "Zǎocān zài nǎlǐ chī?", can: "早餐喺邊度食？", jyu: "zou2 caan1 hai2 bin1 dou6 sik6?" },
+            { day: "118A", wk: 17, en: "Can I leave my luggage here?", man: "我可以把行李放在这里吗？", mpin: "Wǒ kěyǐ bǎ xíngli fàng zài zhèlǐ ma?", can: "我可唔可以將行李放喺度？", jyu: "ngo5 ho2 m4 ho2 ji5 zoeng1 hang4 lei5 fong3 hai2 dou6?" },
+            { day: "118B", wk: 17, en: "Is there a swimming pool?", man: "有没有游泳池？", mpin: "Yǒu méiyǒu yóuyǒngchí?", can: "有冇游泳池？", jyu: "jau5 mou5 jau4 wing5 ci4?" },
+            { day: "119A", wk: 17, en: "Please clean my room.", man: "请帮我打扫房间。", mpin: "Qǐng bāng wǒ dǎsǎo fángjiān.", can: "唔該幫我打掃房間。", jyu: "m4 goi1 bong1 ngo5 daa2 sou3 fong2 gaan1." },
+            { day: "119B", wk: 17, en: "I want to extend my stay.", man: "我想延长住宿时间。", mpin: "Wǒ xiǎng yáncháng zhùsù shíjiān.", can: "我想延長住宿時間。", jyu: "ngo5 soeng2 jin4 coeng4 zyu6 suk1 si4 gaan3." },
+            // WEEK 18
+            { day: "120A", wk: 18, en: "Where is the check-in counter?", man: "办理登机手续在哪里？", mpin: "Bànlǐ dēngjī shǒuxù zài nǎlǐ?", can: "辦理登機手續喺邊度？", jyu: "baan6 lei5 dang1 gei1 sau2 zuk1 hai2 bin1 dou6?" },
+            { day: "120B", wk: 18, en: "I have two pieces of luggage.", man: "我有两件行李。", mpin: "Wǒ yǒu liǎng jiàn xíngli.", can: "我有兩件行李。", jyu: "ngo5 jau5 loeng5 gin6 hang4 lei5." },
+            { day: "121A", wk: 18, en: "My flight is delayed.", man: "我的航班延误了。", mpin: "Wǒ de hángbān yánwù le.", can: "我架班機延誤咗。", jyu: "ngo5 gaa3 baan1 gei1 jin4 ng6 zo2." },
+            { day: "121B", wk: 18, en: "Which gate is it?", man: "是几号登机口？", mpin: "Shì jǐ hào dēngjī kǒu?", can: "係幾號登機閘？", jyu: "hai6 gei2 hou6 dang1 gei1 zaap6?" },
+            { day: "122A", wk: 18, en: "I need to exchange currency.", man: "我需要换钱。", mpin: "Wǒ xūyào huànqián.", can: "我需要換錢。", jyu: "ngo5 seoi1 jiu3 wun6 cin2." },
+            { day: "122B", wk: 18, en: "Where is the exchange counter?", man: "兑换处在哪里？", mpin: "Duìhuànchù zài nǎlǐ?", can: "兌換處喺邊度？", jyu: "deoi3 wun6 cyu3 hai2 bin1 dou6?" },
+            { day: "123A", wk: 18, en: "Is this my connecting flight?", man: "这是我的转机航班吗？", mpin: "Zhè shì wǒ de zhuǎnjī hángbān ma?", can: "呢架係我轉機嘅班機嗎？", jyu: "ni1 gaa3 hai6 ngo5 zyun2 gei1 ge3 baan1 gei1 maa3?" },
+            { day: "123B", wk: 18, en: "I missed my flight.", man: "我错过我的航班了。", mpin: "Wǒ cuòguò wǒ de hángbān le.", can: "我錯過咗我架班機。", jyu: "ngo5 co3 gwo3 zo2 ngo5 gaa3 baan1 gei1." },
+            { day: "124A", wk: 18, en: "I need a visa to enter.", man: "我需要签证才能入境。", mpin: "Wǒ xūyào qiānzhèng cái néng rùjìng.", can: "我需要簽證先至可以入境。", jyu: "ngo5 seoi1 jiu3 cim1 zing3 sin1 zi3 ho2 ji5 jap6 ging2." },
+            { day: "124B", wk: 18, en: "Where is the customs area?", man: "海关在哪里？", mpin: "Hǎiguān zài nǎlǐ?", can: "海關喺邊度？", jyu: "hoi2 gwaan1 hai2 bin1 dou6?" },
+            { day: "125A", wk: 18, en: "Do I need to declare this?", man: "我需要申报这个吗？", mpin: "Wǒ xūyào shēnbào zhège ma?", can: "我需要申報呢個嗎？", jyu: "ngo5 seoi1 jiu3 san1 bou3 ni1 go3 maa3?" },
+            { day: "125B", wk: 18, en: "My passport is in my bag.", man: "我的护照在我的包里。", mpin: "Wǒ de hùzhào zài wǒ de bāo lǐ.", can: "我本護照喺我袋入面。", jyu: "ngo5 bun2 wu6 ziu3 hai2 ngo5 doi2 jap6 min6." },
+            { day: "126A", wk: 18, en: "I am here for tourism.", man: "我是来旅游的。", mpin: "Wǒ shì lái lǚyóu de.", can: "我係嚟旅遊㗎。", jyu: "ngo5 hai6 lai4 leoi5 jau4 gaa3." },
+            { day: "126B", wk: 18, en: "I am staying for one week.", man: "我会待一个星期。", mpin: "Wǒ huì dāi yí gè xīngqī.", can: "我會留一個星期。", jyu: "ngo5 wui5 lau4 jat1 go3 sing1 kei4." },
+            // WEEK 19
+            { day: "127A", wk: 19, en: "Help!", man: "救命！", mpin: "Jiùmìng!", can: "救命呀！", jyu: "gau3 meng6 aa3!" },
+            { day: "127B", wk: 19, en: "Call the police!", man: "报警！", mpin: "Bàojǐng!", can: "報警呀！", jyu: "bou3 ging2 aa3!" },
+            { day: "128A", wk: 19, en: "I lost my passport.", man: "我的护照丢了。", mpin: "Wǒ de hùzhào diū le.", can: "我唔見咗本護照。", jyu: "ngo5 m4 gin3 zo2 bun2 wu6 ziu3." },
+            { day: "128B", wk: 19, en: "Someone stole my wallet.", man: "有人偷了我的钱包。", mpin: "Yǒurén tōu le wǒ de qiánbāo.", can: "有人偷咗我個銀包。", jyu: "jau5 jan4 tau1 zo2 ngo5 go3 ngan4 baau1." },
+            { day: "129A", wk: 19, en: "Please call an ambulance.", man: "请叫救护车。", mpin: "Qǐng jiào jiùhùchē.", can: "唔該叫救護車。", jyu: "m4 goi1 giu3 gau3 wu6 ce1." },
+            { day: "129B", wk: 19, en: "There has been an accident.", man: "发生事故了。", mpin: "Fāshēng shìgù le.", can: "發生咗意外喇。", jyu: "faat3 sang1 zo2 ji3 ngoi6 laa3." },
+            { day: "130A", wk: 19, en: "I need to go to the hospital.", man: "我需要去医院。", mpin: "Wǒ xūyào qù yīyuàn.", can: "我需要去醫院。", jyu: "ngo5 seoi1 jiu3 heoi3 ji1 jyun2." },
+            { day: "130B", wk: 19, en: "Where is the nearest hospital?", man: "最近的医院在哪里？", mpin: "Zuìjìn de yīyuàn zài nǎlǐ?", can: "最近嘅醫院喺邊度？", jyu: "zeoi3 gan6 ge3 ji1 jyun2 hai2 bin1 dou6?" },
+            { day: "131A", wk: 19, en: "I have a serious allergy.", man: "我有严重过敏。", mpin: "Wǒ yǒu yánzhòng guòmǐn.", can: "我有嚴重敏感。", jyu: "ngo5 jau5 jim4 zung6 man5 gam2." },
+            { day: "131B", wk: 19, en: "Call my embassy.", man: "请联系我的大使馆。", mpin: "Qǐng liánxì wǒ de dàshǐguǎn.", can: "唔該聯繫我嘅大使館。", jyu: "m4 goi1 lyun4 hai6 ngo5 ge3 daai6 si3 gun2." },
+            { day: "132A", wk: 19, en: "I lost my phone.", man: "我手机丢了。", mpin: "Wǒ shǒujī diū le.", can: "我部手機唔見咗。", jyu: "ngo5 bou6 sau2 gei1 m4 gin3 zo2." },
+            { day: "132B", wk: 19, en: "I need to make an emergency call.", man: "我需要打紧急电话。", mpin: "Wǒ xūyào dǎ jǐnjí diànhuà.", can: "我需要打緊急電話。", jyu: "ngo5 seoi1 jiu3 daa2 gan2 gap1 din6 waa2." },
+            { day: "133A", wk: 19, en: "This is an emergency.", man: "这是紧急情况。", mpin: "Zhè shì jǐnjí qíngkuàng.", can: "呢個係緊急情況。", jyu: "ni1 go3 hai6 gan2 gap1 cing4 fong3." },
+            { day: "133B", wk: 19, en: "I need a translator.", man: "我需要一名翻译。", mpin: "Wǒ xūyào yì míng fānyì.", can: "我需要一個翻譯。", jyu: "ngo5 seoi1 jiu3 jat1 go3 faan1 jik6." },
+            // WEEK 20
+            { day: "134A", wk: 20, en: "The weather is nice today.", man: "今天天气很好。", mpin: "Jīntiān tiānqì hěn hǎo.", can: "今日天氣好好。", jyu: "gam1 jat6 tin1 hei3 hou2 hou2." },
+            { day: "134B", wk: 20, en: "It is raining.", man: "下雨了。", mpin: "Xià yǔ le.", can: "落雨啦。", jyu: "lok6 jyu5 laa3." },
+            { day: "135A", wk: 20, en: "It is very hot today.", man: "今天很热。", mpin: "Jīntiān hěn rè.", can: "今日好熱。", jyu: "gam1 jat6 hou2 jit6." },
+            { day: "135B", wk: 20, en: "It is very cold.", man: "很冷。", mpin: "Hěn lěng.", can: "好凍。", jyu: "hou2 dung3." },
+            { day: "136A", wk: 20, en: "Please bring an umbrella.", man: "请带上雨伞。", mpin: "Qǐng dài shàng yǔsǎn.", can: "唔該帶遮。", jyu: "m4 goi1 daai3 ze1." },
+            { day: "136B", wk: 20, en: "It is snowing.", man: "在下雪。", mpin: "Zài xià xuě.", can: "落緊雪。", jyu: "lok6 gan2 syut3." },
+            { day: "137A", wk: 20, en: "The weather forecast says rain.", man: "天气预报说会下雨。", mpin: "Tiānqì yùbào shuō huì xià yǔ.", can: "天氣預報話會落雨。", jyu: "tin1 hei3 jyu6 bou3 waa6 wui5 lok6 jyu5." },
+            { day: "137B", wk: 20, en: "It's very windy.", man: "风很大。", mpin: "Fēng hěn dà.", can: "風好大。", jyu: "fung1 hou2 daai6." },
+            { day: "138A", wk: 20, en: "I love spring.", man: "我喜欢春天。", mpin: "Wǒ xǐhuan chūntiān.", can: "我鍾意春天。", jyu: "ngo5 zung1 ji3 ceon1 tin1." },
+            { day: "138B", wk: 20, en: "Summer is too hot for me.", man: "夏天对我来说太热了。", mpin: "Xiàtiān duì wǒ lái shuō tài rè le.", can: "夏天對我嚟講太熱喇。", jyu: "haa6 tin1 deoi3 ngo5 lai4 gong2 taai3 jit6 laa3." },
+            { day: "139A", wk: 20, en: "Autumn is very beautiful.", man: "秋天很漂亮。", mpin: "Qiūtiān hěn piàoliang.", can: "秋天好靚。", jyu: "cau1 tin1 hou2 leng3." },
+            { day: "139B", wk: 20, en: "I like cool weather.", man: "我喜欢凉快的天气。", mpin: "Wǒ xǐhuan liángkuai de tiānqì.", can: "我鍾意涼爽嘅天氣。", jyu: "ngo5 zung1 ji3 loeng4 song2 ge3 tin1 hei3." },
+            { day: "140A", wk: 20, en: "The typhoon is coming.", man: "台风来了。", mpin: "Táifēng lái le.", can: "颱風嚟喇。", jyu: "toi4 fung1 lai4 laa3." },
+            { day: "140B", wk: 20, en: "Stay indoors today.", man: "今天待在室内。", mpin: "Jīntiān dāi zài shìnèi.", can: "今日留喺室內。", jyu: "gam1 jat6 lau4 hai2 sat1 noi6." },
+            // WEEK 21
+            { day: "141A", wk: 21, en: "I visited China last year.", man: "我去年去了中国。", mpin: "Wǒ qùnián qùle Zhōngguó.", can: "我去年去咗中國。", jyu: "ngo5 heoi3 nin4 heoi3 zo2 zung1 gwok3." },
+            { day: "141B", wk: 21, en: "I had a wonderful time.", man: "我过得非常好。", mpin: "Wǒ guò de fēicháng hǎo.", can: "我過得非常好。", jyu: "ngo5 gwo3 dak1 fei1 soeng4 hou2." },
+            { day: "142A", wk: 21, en: "When I was young, I lived in New York.", man: "我小时候住在纽约。", mpin: "Wǒ xiǎo shíhou zhù zài Niǔyuē.", can: "我細個住喺紐約。", jyu: "ngo5 sai3 go3 zyu6 hai2 Nau2 joek3." },
+            { day: "142B", wk: 21, en: "I used to study Chinese in school.", man: "我以前在学校学中文。", mpin: "Wǒ yǐqián zài xuéxiào xué Zhōngwén.", can: "我以前喺學校學中文。", jyu: "ngo5 ji5 cin4 hai2 hok6 haau6 hok6 zung1 man2." },
+            { day: "143A", wk: 21, en: "I started learning Cantonese six months ago.", man: "我六个月前开始学粤语。", mpin: "Wǒ liù ge yuè qián kāishǐ xué Yuèyǔ.", can: "我六個月前開始學廣東話。", jyu: "ngo5 luk6 go3 jyut6 cin4 hoi1 ci2 hok6 gwong2 dung1 waa2." },
+            { day: "143B", wk: 21, en: "I have been to Hong Kong twice.", man: "我去过香港两次。", mpin: "Wǒ qùguò Xiānggǎng liǎng cì.", can: "我去過香港兩次。", jyu: "ngo5 heoi3 gwo3 hoeng1 gong2 loeng5 ci3." },
+            { day: "144A", wk: 21, en: "Last week was very busy.", man: "上周很忙。", mpin: "Shàng zhōu hěn máng.", can: "上個禮拜好忙。", jyu: "soeng6 go3 lai5 baai3 hou2 mong4." },
+            { day: "144B", wk: 21, en: "I forgot to call you.", man: "我忘记给你打电话了。", mpin: "Wǒ wàngjì gěi nǐ dǎ diànhuà le.", can: "我唔記得打電話畀你。", jyu: "ngo5 m4 gei3 dak1 daa2 din6 waa2 bei2 nei5." },
+            { day: "145A", wk: 21, en: "I already ate dinner.", man: "我已经吃过晚饭了。", mpin: "Wǒ yǐjīng chīguò wǎnfàn le.", can: "我已經食過晚飯喇。", jyu: "ngo5 ji5 ging1 sik6 gwo3 maan5 faan6 laa3." },
+            { day: "145B", wk: 21, en: "I finished my work.", man: "我做完工作了。", mpin: "Wǒ zuò wán gōngzuò le.", can: "我做完嘢喇。", jyu: "ngo5 zou6 jyun4 je5 laa3." },
+            { day: "146A", wk: 21, en: "I met a very kind person today.", man: "我今天遇到了一个很好的人。", mpin: "Wǒ jīntiān yùdào le yí ge hěn hǎo de rén.", can: "我今日遇到一個好好嘅人。", jyu: "ngo5 gam1 jat6 jyu6 dou2 jat1 go3 hou2 hou2 ge3 jan4." },
+            { day: "146B", wk: 21, en: "The food I tried yesterday was amazing.", man: "我昨天尝的食物很好吃。", mpin: "Wǒ zuótiān cháng de shíwù hěn hǎochī.", can: "我尋日試嘅嘢食好好食。", jyu: "ngo5 cam4 jat6 si3 ge3 je5 sik6 hou2 hou2 sik6." },
+            { day: "147A", wk: 21, en: "I took a lot of pictures on my trip.", man: "我在旅途中拍了很多照片。", mpin: "Wǒ zài lǚtú zhōng pāile hěn duō zhàopiàn.", can: "我旅行途中影咗好多相。", jyu: "ngo5 leoi5 hang4 tou4 zung1 jing2 zo2 hou2 do1 soeng2." },
+            { day: "147B", wk: 21, en: "I spent too much money.", man: "我花了太多钱。", mpin: "Wǒ huāle tài duō qián.", can: "我使咗太多錢。", jyu: "ngo5 sai2 zo2 taai3 do1 cin2." },
+            // WEEK 22
+            { day: "148A", wk: 22, en: "I will travel to Taiwan next month.", man: "我下个月去台湾旅游。", mpin: "Wǒ xià ge yuè qù Táiwān lǚyóu.", can: "我下個月去台灣旅遊。", jyu: "ngo5 haa6 go3 jyut6 heoi3 toi4 waan1 leoi5 jau4." },
+            { day: "148B", wk: 22, en: "I want to learn more Chinese.", man: "我想学更多中文。", mpin: "Wǒ xiǎng xué gèng duō Zhōngwén.", can: "我想學多啲中文。", jyu: "ngo5 soeng2 hok6 do1 di1 zung1 man2." },
+            { day: "149A", wk: 22, en: "I will try harder next time.", man: "我下次会更努力。", mpin: "Wǒ xià cì huì gèng nǔlì.", can: "我下次會更加努力。", jyu: "ngo5 haa6 ci3 wui5 gang3 gaa1 nou5 lik6." },
+            { day: "149B", wk: 22, en: "I hope to visit Hong Kong one day.", man: "我希望有一天能去香港。", mpin: "Wǒ xīwàng yǒu yìtiān néng qù Xiānggǎng.", can: "我希望有一日可以去香港。", jyu: "ngo5 hei1 mong6 jau5 jat1 jat6 ho2 ji5 heoi3 hoeng1 gong2." },
+            { day: "150A", wk: 22, en: "I will study every day from now on.", man: "我从现在开始每天学习。", mpin: "Wǒ cóng xiànzài kāishǐ měitiān xuéxí.", can: "我由而家開始每日學習。", jyu: "ngo5 jau4 ji4 gaa1 hoi1 ci2 mui5 jat6 hok6 zaap6." },
+            { day: "150B", wk: 22, en: "I am going to have a meeting tomorrow.", man: "我明天有个会议。", mpin: "Wǒ míngtiān yǒu gè huìyì.", can: "我聽日有個會議。", jyu: "ngo5 ting1 jat6 jau5 go3 wui6 ji5." },
+            { day: "151A", wk: 22, en: "I plan to move to a new apartment.", man: "我计划搬到新公寓。", mpin: "Wǒ jìhuà bān dào xīn gōngyù.", can: "我計劃搬去新公寓。", jyu: "ngo5 gai3 waak6 bun1 heoi3 san1 gung1 jyu4." },
+            { day: "151B", wk: 22, en: "I want to get a better job.", man: "我想找到更好的工作。", mpin: "Wǒ xiǎng zhǎodào gèng hǎo de gōngzuò.", can: "我想搵一份更好嘅工作。", jyu: "ngo5 soeng2 wan2 jat1 fan6 gang3 hou2 ge3 gung1 zok3." },
+            { day: "152A", wk: 22, en: "I am going to save more money.", man: "我要更多地存钱。", mpin: "Wǒ yào gèng duō de cúnqián.", can: "我要儲多啲錢。", jyu: "ngo5 jiu3 cou5 do1 di1 cin2." },
+            { day: "152B", wk: 22, en: "I hope to make new friends.", man: "我希望交到新朋友。", mpin: "Wǒ xīwàng jiāodào xīn péngyou.", can: "我希望交到新朋友。", jyu: "ngo5 hei1 mong6 gaau1 dou2 san1 pang4 jau5." },
+            { day: "153A", wk: 22, en: "I will finish this course soon.", man: "我很快就会完成这门课程。", mpin: "Wǒ hěn kuài jiù huì wánchéng zhè mén kèchéng.", can: "我好快就完成呢門課程。", jyu: "ngo5 hou2 faai3 zau6 jyun4 sing4 ni1 mun4 fo3 cing4." },
+            { day: "153B", wk: 22, en: "I want to be fluent in two years.", man: "我想在两年内流利地说话。", mpin: "Wǒ xiǎng zài liǎng nián nèi liúlì de shuōhuà.", can: "我想喺兩年內流利講嘢。", jyu: "ngo5 soeng2 hai2 loeng5 nin4 noi6 lau4 lei6 gong2 je5." },
+            { day: "154A", wk: 22, en: "I look forward to seeing you again.", man: "我期待再次见到你。", mpin: "Wǒ qīdài zàicì jiàndào nǐ.", can: "我期待再次見到你。", jyu: "ngo5 kei4 doi6 zoi3 ci3 gin3 dou2 nei5." },
+            { day: "154B", wk: 22, en: "I will never give up.", man: "我永远不会放弃。", mpin: "Wǒ yǒngyuǎn bú huì fàngqì.", can: "我永遠唔會放棄。", jyu: "ngo5 wing5 jyun5 m4 wui5 fong3 hei3." },
+            // WEEK 23
+            { day: "155A", wk: 23, en: "Excuse me, is this seat taken?", man: "打扰一下，这个座位有人吗？", mpin: "Dǎrǎo yíxià, zhège zuòwèi yǒu rén ma?", can: "唔好意思，呢個位有人坐嗎？", jyu: "m4 hou2 ji3 si1, ni1 go3 wai2 jau5 jan4 co5 maa3?" },
+            { day: "155B", wk: 23, en: "No, please sit down.", man: "没有，请坐。", mpin: "Méiyǒu, qǐng zuò.", can: "冇，請坐。", jyu: "mou5, cing2 co5." },
+            { day: "156A", wk: 23, en: "Can I ask you something?", man: "我可以问你一件事吗？", mpin: "Wǒ kěyǐ wèn nǐ yí jiàn shì ma?", can: "我可唔可以問你一件事？", jyu: "ngo5 ho2 m4 ho2 ji5 man6 nei5 jat1 gin6 si6?" },
+            { day: "156B", wk: 23, en: "Of course! Go ahead.", man: "当然！请说。", mpin: "Dāngrán! Qǐng shuō.", can: "當然！請講。", jyu: "dong1 jin4! cing2 gong2." },
+            { day: "157A", wk: 23, en: "What is the best restaurant around here?", man: "这附近最好的餐厅是哪家？", mpin: "Zhè fùjìn zuì hǎo de cāntīng shì nǎ jiā?", can: "呢附近最好嘅餐廳係邊間？", jyu: "ni1 fu6 gan6 zeoi3 hou2 ge3 caan1 teng1 hai6 bin1 gaan1?" },
+            { day: "157B", wk: 23, en: "I recommend the place on the corner.", man: "我推荐街角那家。", mpin: "Wǒ tuījiàn jiējiǎo nà jiā.", can: "我推薦街角嗰間。", jyu: "ngo5 teoi1 zin3 gaai1 gok3 go2 gaan1." },
+            { day: "158A", wk: 23, en: "How long have you been studying Chinese?", man: "你学中文多久了？", mpin: "Nǐ xué Zhōngwén duō jiǔ le?", can: "你學中文幾耐喇？", jyu: "nei5 hok6 zung1 man2 gei2 noi6 laa3?" },
+            { day: "158B", wk: 23, en: "I have been studying for about six months.", man: "我学了大约六个月了。", mpin: "Wǒ xuéle dàyuē liù ge yuè le.", can: "我學咗大約六個月喇。", jyu: "ngo5 hok6 zo2 daai6 joek3 luk6 go3 jyut6 laa3." },
+            { day: "159A", wk: 23, en: "Your Chinese is very good!", man: "你的中文说得很好！", mpin: "Nǐ de Zhōngwén shuō de hěn hǎo!", can: "你中文講得好好！", jyu: "nei5 zung1 man2 gong2 dak1 hou2 hou2!" },
+            { day: "159B", wk: 23, en: "Thank you, I still have a lot to learn.", man: "谢谢，我还有很多要学。", mpin: "Xièxie, wǒ hái yǒu hěn duō yào xué.", can: "多謝，我仲有好多嘢要學。", jyu: "do1 ze6, ngo5 zung6 jau5 hou2 do1 je5 jiu3 hok6." },
+            { day: "160A", wk: 23, en: "Please correct me if I make a mistake.", man: "如果我说错了，请纠正我。", mpin: "Rúguǒ wǒ shuō cuò le, qǐng jiūzhèng wǒ.", can: "如果我講錯咗，請糾正我。", jyu: "jyu4 gwo2 ngo5 gong2 co3 zo2, cing2 gau2 zing3 ngo5." },
+            { day: "160B", wk: 23, en: "I will keep practicing every day.", man: "我会每天坚持练习。", mpin: "Wǒ huì měitiān jiānchí liànxí.", can: "我會每日堅持練習。", jyu: "ngo5 wui5 mui5 jat6 gin1 ci4 lin6 zaap6." },
+            // WEEK 24
+            { day: "161A", wk: 24, en: "Happy Chinese New Year!", man: "新年快乐！", mpin: "Xīnnián kuàilè!", can: "新年快樂！", jyu: "san1 nin4 faai3 lok6!" },
+            { day: "161B", wk: 24, en: "Wishing you good luck and prosperity!", man: "祝你好运和繁荣！", mpin: "Zhù nǐ hǎoyùn hé fánróng!", can: "祝你好運同繁榮！", jyu: "zuk1 nei5 hou2 wan6 tung4 faan4 wing4!" },
+            { day: "162A", wk: 24, en: "Happy birthday!", man: "生日快乐！", mpin: "Shēngrì kuàilè!", can: "生日快樂！", jyu: "sang1 jat6 faai3 lok6!" },
+            { day: "162B", wk: 24, en: "How old are you today?", man: "你今天几岁了？", mpin: "Nǐ jīntiān jǐ suì le?", can: "你今日幾歲㗎？", jyu: "nei5 gam1 jat6 gei2 seoi3 gaa3?" },
+            { day: "163A", wk: 24, en: "Congratulations!", man: "恭喜你！", mpin: "Gōngxǐ nǐ!", can: "恭喜你！", jyu: "gung1 hei2 nei5!" },
+            { day: "163B", wk: 24, en: "I am very proud of you.", man: "我为你感到非常骄傲。", mpin: "Wǒ wèi nǐ gǎndào fēicháng jiāo'ào.", can: "我為你感到好自豪。", jyu: "ngo5 wai6 nei5 gam2 dou3 hou2 zi6 hou4." },
+            { day: "164A", wk: 24, en: "I love Chinese food.", man: "我爱中国食物。", mpin: "Wǒ ài Zhōngguó shíwù.", can: "我好鍾意中國嘢食。", jyu: "ngo5 hou2 zung1 ji3 zung1 gwok3 je5 sik6." },
+            { day: "164B", wk: 24, en: "I love Chinese culture.", man: "我喜欢中国文化。", mpin: "Wǒ xǐhuan Zhōngguó wénhuà.", can: "我好鍾意中國文化。", jyu: "ngo5 hou2 zung1 ji3 zung1 gwok3 man4 faa3." },
+            { day: "165A", wk: 24, en: "I want to visit the Great Wall.", man: "我想去看长城。", mpin: "Wǒ xiǎng qù kàn Chángchéng.", can: "我想去睇長城。", jyu: "ngo5 soeng2 heoi3 tai2 coeng4 sing4." },
+            { day: "165B", wk: 24, en: "Hong Kong is a wonderful city.", man: "香港是个很棒的城市。", mpin: "Xiānggǎng shì gè hěn bàng de chéngshì.", can: "香港係個好棒嘅城市。", jyu: "hoeng1 gong2 hai6 go3 hou2 bong6 ge3 sing4 si5." },
+            { day: "166A", wk: 24, en: "I am learning Chinese because I love the culture.", man: "我学中文是因为我热爱这个文化。", mpin: "Wǒ xué Zhōngwén shì yīnwèi wǒ rè'ài zhège wénhuà.", can: "我學中文係因為我熱愛呢個文化。", jyu: "ngo5 hok6 zung1 man2 hai6 jan1 wai6 ngo5 jit6 oi3 ni1 go3 man4 faa3." },
+            { day: "166B", wk: 24, en: "I want to make Chinese friends.", man: "我想交中国朋友。", mpin: "Wǒ xiǎng jiāo Zhōngguó péngyou.", can: "我想交中國朋友。", jyu: "ngo5 soeng2 gaau1 zung1 gwok3 pang4 jau5." },
+            { day: "167A", wk: 24, en: "It was nice to meet you.", man: "很高兴认识你。", mpin: "Hěn gāoxìng rènshi nǐ.", can: "好高興認識你。", jyu: "hou2 gou1 hing3 jing6 sik1 nei5." },
+            { day: "167B", wk: 24, en: "I hope we meet again.", man: "希望我们能再见面。", mpin: "Xīwàng wǒmen néng zài jiànmiàn.", can: "希望我哋可以再見面。", jyu: "hei1 mong6 ngo5 dei6 ho2 ji5 zoi3 gin3 min6." },
+            { day: "168A", wk: 24, en: "I have practiced for six months.", man: "我练习了六个月。", mpin: "Wǒ liànxíle liù ge yuè.", can: "我練習咗六個月。", jyu: "ngo5 lin6 zaap6 zo2 luk6 go3 jyut6." },
+            { day: "168B", wk: 24, en: "Language learning is a lifelong journey.", man: "语言学习是一生的旅程。", mpin: "Yǔyán xuéxí shì yīshēng de lǚchéng.", can: "語言學習係一生嘅旅程。", jyu: "jyu5 jin4 hok6 zaap6 hai6 jat1 saang1 ge3 leoi5 cing4." },
+        ];
+
+        // ── STATE ─────────────────────────────────────────────────────────────────────
+        let seen = new Set();
+        let activeList = [...ALL_CARDS];
+
+        // ── RENDER ────────────────────────────────────────────────────────────────────
+        function renderCards(list) {
+            const grid = document.getElementById('grid');
+            const nr = document.getElementById('no-results');
+            grid.innerHTML = '';
+            if (!list.length) { nr.style.display = 'block'; updateStats(); return; }
+            nr.style.display = 'none';
+
+            list.forEach((c, i) => {
+                const wrap = document.createElement('div');
+                wrap.className = 'card-wrap' + (seen.has(c.day) ? ' flipped' : '');
+                wrap.style.animationDelay = Math.min(i * 0.02, 0.5) + 's';
+                wrap.dataset.day = c.day;
+
+                wrap.innerHTML = `
+      <div class="card-inner">
+
+        <!-- FRONT -->
+        <div class="card-face card-front">
+          <div class="card-done-badge">${seen.has(c.day) ? '✅' : ''}</div>
+          <div class="card-day">Day ${c.day}</div>
+          <div class="card-english">${c.en}</div>
+          <div class="front-speaker-row">
+            <button class="speak-btn" title="Listen in English"
+              onclick="handleSpeak(event, '${escQ(c.en)}', 'en-US', this)">🔊</button>
+            <span class="front-speak-label">tap card to flip</span>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-face card-back">
+          <div class="lang-block">
+            <div class="lang-text">
+              <div class="lang-label man">🇨🇳 Mandarin</div>
+              <div class="lang-char">${c.man}</div>
+            </div>
+            <button class="speak-btn" title="Listen in Mandarin"
+              onclick="handleSpeak(event, '${escQ(c.man)}', 'zh-CN', this)">🔊</button>
+          </div>
+          <div class="lang-block">
+            <div class="lang-text">
+              <div class="lang-label pin">📖 Pinyin</div>
+              <div class="lang-roman">${c.mpin}</div>
+            </div>
+            <button class="speak-btn" title="Listen Pinyin (Mandarin)"
+              onclick="handleSpeak(event, '${escQ(c.man)}', 'zh-CN', this)">🔊</button>
+          </div>
+          <div class="lang-block">
+            <div class="lang-text">
+              <div class="lang-label can">🇭🇰 Cantonese</div>
+              <div class="lang-char">${c.can}</div>
+            </div>
+            <button class="speak-btn" title="Listen in Cantonese"
+              onclick="handleSpeak(event, '${escQ(c.can)}', 'zh-HK', this)">🔊</button>
+          </div>
+          <div class="lang-block">
+            <div class="lang-text">
+              <div class="lang-label jyu">📖 Jyutping</div>
+              <div class="lang-roman">${c.jyu}</div>
+            </div>
+            <button class="speak-btn" title="Listen Jyutping (Cantonese)"
+              onclick="handleSpeak(event, '${escQ(c.can)}', 'zh-HK', this)">🔊</button>
+          </div>
+        </div>
+
+      </div>`;
+
+                // Click on card body → flip (not on speak buttons)
+                wrap.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('speak-btn')) return;
+                    toggleCard(wrap, c.day);
+                });
+
+                grid.appendChild(wrap);
+            });
+            updateStats();
+        }
+
+        function escQ(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        function handleSpeak(e, text, lang, btn) {
+            e.stopPropagation();
+            speak(text, lang, btn);
+        }
+
+        function toggleCard(wrap, day) {
+            wrap.classList.toggle('flipped');
+            const badge = wrap.querySelector('.card-done-badge');
+            if (wrap.classList.contains('flipped')) {
+                seen.add(day);
+                badge.textContent = '✅';
+            } else {
+                seen.delete(day);
+                badge.textContent = '';
+            }
+            updateStats();
+        }
+
+        // ── STATS ─────────────────────────────────────────────────────────────────────
+        function updateStats() {
+            const total = ALL_CARDS.length;
+            const s = seen.size;
+            const pct = Math.round(s / total * 100);
+            document.getElementById('s-total').textContent = total;
+            document.getElementById('s-seen').textContent = s;
+            document.getElementById('s-left').textContent = total - s;
+            document.getElementById('s-pct').textContent = pct + '%';
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('progress-label').textContent =
+                `Studied: ${s} / ${total} cards  (${pct}%)`;
+        }
+
+        // ── CONTROLS ──────────────────────────────────────────────────────────────────
+        function showAll() {
+            document.getElementById('search').value = '';
+            activeList = [...ALL_CARDS];
+            document.getElementById('section-title').textContent =
+                `📋 All Cards · ${ALL_CARDS.length} cards`;
+            renderCards(activeList);
+        }
+
+        function shuffleCards() {
+            activeList = [...activeList].sort(() => Math.random() - 0.5);
+            renderCards(activeList);
+        }
+
+        function resetProgress() {
+            seen.clear();
+            synth && synth.cancel();
+            renderCards(activeList);
+        }
+
+        function doSearch() {
+            const q = document.getElementById('search').value.trim().toLowerCase();
+            if (!q) { showAll(); return; }
+            const res = ALL_CARDS.filter(c =>
+                c.en.toLowerCase().includes(q) ||
+                c.man.includes(q) ||
+                c.can.includes(q) ||
+                c.mpin.toLowerCase().includes(q) ||
+                c.jyu.toLowerCase().includes(q) ||
+                c.day.toLowerCase().includes(q)
+            );
+            activeList = res;
+            document.getElementById('section-title').textContent =
+                `🔍 "${q}" · ${res.length} result(s)`;
+            renderCards(res);
+        }
+
+        // ── INIT ──────────────────────────────────────────────────────────────────────
+        // Pre-load voices
+        if (synth) { synth.getVoices(); synth.onvoiceschanged = () => synth.getVoices(); }
+        showAll();
+    </script>
+</body>
+
+</html>
