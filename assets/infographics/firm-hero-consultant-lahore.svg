@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">MAS Law Firm</title>
+  <desc id="desc">Clearer visuals for registrations, filings, and legal support across the site.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d2742"/>
+      <stop offset="60%" stop-color="#144f66"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="1000" fill="rgba(6,15,24,0.12)"/>
+  <circle cx="1290" cy="170" r="300" fill="#e6f6ff" opacity="0.12"/>
+  <circle cx="1330" cy="820" r="250" fill="#ffffff" opacity="0.06"/>
+  <circle cx="260" cy="190" r="150" fill="#ffffff" opacity="0.04"/>
+  <path d="M0 1000 V720 C180 620 360 560 650 560 C920 560 1140 640 1600 510 V1000 Z" fill="rgba(255,255,255,0.05)"/>
+  <rect x="88" y="112" width="196" height="42" rx="14" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.15)"/>
+  <text x="110" y="140" font-size="18" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Business and Tax Advisory</text>
+  <rect x="1050" y="146" width="430" height="650" rx="34" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)"/>
+  <rect x="1090" y="220" width="310" height="108" rx="22" fill="rgba(255,255,255,0.9)"/>
+  <rect x="1090" y="372" width="280" height="108" rx="22" fill="rgba(255,255,255,0.9)"/>
+  <rect x="1090" y="524" width="330" height="108" rx="22" fill="rgba(255,255,255,0.9)"/>
+  <text x="1130" y="262" font-size="26" font-weight="800" fill="#0d2742" font-family="Arial, Helvetica, sans-serif">Registrations</text>
+  <text x="1130" y="408" font-size="26" font-weight="800" fill="#0d2742" font-family="Arial, Helvetica, sans-serif">Tax Filing</text>
+  <text x="1130" y="560" font-size="26" font-weight="800" fill="#0d2742" font-family="Arial, Helvetica, sans-serif">Legal Support</text>
+  <line x1="92" y1="870" x2="940" y2="870" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+  <rect x="1080" y="790" width="112" height="40" rx="14" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/><text x="1136" y="816" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Tax</text><rect x="1208" y="790" width="112" height="40" rx="14" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/><text x="1264" y="816" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Legal</text><rect x="1336" y="790" width="112" height="40" rx="14" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.14)"/><text x="1392" y="816" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Business Setup</text>
+
+</svg>

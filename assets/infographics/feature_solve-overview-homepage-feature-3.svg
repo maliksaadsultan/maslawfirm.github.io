@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Problem Solving</title>
+  <desc id="desc">A more polished closing-stage visual for turning advice into completed outcomes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#052e16"/>
+      <stop offset="60%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1320" cy="160" r="240" fill="#dcfce7" opacity="0.18"/>
+  <circle cx="1240" cy="830" r="280" fill="#ffffff" opacity="0.07"/>
+  <path d="M0 760 C220 700 320 640 470 560 C640 470 710 450 900 470 L900 1000 L0 1000 Z" fill="rgba(255,255,255,0.05)"/>
+  <rect x="80" y="78" width="250" height="44" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)"/>
+  <text x="104" y="107" font-size="20" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Execution Path</text>
+  <text x="92" y="220" font-size="70" font-weight="800" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Problem Solving</text>
+  <text x="94" y="286" font-size="27" font-weight="500" fill="#e5eef7" font-family="Arial, Helvetica, sans-serif"><tspan x="94" dy="0">A more polished closing-stage visual</tspan><tspan x="94" dy="34">for turning advice into completed</tspan><tspan x="94" dy="34">outcomes.</tspan></text>
+  <rect x="96" y="382" width="146" height="46" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="169" y="411" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Resolve</text><rect x="262" y="382" width="146" height="46" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="335" y="411" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">File</text><rect x="428" y="382" width="146" height="46" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)"/><text x="501" y="411" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Complete</text>
+  <text x="94" y="510" font-size="22" font-weight="700" fill="#dcfce7" font-family="Arial, Helvetica, sans-serif">Service Snapshot</text>
+  <line x1="94" y1="535" x2="750" y2="535" stroke="rgba(255,255,255,0.18)" stroke-width="2"/>
+  <text x="94" y="610" font-size="26" font-weight="800" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Homepage Feature 3</text>
+  <text x="94" y="650" font-size="22" font-weight="500" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif">Premium infographic refresh for this section.</text>
+  <rect x="860" y="96" width="660" height="660" rx="36" fill="rgba(6,15,24,0.14)" stroke="rgba(255,255,255,0.16)"/>
+  <text x="914" y="146" font-size="24" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Core Focus</text>
+  <rect x="896" y="182" width="580" height="150" rx="24" fill="rgba(255,255,255,0.92)"/><circle cx="946" cy="222" r="18" fill="#eab308"/><text x="946" y="229" text-anchor="middle" font-size="16" font-weight="700" fill="#052e16" font-family="Arial, Helvetica, sans-serif">1</text><text x="982" y="228" font-size="30" font-weight="800" fill="#052e16" font-family="Arial, Helvetica, sans-serif">Structure Work</text><text x="930" y="274" font-size="20" font-weight="500" fill="#334155" font-family="Arial, Helvetica, sans-serif"><tspan x="930" dy="0">Translate advice into tasks.</tspan></text><rect x="896" y="377" width="580" height="150" rx="24" fill="rgba(255,255,255,0.92)"/><circle cx="946" cy="417" r="18" fill="#eab308"/><text x="946" y="424" text-anchor="middle" font-size="16" font-weight="700" fill="#052e16" font-family="Arial, Helvetica, sans-serif">2</text><text x="982" y="423" font-size="30" font-weight="800" fill="#052e16" font-family="Arial, Helvetica, sans-serif">Execute</text><text x="930" y="469" font-size="20" font-weight="500" fill="#334155" font-family="Arial, Helvetica, sans-serif"><tspan x="930" dy="0">Complete filings and</tspan><tspan x="930" dy="26">documentation.</tspan></text><rect x="896" y="572" width="580" height="150" rx="24" fill="rgba(255,255,255,0.92)"/><circle cx="946" cy="612" r="18" fill="#eab308"/><text x="946" y="619" text-anchor="middle" font-size="16" font-weight="700" fill="#052e16" font-family="Arial, Helvetica, sans-serif">3</text><text x="982" y="618" font-size="30" font-weight="800" fill="#052e16" font-family="Arial, Helvetica, sans-serif">Confirm</text><text x="930" y="664" font-size="20" font-weight="500" fill="#334155" font-family="Arial, Helvetica, sans-serif"><tspan x="930" dy="0">Check the result and next risk.</tspan></text>
+
+</svg>

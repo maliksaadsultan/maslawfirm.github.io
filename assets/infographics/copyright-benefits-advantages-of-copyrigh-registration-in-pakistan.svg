@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Copyright Registration</title>
+  <desc id="desc">More polished creative-rights visuals for protected work, filing, and ownership.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="60%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="1000" fill="rgba(255,255,255,0.02)"/>
+  <circle cx="1180" cy="210" r="290" fill="#ffffff" opacity="0.06"/>
+  <circle cx="180" cy="780" r="220" fill="#e0e7ff" opacity="0.12"/>
+  <rect x="82" y="84" width="286" height="46" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.16)"/>
+  <text x="104" y="114" font-size="20" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Benefits Overview</text>
+  <text x="92" y="222" font-size="68" font-weight="800" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Copyright Registration</text>
+  <text x="94" y="288" font-size="27" font-weight="500" fill="#e5eef7" font-family="Arial, Helvetica, sans-serif"><tspan x="94" dy="0">More polished creative-rights</tspan><tspan x="94" dy="34">visuals for protected work,</tspan><tspan x="94" dy="34">filing, and ownership.</tspan></text>
+  <rect x="94" y="392" width="500" height="360" rx="32" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)"/>
+  <text x="136" y="452" font-size="26" font-weight="700" fill="#e0e7ff" font-family="Arial, Helvetica, sans-serif">What Improves</text>
+  <text x="136" y="518" font-size="60" font-weight="800" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">3</text>
+  <text x="136" y="560" font-size="24" font-weight="700" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif">clear reasons clients choose this route</text>
+  <circle cx="180" cy="648" r="10" fill="#f43f5e"/>
+  <text x="206" y="655" font-size="22" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Stronger protection and structure</text>
+  <circle cx="180" cy="702" r="10" fill="#f43f5e"/>
+  <text x="206" y="709" font-size="22" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">More confidence for investors and authorities</text>
+  <circle cx="180" cy="756" r="10" fill="#f43f5e"/>
+  <text x="206" y="763" font-size="22" font-weight="700" fill="#ffffff" font-family="Arial, Helvetica, sans-serif">Cleaner compliance and operating discipline</text>
+  <rect x="770" y="282" width="360" height="54" rx="20" fill="#f43f5e" opacity="0.88"/><text x="796" y="317" font-size="24" font-weight="800" fill="#1f2937" font-family="Arial, Helvetica, sans-serif">Ownership Signal</text><text x="796" y="378" font-size="21" font-weight="500" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif"><tspan x="796" dy="0">Make authorship more explicit.</tspan></text><rect x="770" y="462" width="300" height="54" rx="20" fill="#f43f5e" opacity="0.88"/><text x="796" y="497" font-size="24" font-weight="800" fill="#1f2937" font-family="Arial, Helvetica, sans-serif">Licensing Support</text><text x="796" y="558" font-size="21" font-weight="500" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif"><tspan x="796" dy="0">Strengthen use and permission</tspan><tspan x="796" dy="26">control.</tspan></text><rect x="770" y="642" width="420" height="54" rx="20" fill="#f43f5e" opacity="0.88"/><text x="796" y="677" font-size="24" font-weight="800" fill="#1f2937" font-family="Arial, Helvetica, sans-serif">Evidence</text><text x="796" y="738" font-size="21" font-weight="500" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif"><tspan x="796" dy="0">Keep a clearer rights trail.</tspan></text>
+
+</svg>
