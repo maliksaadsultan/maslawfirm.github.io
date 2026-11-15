@@ -16,6 +16,8 @@ for original in data:
   if len(soup.find_all(tag))!=n: issues.append(f'{original["file"]}: expected one {tag}')
  if not soup.title or not soup.find('meta',attrs={'name':'description'}): issues.append(f'{path}: missing metadata')
  if 'mastaxlawfirm@gmail.com' in str(soup): issues.append(f'{path}: old email')
+ if re.search(r'\bMAS\s+Law\s+Firm\b',str(soup),re.I): issues.append(f'{path}: outdated firm name')
+ if not soup.find('meta',attrs={'property':'og:site_name','content':'MAS Tax Firm'}): issues.append(f'{path}: incorrect firm metadata')
  for schema in soup.find_all('script',type='application/ld+json'):
   try: json.loads(schema.string)
   except Exception: issues.append(f'{path}: invalid JSON-LD')
@@ -36,7 +38,7 @@ for original in data:
    if not all(node.has_attr(a) for a in ['alt','width','height']): issues.append(f'{original["file"]}: image dimensions/alt missing')
  # Original text remains even where layout changes. Form buttons and a missing download label are intentionally revised.
  words=lambda t: set(re.findall(r'[a-z]{3,}',t.lower()))
- old=words(original['content']); new=words(soup.find('main').get_text(' ',strip=True))
+ old=words(re.sub(r'\bMAS\s+Law\s+Firm\b','MAS Tax Firm',original['content'],flags=re.I)); new=words(soup.find('main').get_text(' ',strip=True))
  missing=old-new-{'mastaxlawfirm','gmail','send','message','download','us','thanks','khanpur'}
  totals['preserved_words']+=len(old&new)
  if missing: warnings.append({'page':original['file'],'source_words_not_in_render':sorted(missing)})

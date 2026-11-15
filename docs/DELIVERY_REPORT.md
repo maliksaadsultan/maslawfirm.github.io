@@ -1,4 +1,10 @@
-# MAS Law Firm delivery report
+# MAS Tax Firm delivery report
+
+## Current name update
+
+The displayed firm name is MAS Tax Firm across all 27 pages, including shared navigation/footer, page copy, titles, social metadata, structured data and the prepared WhatsApp greeting. Editable page content, section-image placement headings and the builder use the current name. The original repository snapshot and exact image-generation prompts remain historical records.
+
+The name update passed the maintained root/package validation and six rendered Chrome checks covering home, about and contact at 375px/1440px, including a locally prepared WhatsApp greeting. No message was sent. `artifacts/mas-tax-firm-name-update.zip` contains only the changed website, build-source and documentation files for manual upload over the existing repository root. The complete deployment archive has also been refreshed.
 
 The complete redesigned website is implemented locally. All 27 original HTML files and route casing remain, including both audit spellings, 404 and the noindex portfolio template. The original logo and CNAME are unchanged. Nothing has been pushed, deployed or changed in DNS.
 
