@@ -1,0 +1,291 @@
+{
+  "home-planning": {
+    "original": "artifacts/section-image-originals/home-planning.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/home-planning-480.webp",
+      "/assets/section-images/home-planning-900.webp",
+      "/assets/section-images/home-planning-1400.webp"
+    ],
+    "original_sha256": "4657ca68d2786fe04c295c6ab1c0d92f393183ae655bc295f51dce85b67e6781"
+  },
+  "home-filer-guide": {
+    "original": "artifacts/section-image-originals/home-filer-guide.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/home-filer-guide-480.webp",
+      "/assets/section-images/home-filer-guide-900.webp",
+      "/assets/section-images/home-filer-guide-1400.webp"
+    ],
+    "original_sha256": "596a5b810cecdd8145e974e62a14d8c9443cb3dd4eb7d231c5f2c9a4a6a9e45b"
+  },
+  "home-structure-guide": {
+    "original": "artifacts/section-image-originals/home-structure-guide.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/home-structure-guide-480.webp",
+      "/assets/section-images/home-structure-guide-900.webp",
+      "/assets/section-images/home-structure-guide-1400.webp"
+    ],
+    "original_sha256": "cb54f545a861348aaf438d6bc959c440c564550c197625196574daadb8c1af57"
+  },
+  "home-trade-guide": {
+    "original": "artifacts/section-image-originals/home-trade-guide.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/home-trade-guide-480.webp",
+      "/assets/section-images/home-trade-guide-900.webp",
+      "/assets/section-images/home-trade-guide-1400.webp"
+    ],
+    "original_sha256": "9f5c2b9f2d7b694ef95a73dfe93f46a21a80a556ab01c70487fa651ded58314e"
+  },
+  "about-approach": {
+    "original": "artifacts/section-image-originals/about-approach.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/about-approach-480.webp",
+      "/assets/section-images/about-approach-900.webp",
+      "/assets/section-images/about-approach-1400.webp"
+    ],
+    "original_sha256": "45fedd1ca09122f4af4885583aade9b5fe4a4298b7d5961f265ce4c408a39332"
+  },
+  "company-foundation": {
+    "original": "artifacts/section-image-originals/company-foundation-v2.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/company-foundation-v2-480.webp",
+      "/assets/section-images/company-foundation-v2-900.webp",
+      "/assets/section-images/company-foundation-v2-1400.webp"
+    ],
+    "refinement_prompt": "Use case: precise-object-edit. This is the selected company-registration section illustration for MAS Law Firm. Change only the paper growth arrow and the three ascending bar-chart columns behind and to the right of the shop: remove the arrow and all bar-chart columns completely, replacing their footprint with the existing empty navy background and flat paper model base. Keep the paper shop, tree, small shrubs, navy incorporation folder, document lines, blue tab, pen, lighting, camera position, framing, textures and all other objects unchanged. No new objects, no charts, no arrows, no text. Preserve the same landscape dimensions and premium realistic material finish.",
+    "original_sha256": "da10e05afec82e2d00e3e5a3ee03dd1c2464087d5b9b49fdcc32eb3cee1f5674"
+  },
+  "sole-owner": {
+    "original": "artifacts/section-image-originals/sole-owner.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/sole-owner-480.webp",
+      "/assets/section-images/sole-owner-900.webp",
+      "/assets/section-images/sole-owner-1400.webp"
+    ],
+    "original_sha256": "d88fb4b965cb3b497b6406c7fa0c96f17d92e2fd506ff28a39e7f585b84c67c0"
+  },
+  "partnership-deed": {
+    "original": "artifacts/section-image-originals/partnership-deed.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/partnership-deed-480.webp",
+      "/assets/section-images/partnership-deed-900.webp",
+      "/assets/section-images/partnership-deed-1400.webp"
+    ],
+    "original_sha256": "811fbaa8ad4b4991a34fd42362bde3af93d41e9340ccfa802cbea1556a7c339a"
+  },
+  "llp-structure": {
+    "original": "artifacts/section-image-originals/llp-structure.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/llp-structure-480.webp",
+      "/assets/section-images/llp-structure-900.webp",
+      "/assets/section-images/llp-structure-1400.webp"
+    ],
+    "original_sha256": "79f4672d181aa58357c1b8a1f319990a9e16fbd1a9bdafbf1bb2467c0340c90c"
+  },
+  "manufacturing-setup": {
+    "original": "artifacts/section-image-originals/manufacturing-setup.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/manufacturing-setup-480.webp",
+      "/assets/section-images/manufacturing-setup-900.webp",
+      "/assets/section-images/manufacturing-setup-1400.webp"
+    ],
+    "original_sha256": "b6eb351e444484563e814eaff115f917c838263d076717e22ad4007847bc4a9b"
+  },
+  "construction-records": {
+    "original": "artifacts/section-image-originals/construction-records.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/construction-records-480.webp",
+      "/assets/section-images/construction-records-900.webp",
+      "/assets/section-images/construction-records-1400.webp"
+    ],
+    "original_sha256": "8d30e1b04dd5430202b42b67855988e7e4234530444c2b11ce36109dea4bd291"
+  },
+  "it-business": {
+    "original": "artifacts/section-image-originals/it-business.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/it-business-480.webp",
+      "/assets/section-images/it-business-900.webp",
+      "/assets/section-images/it-business-1400.webp"
+    ],
+    "original_sha256": "1e15e48682999e2b6946721aacc1af74770d1a0212701586f409498b7deea57a"
+  },
+  "wealth-records": {
+    "original": "artifacts/section-image-originals/wealth-records.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/wealth-records-480.webp",
+      "/assets/section-images/wealth-records-900.webp",
+      "/assets/section-images/wealth-records-1400.webp"
+    ],
+    "original_sha256": "dab193157bcd4faade03ab0f084b545fa81ba66a7629d12a9cd9734ad8aef2dd"
+  },
+  "sales-tax-records": {
+    "original": "artifacts/section-image-originals/sales-tax-records.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/sales-tax-records-480.webp",
+      "/assets/section-images/sales-tax-records-900.webp",
+      "/assets/section-images/sales-tax-records-1400.webp"
+    ],
+    "original_sha256": "82193096117539f0d4cae18e656e5ef223489291d9bd2a007cefc42cbf97db8e"
+  },
+  "ntn-enrollment": {
+    "original": "artifacts/section-image-originals/ntn-enrollment.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/ntn-enrollment-480.webp",
+      "/assets/section-images/ntn-enrollment-900.webp",
+      "/assets/section-images/ntn-enrollment-1400.webp"
+    ],
+    "original_sha256": "e993e73c6fb9d68df805ea37fb0a6b8877a12adcacebab970290842b22104f39"
+  },
+  "pra-services": {
+    "original": "artifacts/section-image-originals/pra-services.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/pra-services-480.webp",
+      "/assets/section-images/pra-services-900.webp",
+      "/assets/section-images/pra-services-1400.webp"
+    ],
+    "original_sha256": "f2a6cc8d613962d116ef9da2cc1b8de1385c0352ea76d1dafd3d00518f94b1a3"
+  },
+  "audit-reconciliation": {
+    "original": "artifacts/section-image-originals/audit-reconciliation.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/audit-reconciliation-480.webp",
+      "/assets/section-images/audit-reconciliation-900.webp",
+      "/assets/section-images/audit-reconciliation-1400.webp"
+    ],
+    "original_sha256": "a4140a4e5a2d1dfa8583f43fc5b0d1af05a98f0e4e5bbc15c21f00c9e547efe5"
+  },
+  "appeal-preparation": {
+    "original": "artifacts/section-image-originals/appeal-preparation.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/appeal-preparation-480.webp",
+      "/assets/section-images/appeal-preparation-900.webp",
+      "/assets/section-images/appeal-preparation-1400.webp"
+    ],
+    "original_sha256": "0a32f2b5d727c9ce6cfc44136cde92c122947d41d38c22843ef4307b976d3a80"
+  },
+  "trademark-identity": {
+    "original": "artifacts/section-image-originals/trademark-identity.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/trademark-identity-480.webp",
+      "/assets/section-images/trademark-identity-900.webp",
+      "/assets/section-images/trademark-identity-1400.webp"
+    ],
+    "original_sha256": "b1fb756725f7483f3dba2c0943f173b99b4135eda81f4f403526ec00e217f4f2"
+  },
+  "copyright-works": {
+    "original": "artifacts/section-image-originals/copyright-works.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/copyright-works-480.webp",
+      "/assets/section-images/copyright-works-900.webp",
+      "/assets/section-images/copyright-works-1400.webp"
+    ],
+    "original_sha256": "0beff3ef027245b21cf4400901899882a02f9748ff02ab56247a19f874dc0efa"
+  },
+  "contract-review": {
+    "original": "artifacts/section-image-originals/contract-review.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/contract-review-480.webp",
+      "/assets/section-images/contract-review-900.webp",
+      "/assets/section-images/contract-review-1400.webp"
+    ],
+    "original_sha256": "72625dc216fce536289b98017be7f1d319d35c5f8faec14ac16f0be3035777fa"
+  },
+  "filer-documents": {
+    "original": "artifacts/section-image-originals/filer-documents.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/filer-documents-480.webp",
+      "/assets/section-images/filer-documents-900.webp",
+      "/assets/section-images/filer-documents-1400.webp"
+    ],
+    "original_sha256": "80d506df77cef8159220c7aeb1d9f9dd4a70ed2c6163770b999d8db82f839dfd"
+  },
+  "trade-clearance": {
+    "original": "artifacts/section-image-originals/trade-clearance.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/trade-clearance-480.webp",
+      "/assets/section-images/trade-clearance-900.webp",
+      "/assets/section-images/trade-clearance-1400.webp"
+    ],
+    "original_sha256": "13178e2c735d16c9fca65b4a048087fe6148f5827de3a716fcf40268a9d2e0b5"
+  },
+  "chamber-connections": {
+    "original": "artifacts/section-image-originals/chamber-connections.png",
+    "width": 1536,
+    "height": 1024,
+    "tool": "built-in image_gen",
+    "variants": [
+      "/assets/section-images/chamber-connections-480.webp",
+      "/assets/section-images/chamber-connections-900.webp",
+      "/assets/section-images/chamber-connections-1400.webp"
+    ],
+    "original_sha256": "ecfeae1ccf282dfd0b284dbc4014cc6e3a534d56a50e1aa497f0af074f9b1c02"
+  }
+}
